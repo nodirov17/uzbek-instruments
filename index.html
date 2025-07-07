@@ -3,92 +3,419 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Uzbek Instruments Laboratory</title>
+  <title>O'zbek Cholg'u Laboratoriyasi</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
+    }
+    
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .instrument-card {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+    
+    .instrument-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .floating-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .parallax-section {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    .text-shadow {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .scroll-smooth {
+      scroll-behavior: smooth;
+    }
+    
+    .mobile-menu {
+      display: none;
+    }
+    
+    @media (max-width: 768px) {
+      .desktop-nav { display: none; }
+      .mobile-menu { display: block; }
+    }
+  </style>
 </head>
-<body class="bg-yellow-50 font-sans">
+<body class="bg-gradient-to-br from-yellow-50 to-orange-50 scroll-smooth">
+  <!-- Mobile Menu Toggle -->
+  <div class="mobile-menu fixed top-4 right-4 z-50">
+    <button id="mobileMenuBtn" class="bg-yellow-600 text-white p-3 rounded-full shadow-lg">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden">
+    <div class="fixed right-0 top-0 h-full w-80 bg-white shadow-2xl transform translate-x-full transition-transform duration-300" id="mobileMenuPanel">
+      <div class="p-6">
+        <button id="closeMobileMenu" class="float-right text-gray-600 text-2xl">&times;</button>
+        <h2 class="text-xl font-bold text-yellow-800 mb-6 mt-4">Menyu</h2>
+        <nav class="space-y-4">
+          <a href="#home" class="block text-yellow-700 hover:text-yellow-900 py-2 border-b border-yellow-100">Bosh sahifa</a>
+          <a href="#about" class="block text-yellow-700 hover:text-yellow-900 py-2 border-b border-yellow-100">Biz haqimizda</a>
+          <a href="#instruments" class="block text-yellow-700 hover:text-yellow-900 py-2 border-b border-yellow-100">Cholg'ular</a>
+          <a href="#gallery" class="block text-yellow-700 hover:text-yellow-900 py-2 border-b border-yellow-100">Galereya</a>
+          <a href="#contact" class="block text-yellow-700 hover:text-yellow-900 py-2 border-b border-yellow-100">Aloqa</a>
+          <div class="pt-4 space-y-2">
+            <button class="w-full bg-yellow-600 text-white py-2 px-4 rounded-lg hover:bg-yellow-700 transition">Kirish</button>
+            <button class="w-full border border-yellow-600 text-yellow-600 py-2 px-4 rounded-lg hover:bg-yellow-50 transition">Ro'yxatdan o'tish</button>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+
   <!-- Navbar -->
-  <header class="bg-white shadow-md sticky top-0 z-50">
+  <header class="fixed top-0 w-full z-30 glass-effect">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-yellow-800">O'zbek Cholg'u Laboratoriyasi</h1>
-      <nav class="space-x-6 text-sm md:text-base">
-        <a href="index.html" class="text-yellow-700 hover:underline">Bosh sahifa</a>
-        <a href="#about" class="text-yellow-700 hover:underline">Biz haqimizda</a>
-        <a href="#instruments" class="text-yellow-700 hover:underline">Cholg‘ular</a>
-        <a href="login.html" class="text-yellow-700 hover:underline">Kirish</a>
-        <a href="register.html" class="text-yellow-700 hover:underline">Ro‘yxatdan o‘tish</a>
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-yellow-600 rounded-full flex items-center justify-center">
+          <span class="text-white font-bold text-lg">O</span>
+        </div>
+        <h1 class="text-2xl font-bold text-yellow-800">O'zbek Cholg'u Laboratoriyasi</h1>
+      </div>
+      <nav class="desktop-nav flex items-center space-x-8">
+        <a href="#home" class="text-yellow-700 hover:text-yellow-900 transition font-medium">Bosh sahifa</a>
+        <a href="#about" class="text-yellow-700 hover:text-yellow-900 transition font-medium">Biz haqimizda</a>
+        <a href="#instruments" class="text-yellow-700 hover:text-yellow-900 transition font-medium">Cholg'ular</a>
+        <a href="#gallery" class="text-yellow-700 hover:text-yellow-900 transition font-medium">Galereya</a>
+        <a href="#contact" class="text-yellow-700 hover:text-yellow-900 transition font-medium">Aloqa</a>
+        <div class="flex space-x-3">
+          <button class="bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition">Kirish</button>
+          <button class="border border-yellow-600 text-yellow-600 px-4 py-2 rounded-lg hover:bg-yellow-50 transition">Ro'yxatdan o'tish</button>
+        </div>
       </nav>
     </div>
   </header>
 
   <!-- Hero section -->
-  <section class="relative bg-yellow-100 py-24">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-5xl font-extrabold text-yellow-900 leading-tight mb-6">O‘zbek musiqa merosiga sayohat</h2>
-      <p class="text-xl text-yellow-800 max-w-3xl mx-auto mb-8">
-        Asrlar davomida shakllangan cholg‘u asboblari orqali o‘zbek xalqining yuragidan chiqqan musiqani his eting
-      </p>
-      <a href="#instruments" class="inline-block bg-yellow-700 text-white text-lg px-6 py-3 rounded-full hover:bg-yellow-800 transition">Cholg‘ularni ko‘rish</a>
+  <section id="home" class="relative gradient-bg min-h-screen flex items-center parallax-section">
+    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <div class="floating-animation">
+        <h2 class="text-6xl md:text-7xl font-extrabold text-white leading-tight mb-6 text-shadow">
+          O'zbek musiqa merosiga sayohat
+        </h2>
+        <p class="text-xl md:text-2xl text-yellow-100 max-w-4xl mx-auto mb-10 text-shadow">
+          Asrlar davomida shakllangan cholg'u asboblari orqali o'zbek xalqining yuragidan chiqqan musiqani his eting
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="#instruments" class="inline-block bg-white text-yellow-800 text-lg px-8 py-4 rounded-full hover:bg-yellow-50 transition shadow-lg font-semibold">
+            Cholg'ularni ko'rish
+          </a>
+          <button id="playMusicBtn" class="inline-flex items-center space-x-2 bg-transparent border-2 border-white text-white text-lg px-8 py-4 rounded-full hover:bg-white hover:text-yellow-800 transition">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M8 5v10l8-5-8-5z"/>
+            </svg>
+            <span>Musiqa tinglash</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
     </div>
   </section>
 
-  <!-- Introduction section -->
-  <section class="container mx-auto px-4 py-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-      <div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Karnay_player_in_Uzbekistan.jpg/800px-Karnay_player_in_Uzbekistan.jpg" alt="Karnay" class="rounded-xl shadow">
+  <!-- Statistics section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="space-y-2">
+          <div class="text-4xl font-bold text-yellow-600" id="counter1">15+</div>
+          <div class="text-gray-600">Cholg'u turlari</div>
+        </div>
+        <div class="space-y-2">
+          <div class="text-4xl font-bold text-yellow-600" id="counter2">500+</div>
+          <div class="text-gray-600">Audio yozuvlar</div>
+        </div>
+        <div class="space-y-2">
+          <div class="text-4xl font-bold text-yellow-600" id="counter3">25+</div>
+          <div class="text-gray-600">Professional ustalar</div>
+        </div>
+        <div class="space-y-2">
+          <div class="text-4xl font-bold text-yellow-600" id="counter4">1000+</div>
+          <div class="text-gray-600">Tiklanган asboblar</div>
+        </div>
       </div>
-      <div>
-        <h3 class="text-3xl font-bold text-yellow-900 mb-4">Nega aynan biz?</h3>
-        <p class="text-yellow-800 text-lg mb-4">
-          O‘zbek musiqa merosini saqlashga bag‘ishlangan laboratoriyamizda har bir cholg‘u asbobi sevgi va san’at bilan yaratiladi. Biz nafaqat ularni tiklaymiz, balki ularning tarixini, tarqalishini va ohangini o‘rganamiz.
+    </div>
+  </section>
+
+  <!-- About section -->
+  <section id="about" class="container mx-auto px-4 py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="space-y-6">
+        <div class="inline-block bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-semibold">
+          Bizning missiyamiz
+        </div>
+        <h3 class="text-4xl md:text-5xl font-bold text-yellow-900 leading-tight">
+          Nega aynan <span class="text-yellow-600">biz?</span>
+        </h3>
+        <p class="text-xl text-gray-700 leading-relaxed">
+          O'zbek musiqa merosini saqlashga bag'ishlangan laboratoriyamizda har bir cholg'u asbobi sevgi va san'at bilan yaratiladi. Biz nafaqat ularni tiklaymiz, balki ularning tarixini, tarqalishini va ohangini o'rganamiz.
         </p>
-        <ul class="list-disc pl-6 text-yellow-700 space-y-2">
-          <li>10+ turdagi an’anaviy cholg‘ular</li>
-          <li>Audio va video arxivlar</li>
-          <li>Professional ustalar va tadqiqotchilar jamoasi</li>
-          <li>Yuqori sifatli restavratsiya xizmatlari</li>
-        </ul>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="flex items-start space-x-3">
+            <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+              <svg class="w-4 h-4 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900">15+ turdagi cholg'ular</h4>
+              <p class="text-gray-600 text-sm">Turli xil an'anaviy asboblar</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+              <svg class="w-4 h-4 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900">Audio va video arxivlar</h4>
+              <p class="text-gray-600 text-sm">Raqamli kutubxona</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+              <svg class="w-4 h-4 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900">Professional ustalar</h4>
+              <p class="text-gray-600 text-sm">Tajribali jamoamiz</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+              <svg class="w-4 h-4 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900">Yuqori sifatli restavratsiya</h4>
+              <p class="text-gray-600 text-sm">Professional xizmatlar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="aspect-w-4 aspect-h-5">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Karnay_player_in_Uzbekistan.jpg/800px-Karnay_player_in_Uzbekistan.jpg" alt="Karnay" class="rounded-2xl shadow-2xl object-cover w-full h-96">
+        </div>
+        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-yellow-100 rounded-full flex items-center justify-center shadow-lg">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-yellow-600">25+</div>
+            <div class="text-xs text-yellow-700">Yillik tajriba</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Featured instruments -->
-  <section id="instruments" class="bg-yellow-100 py-16">
+  <section id="instruments" class="bg-gradient-to-r from-yellow-50 to-orange-50 py-20">
     <div class="container mx-auto px-4">
-      <h3 class="text-3xl font-bold text-yellow-900 text-center mb-12">Tanlangan cholg‘ular</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-5">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dutar_instrument.jpg/800px-Dutar_instrument.jpg" alt="Dutar" class="rounded mb-4">
-          <h4 class="text-xl font-semibold text-yellow-800 mb-2">Dutar</h4>
-          <p class="text-gray-700 text-sm">Uzun bo‘yli, ikki torli torli cholg‘u, asosan o‘zbek va tojik xalq musiqasida ishlatiladi.</p>
+      <div class="text-center mb-16">
+        <div class="inline-block bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          Bizning kolleksiyamiz
         </div>
-        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-5">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Doira_musical_instrument.jpg/800px-Doira_musical_instrument.jpg" alt="Doira" class="rounded mb-4">
-          <h4 class="text-xl font-semibold text-yellow-800 mb-2">Doira</h4>
-          <p class="text-gray-700 text-sm">Dumaloq shakldagi urmalı cholg‘u, raqs va xalq qo‘shiqlarida keng tarqalgan.</p>
+        <h3 class="text-4xl md:text-5xl font-bold text-yellow-900 mb-6">Tanlangan cholg'ular</h3>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Har bir asbob o'zining noyob tarixiga va ohangiga ega
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="instrument-card bg-white rounded-2xl shadow-lg overflow-hidden">
+          <div class="relative">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dutar_instrument.jpg/800px-Dutar_instrument.jpg" alt="Dutar" class="w-full h-64 object-cover">
+            <div class="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              Torli
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-2xl font-bold text-yellow-800 mb-3">Dutar</h4>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              Uzun bo'yli, ikki torli torli cholg'u, asosan o'zbek va tojik xalq musiqasida ishlatiladi. Uning yumshoq va chuqur ovozi ko'ngildagi eng nozik his-tuyg'ularni ifodalaydi.
+            </p>
+            <div class="flex items-center justify-between">
+              <button class="text-yellow-600 hover:text-yellow-800 font-semibold">Batafsil →</button>
+              <button class="bg-yellow-100 hover:bg-yellow-200 text-yellow-800 p-2 rounded-full transition">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M8 5v10l8-5-8-5z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-5">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Nay_flute.jpg/800px-Nay_flute.jpg" alt="Nay" class="rounded mb-4">
-          <h4 class="text-xl font-semibold text-yellow-800 mb-2">Nay</h4>
-          <p class="text-gray-700 text-sm">Qamishdan yasalgan nafis cholg‘u, klassik va sufiy ohanglarda keng qo‘llaniladi.</p>
+
+        <div class="instrument-card bg-white rounded-2xl shadow-lg overflow-hidden">
+          <div class="relative">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Doira_musical_instrument.jpg/800px-Doira_musical_instrument.jpg" alt="Doira" class="w-full h-64 object-cover">
+            <div class="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              Urmali
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-2xl font-bold text-yellow-800 mb-3">Doira</h4>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              Dumaloq shakldagi urmali cholg'u, raqs va xalq qo'shiqlarida keng tarqalgan. Uning ritmik ohanglarisiz o'zbek musiqasi tasavvur qilib bo'lmaydi.
+            </p>
+            <div class="flex items-center justify-between">
+              <button class="text-yellow-600 hover:text-yellow-800 font-semibold">Batafsil →</button>
+              <button class="bg-yellow-100 hover:bg-yellow-200 text-yellow-800 p-2 rounded-full transition">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M8 5v10l8-5-8-5z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="instrument-card bg-white rounded-2xl shadow-lg overflow-hidden">
+          <div class="relative">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Nay_flute.jpg/800px-Nay_flute.jpg" alt="Nay" class="w-full h-64 object-cover">
+            <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              Puflama
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-2xl font-bold text-yellow-800 mb-3">Nay</h4>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              Qamishdan yasalgan nafis cholg'u, klassik va sufiy ohanglarda keng qo'llaniladi. Uning ruhiy va chuqur ohanglariga eshituvchilar bosh egadilar.
+            </p>
+            <div class="flex items-center justify-between">
+              <button class="text-yellow-600 hover:text-yellow-800 font-semibold">Batafsil →</button>
+              <button class="bg-yellow-100 hover:bg-yellow-200 text-yellow-800 p-2 rounded-full transition">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M8 5v10l8-5-8-5z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <button class="bg-yellow-600 text-white px-8 py-4 rounded-full hover:bg-yellow-700 transition text-lg font-semibold shadow-lg">
+          Barcha cholg'ularni ko'rish
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery section -->
+  <section id="gallery" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h3 class="text-4xl font-bold text-yellow-900 mb-4">Galereya</h3>
+        <p class="text-xl text-gray-600">Bizning ishlarimiz va tadbirlarimizdan lavhalar</p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="space-y-4">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Karnay_player_in_Uzbekistan.jpg/400px-Karnay_player_in_Uzbekistan.jpg" alt="Gallery 1" class="w-full rounded-lg shadow hover:shadow-lg transition">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dutar_instrument.jpg/400px-Dutar_instrument.jpg" alt="Gallery 2" class="w-full rounded-lg shadow hover:shadow-lg transition">
+        </div>
+        <div class="space-y-4 mt-8">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Doira_musical_instrument.jpg/400px-Doira_musical_instrument.jpg" alt="Gallery 3" class="w-full rounded-lg shadow hover:shadow-lg transition">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Nay_flute.jpg/400px-Nay_flute.jpg" alt="Gallery 4" class="w-full rounded-lg shadow hover:shadow-lg transition">
+        </div>
+        <div class="space-y-4">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Karnay_player_in_Uzbekistan.jpg/400px-Karnay_player_in_Uzbekistan.jpg" alt="Gallery 5" class="w-full rounded-lg shadow hover:shadow-lg transition">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dutar_instrument.jpg/400px-Dutar_instrument.jpg" alt="Gallery 6" class="w-full rounded-lg shadow hover:shadow-lg transition">
+        </div>
+        <div class="space-y-4 mt-8">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Doira_musical_instrument.jpg/400px-Doira_musical_instrument.jpg" alt="Gallery 7" class="w-full rounded-lg shadow hover:shadow-lg transition">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Nay_flute.jpg/400px-Nay_flute.jpg" alt="Gallery 8" class="w-full rounded-lg shadow hover:shadow-lg transition">
         </div>
       </div>
     </div>
   </section>
 
   <!-- Call to action -->
-  <section class="container mx-auto px-4 py-20 text-center">
-    <h3 class="text-3xl font-bold text-yellow-900 mb-4">Musiqa madaniyatini biz bilan o‘rganing</h3>
-    <p class="text-yellow-700 max-w-2xl mx-auto mb-6">Raqamli kutubxonamiz, ustaxona videolari va jonli ijrolar orqali o‘zbek cholg‘ulari haqida ko‘proq bilib oling.</p>
-    <a href="register.html" class="bg-yellow-700 text-white px-6 py-3 rounded-full hover:bg-yellow-800 transition">Ro‘yxatdan o‘ting</a>
+  <section class="gradient-bg py-20 text-center text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h3 class="text-4xl md:text-5xl font-bold mb-6 text-shadow">
+          Musiqa madaniyatini biz bilan o'rganing
+        </h3>
+        <p class="text-xl md:text-2xl mb-10 text-yellow-100 text-shadow">
+          Raqamli kutubxonamiz, ustaxona videolari va jonli ijrolar orqali o'zbek cholg'ulari haqida ko'proq bilib oling
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button class="bg-white text-yellow-800 px-8 py-4 rounded-full hover:bg-yellow-50 transition text-lg font-semibold shadow-lg">
+            Ro'yxatdan o'ting
+          </button>
+          <button class="border-2 border-white text-white px-8 py-4 rounded-full hover:bg-white hover:text-yellow-800 transition text-lg font-semibold">
+            Kurslar haqida
+          </button>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-white py-6 shadow-inner">
-    <div class="container mx-auto px-4 text-center text-sm text-yellow-700">
-      © 2025 O‘zbek Cholg‘u Laboratoriyasi. Barcha huquqlar himoyalangan.
-    </div>
-  </footer>
-</body>
-</html>
+  <!-- Contact section -->
+  <section id="contact" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h3 class="text-4xl font-bold text-yellow-900 mb-4">Biz bilan bog'laning</h3>
+          <p class="text-xl text-gray-600">Savollaringiz bormi? Biz sizga yordam berishga tayyormiz!</p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div class="space-y-8">
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold text-gray-900">Manzil</h4>
+                <p class="text-gray-600">Toshkent shahri, Yunusobod tumani, Abdulla Qodiriy ko'chasi, 12-uy</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor
