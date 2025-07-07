@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uzbek Musical Instruments Laboratory</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fffaf0;
+    }
+    .uzbek-pattern {
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/5c/Suzani_uzbek_pattern.jpg');
+      background-size: cover;
+    }
+  </style>
+</head>
+<body class="text-gray-800">
+  <!-- Bosh Sahifa (Hero) -->
+  <section class="relative h-screen uzbek-pattern flex items-center justify-center">
+    <div class="bg-black bg-opacity-60 p-10 rounded-xl text-white text-center max-w-3xl">
+      <h1 class="text-5xl md:text-6xl font-bold mb-4">O'zbek Musiqa Asboblari Laboratoriyasi</h1>
+      <p class="text-lg">Merosni asraymiz, san'atni rivojlantiramiz</p>
+    </div>
+  </section>
+
+  <!-- Laboratoriya haqida qisqacha -->
+  <section class="py-16 px-6 md:px-20 bg-white">
+    <div class="text-center max-w-4xl mx-auto">
+      <h2 class="text-3xl font-semibold text-yellow-800 mb-4">Biz haqimizda</h2>
+      <p class="text-lg leading-relaxed">
+        Laboratoriyamiz o‘zbek an’anaviy musiqa asboblarini o‘rganish, yaratish, ta’mirlash va targ‘ib qilish bilan shug‘ullanadi. 
+        Har bir cholg‘u – bu tarix, madaniyat va ruhiy boylikni ifodalovchi bebaho merosdir.
+      </p>
+    </div>
+  </section>
+
+  <!-- Cholg‘ular katalogi prototipi -->
+  <section class="py-10 bg-yellow-50 px-6 md:px-20">
+    <h2 class="text-3xl font-semibold text-yellow-900 text-center mb-8">Cholg‘ular Katalogi</h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Misol cholg'u -->
+      <div class="bg-white shadow rounded-xl overflow-hidden">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Rubab_instrument.jpg" alt="Rubab" class="w-full h-40 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-bold text-yellow-800">Rubob</h3>
+          <p class="text-sm text-gray-600 mt-2">O‘zbek xalq cholg‘ularidan biri, torli cholg‘u.</p>
+          <a href="#" class="text-yellow-600 hover:underline text-sm mt-2 inline-block">Batafsil →</a>
+        </div>
+      </div>
+      <!-- Shu kabi boshqalar qo‘shiladi -->
+    </div>
+  </section>
+
+  <footer class="bg-black text-white py-6 text-center">
+    <p>&copy; 2025 O'zbek Musiqa Asboblari Laboratoriyasi. Barcha huquqlar himoyalangan.</p>
+  </footer>
+</body>
+</html>
