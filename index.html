@@ -3,59 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Uzbek Musical Instruments Laboratory</title>
+  <title>Uzbek Instruments Laboratory</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fffaf0;
-    }
-    .uzbek-pattern {
-      background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/5c/Suzani_uzbek_pattern.jpg');
-      background-size: cover;
-    }
-  </style>
 </head>
-<body class="text-gray-800">
-  <!-- Bosh Sahifa (Hero) -->
-  <section class="relative h-screen uzbek-pattern flex items-center justify-center">
-    <div class="bg-black bg-opacity-60 p-10 rounded-xl text-white text-center max-w-3xl">
-      <h1 class="text-5xl md:text-6xl font-bold mb-4">O'zbek Musiqa Asboblari Laboratoriyasi</h1>
-      <p class="text-lg">Merosni asraymiz, san'atni rivojlantiramiz</p>
+<body class="bg-yellow-50 font-sans">
+  <!-- Navbar -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-yellow-800">O'zbek Cholg'u Laboratoriyasi</h1>
+      <nav class="space-x-4">
+        <a href="index.html" class="text-yellow-700 hover:underline">Bosh sahifa</a>
+        <a href="login.html" class="text-yellow-700 hover:underline">Kirish</a>
+        <a href="register.html" class="text-yellow-700 hover:underline">Ro‘yxatdan o‘tish</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero section -->
+  <section class="bg-yellow-100 py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold text-yellow-800 mb-4">An'anaviy o‘zbek cholg‘ularining noyob olami</h2>
+      <p class="text-lg text-yellow-700">Milliy musiqa merosini saqlab qolish va kelajak avlodga yetkazish uchun yaratilgan platforma</p>
     </div>
   </section>
 
-  <!-- Laboratoriya haqida qisqacha -->
-  <section class="py-16 px-6 md:px-20 bg-white">
-    <div class="text-center max-w-4xl mx-auto">
-      <h2 class="text-3xl font-semibold text-yellow-800 mb-4">Biz haqimizda</h2>
-      <p class="text-lg leading-relaxed">
-        Laboratoriyamiz o‘zbek an’anaviy musiqa asboblarini o‘rganish, yaratish, ta’mirlash va targ‘ib qilish bilan shug‘ullanadi. 
-        Har bir cholg‘u – bu tarix, madaniyat va ruhiy boylikni ifodalovchi bebaho merosdir.
+  <!-- Featured instruments -->
+  <section class="container mx-auto px-4 py-12">
+    <h3 class="text-2xl font-bold text-yellow-800 text-center mb-10">Tanlangan cholg‘ular</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Example instrument card -->
+      <div class="bg-white shadow rounded-xl p-4 hover:shadow-lg transition">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dutar_instrument.jpg/800px-Dutar_instrument.jpg" alt="Dutar" class="rounded mb-4">
+        <h4 class="text-lg font-semibold text-yellow-800">Dutar</h4>
+        <p class="text-sm text-gray-700">Ikki torli uzun bo'yinli torli cholg'u asbobi, xalq musiqasida muhim o'rin tutadi.</p>
+      </div>
+      <div class="bg-white shadow rounded-xl p-4 hover:shadow-lg transition">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Doira_musical_instrument.jpg/800px-Doira_musical_instrument.jpg" alt="Doira" class="rounded mb-4">
+        <h4 class="text-lg font-semibold text-yellow-800">Doira</h4>
+        <p class="text-sm text-gray-700">Ritmik va jo‘shqin ohanglar uchun ishlatiladigan o‘zbek milliy baraban asbobi.</p>
+      </div>
+      <div class="bg-white shadow rounded-xl p-4 hover:shadow-lg transition">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Nay_flute.jpg/800px-Nay_flute.jpg" alt="Nay" class="rounded mb-4">
+        <h4 class="text-lg font-semibold text-yellow-800">Nay</h4>
+        <p class="text-sm text-gray-700">Nafasli cholg‘u bo‘lib, o‘zbek klassik va xalq musiqasida keng qo‘llaniladi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About section -->
+  <section class="bg-yellow-100 py-12">
+    <div class="container mx-auto px-4 text-center">
+      <h3 class="text-2xl font-bold text-yellow-800 mb-4">Biz haqimizda</h3>
+      <p class="text-yellow-700 max-w-3xl mx-auto">
+        O‘zbek Cholg‘u Asboblari Laboratoriyasi milliy cholg‘u asboblarini yaratish, tiklash va ularning tarixini o‘rganish bilan shug‘ullanadi. Bizning maqsadimiz – ushbu bebaho merosni kelajak avlodlarga yetkazish.
       </p>
     </div>
   </section>
 
-  <!-- Cholg‘ular katalogi prototipi -->
-  <section class="py-10 bg-yellow-50 px-6 md:px-20">
-    <h2 class="text-3xl font-semibold text-yellow-900 text-center mb-8">Cholg‘ular Katalogi</h2>
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      <!-- Misol cholg'u -->
-      <div class="bg-white shadow rounded-xl overflow-hidden">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Rubab_instrument.jpg" alt="Rubab" class="w-full h-40 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-bold text-yellow-800">Rubob</h3>
-          <p class="text-sm text-gray-600 mt-2">O‘zbek xalq cholg‘ularidan biri, torli cholg‘u.</p>
-          <a href="#" class="text-yellow-600 hover:underline text-sm mt-2 inline-block">Batafsil →</a>
-        </div>
-      </div>
-      <!-- Shu kabi boshqalar qo‘shiladi -->
+  <!-- Footer -->
+  <footer class="bg-white py-6 shadow-inner mt-12">
+    <div class="container mx-auto px-4 text-center text-sm text-yellow-700">
+      © 2025 O‘zbek Cholg‘u Laboratoriyasi. Barcha huquqlar himoyalangan.
     </div>
-  </section>
-
-  <footer class="bg-black text-white py-6 text-center">
-    <p>&copy; 2025 O'zbek Musiqa Asboblari Laboratoriyasi. Barcha huquqlar himoyalangan.</p>
   </footer>
 </body>
 </html>
