@@ -10,9 +10,11 @@
   <!-- Navbar -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold text-yellow-800">O'zbek Cholg'u Laboratoriyasi</h1>
-      <nav class="space-x-4">
+      <h1 class="text-2xl font-bold text-yellow-800">O'zbek Cholg'u Laboratoriyasi</h1>
+      <nav class="space-x-6 text-sm md:text-base">
         <a href="index.html" class="text-yellow-700 hover:underline">Bosh sahifa</a>
+        <a href="#about" class="text-yellow-700 hover:underline">Biz haqimizda</a>
+        <a href="#instruments" class="text-yellow-700 hover:underline">Cholg‘ular</a>
         <a href="login.html" class="text-yellow-700 hover:underline">Kirish</a>
         <a href="register.html" class="text-yellow-700 hover:underline">Ro‘yxatdan o‘tish</a>
       </nav>
@@ -20,48 +22,70 @@
   </header>
 
   <!-- Hero section -->
-  <section class="bg-yellow-100 py-16">
+  <section class="relative bg-yellow-100 py-24">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-4xl font-bold text-yellow-800 mb-4">An'anaviy o‘zbek cholg‘ularining noyob olami</h2>
-      <p class="text-lg text-yellow-700">Milliy musiqa merosini saqlab qolish va kelajak avlodga yetkazish uchun yaratilgan platforma</p>
+      <h2 class="text-5xl font-extrabold text-yellow-900 leading-tight mb-6">O‘zbek musiqa merosiga sayohat</h2>
+      <p class="text-xl text-yellow-800 max-w-3xl mx-auto mb-8">
+        Asrlar davomida shakllangan cholg‘u asboblari orqali o‘zbek xalqining yuragidan chiqqan musiqani his eting
+      </p>
+      <a href="#instruments" class="inline-block bg-yellow-700 text-white text-lg px-6 py-3 rounded-full hover:bg-yellow-800 transition">Cholg‘ularni ko‘rish</a>
+    </div>
+  </section>
+
+  <!-- Introduction section -->
+  <section class="container mx-auto px-4 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Karnay_player_in_Uzbekistan.jpg/800px-Karnay_player_in_Uzbekistan.jpg" alt="Karnay" class="rounded-xl shadow">
+      </div>
+      <div>
+        <h3 class="text-3xl font-bold text-yellow-900 mb-4">Nega aynan biz?</h3>
+        <p class="text-yellow-800 text-lg mb-4">
+          O‘zbek musiqa merosini saqlashga bag‘ishlangan laboratoriyamizda har bir cholg‘u asbobi sevgi va san’at bilan yaratiladi. Biz nafaqat ularni tiklaymiz, balki ularning tarixini, tarqalishini va ohangini o‘rganamiz.
+        </p>
+        <ul class="list-disc pl-6 text-yellow-700 space-y-2">
+          <li>10+ turdagi an’anaviy cholg‘ular</li>
+          <li>Audio va video arxivlar</li>
+          <li>Professional ustalar va tadqiqotchilar jamoasi</li>
+          <li>Yuqori sifatli restavratsiya xizmatlari</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <!-- Featured instruments -->
-  <section class="container mx-auto px-4 py-12">
-    <h3 class="text-2xl font-bold text-yellow-800 text-center mb-10">Tanlangan cholg‘ular</h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Example instrument card -->
-      <div class="bg-white shadow rounded-xl p-4 hover:shadow-lg transition">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dutar_instrument.jpg/800px-Dutar_instrument.jpg" alt="Dutar" class="rounded mb-4">
-        <h4 class="text-lg font-semibold text-yellow-800">Dutar</h4>
-        <p class="text-sm text-gray-700">Ikki torli uzun bo'yinli torli cholg'u asbobi, xalq musiqasida muhim o'rin tutadi.</p>
-      </div>
-      <div class="bg-white shadow rounded-xl p-4 hover:shadow-lg transition">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Doira_musical_instrument.jpg/800px-Doira_musical_instrument.jpg" alt="Doira" class="rounded mb-4">
-        <h4 class="text-lg font-semibold text-yellow-800">Doira</h4>
-        <p class="text-sm text-gray-700">Ritmik va jo‘shqin ohanglar uchun ishlatiladigan o‘zbek milliy baraban asbobi.</p>
-      </div>
-      <div class="bg-white shadow rounded-xl p-4 hover:shadow-lg transition">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Nay_flute.jpg/800px-Nay_flute.jpg" alt="Nay" class="rounded mb-4">
-        <h4 class="text-lg font-semibold text-yellow-800">Nay</h4>
-        <p class="text-sm text-gray-700">Nafasli cholg‘u bo‘lib, o‘zbek klassik va xalq musiqasida keng qo‘llaniladi.</p>
+  <section id="instruments" class="bg-yellow-100 py-16">
+    <div class="container mx-auto px-4">
+      <h3 class="text-3xl font-bold text-yellow-900 text-center mb-12">Tanlangan cholg‘ular</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-5">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dutar_instrument.jpg/800px-Dutar_instrument.jpg" alt="Dutar" class="rounded mb-4">
+          <h4 class="text-xl font-semibold text-yellow-800 mb-2">Dutar</h4>
+          <p class="text-gray-700 text-sm">Uzun bo‘yli, ikki torli torli cholg‘u, asosan o‘zbek va tojik xalq musiqasida ishlatiladi.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-5">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Doira_musical_instrument.jpg/800px-Doira_musical_instrument.jpg" alt="Doira" class="rounded mb-4">
+          <h4 class="text-xl font-semibold text-yellow-800 mb-2">Doira</h4>
+          <p class="text-gray-700 text-sm">Dumaloq shakldagi urmalı cholg‘u, raqs va xalq qo‘shiqlarida keng tarqalgan.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-5">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Nay_flute.jpg/800px-Nay_flute.jpg" alt="Nay" class="rounded mb-4">
+          <h4 class="text-xl font-semibold text-yellow-800 mb-2">Nay</h4>
+          <p class="text-gray-700 text-sm">Qamishdan yasalgan nafis cholg‘u, klassik va sufiy ohanglarda keng qo‘llaniladi.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- About section -->
-  <section class="bg-yellow-100 py-12">
-    <div class="container mx-auto px-4 text-center">
-      <h3 class="text-2xl font-bold text-yellow-800 mb-4">Biz haqimizda</h3>
-      <p class="text-yellow-700 max-w-3xl mx-auto">
-        O‘zbek Cholg‘u Asboblari Laboratoriyasi milliy cholg‘u asboblarini yaratish, tiklash va ularning tarixini o‘rganish bilan shug‘ullanadi. Bizning maqsadimiz – ushbu bebaho merosni kelajak avlodlarga yetkazish.
-      </p>
-    </div>
+  <!-- Call to action -->
+  <section class="container mx-auto px-4 py-20 text-center">
+    <h3 class="text-3xl font-bold text-yellow-900 mb-4">Musiqa madaniyatini biz bilan o‘rganing</h3>
+    <p class="text-yellow-700 max-w-2xl mx-auto mb-6">Raqamli kutubxonamiz, ustaxona videolari va jonli ijrolar orqali o‘zbek cholg‘ulari haqida ko‘proq bilib oling.</p>
+    <a href="register.html" class="bg-yellow-700 text-white px-6 py-3 rounded-full hover:bg-yellow-800 transition">Ro‘yxatdan o‘ting</a>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-white py-6 shadow-inner mt-12">
+  <footer class="bg-white py-6 shadow-inner">
     <div class="container mx-auto px-4 text-center text-sm text-yellow-700">
       © 2025 O‘zbek Cholg‘u Laboratoriyasi. Barcha huquqlar himoyalangan.
     </div>
