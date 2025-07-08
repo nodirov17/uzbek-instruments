@@ -3,68 +3,873 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel - O‘zbek Cholg‘u Laboratoriyasi</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Sozlamalar - O'zbek Cholg'u Laboratoriyasi</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    /* Animated background particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 20s infinite linear;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    .container {
+      display: flex;
+      min-height: 100vh;
+      backdrop-filter: blur(10px);
+    }
+    
+    /* Sidebar Styles */
+    .sidebar {
+      width: 280px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 2rem;
+      transition: all 0.3s ease;
+      box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sidebar-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    
+    .logo {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(45deg, #ff6b6b, #feca57);
+      border-radius: 20px;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .sidebar-title {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-menu {
+      list-style: none;
+    }
+    
+    .nav-item {
+      margin-bottom: 0.5rem;
+    }
+    
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.05);
+      margin-bottom: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateX(10px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .nav-link i {
+      margin-right: 0.75rem;
+      font-size: 1.1rem;
+      width: 20px;
+    }
+    
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .header {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shine 3s infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+    
+    .header h1 {
+      font-size: 2.5rem;
+      color: white;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .header p {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Settings Sections */
+    .settings-grid {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .settings-section {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .settings-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: all 0.5s ease;
+    }
+    
+    .settings-section:hover::before {
+      left: 100%;
+    }
+    
+    .settings-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+    
+    .section-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .section-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #ff6b6b, #feca57);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      margin-right: 1rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+      color: white;
+      font-weight: 600;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      color: white;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 0.9rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none;
+      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+    
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .form-select option {
+      background: #667eea;
+      color: white;
+    }
+    
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    
+    /* Toggle Switch */
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+    
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.3);
+      transition: .4s;
+      border-radius: 34px;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+      background: linear-gradient(45deg, #ff6b6b, #feca57);
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    
+    .toggle-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    
+    /* Buttons */
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .btn-primary {
+      background: linear-gradient(45deg, #ff6b6b, #feca57);
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .btn-danger {
+      background: rgba(231, 76, 60, 0.8);
+      color: white;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    /* Color Picker */
+    .color-picker {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    
+    .color-option {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .color-option.active {
+      border-color: white;
+      transform: scale(1.1);
+    }
+    
+    /* File Upload */
+    .file-upload {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      width: 100%;
+    }
+    
+    .file-upload input[type=file] {
+      position: absolute;
+      left: -9999px;
+    }
+    
+    .file-upload-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 2rem;
+      border: 2px dashed rgba(255, 255, 255, 0.5);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .file-upload-label:hover {
+      border-color: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Progress Bar */
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(45deg, #ff6b6b, #feca57);
+      border-radius: 10px;
+      transition: width 0.3s ease;
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.3s ease;
+      }
+      
+      .sidebar.open {
+        left: 0;
+      }
+      
+      .main-content {
+        padding: 1rem;
+      }
+      
+      .header h1 {
+        font-size: 2rem;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .btn-group {
+        flex-direction: column;
+      }
+      
+      .btn {
+        justify-content: center;
+      }
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1001;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 10px;
+      padding: 0.75rem;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+    }
+    
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+    
+    /* Success Message */
+    .success-message {
+      background: rgba(46, 204, 113, 0.8);
+      color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .success-message.show {
+      display: flex;
+    }
+  </style>
 </head>
-<body class="bg-yellow-50 font-sans">
-  <div class="min-h-screen flex">
+<body>
+  <!-- Animated background particles -->
+  <div class="particles" id="particles"></div>
+  
+  <!-- Mobile menu button -->
+  <button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+  </button>
+  
+  <div class="container">
     <!-- Sidebar -->
-    <aside class="w-64 bg-white shadow-lg p-6 hidden md:block">
-      <h2 class="text-xl font-bold text-yellow-800 mb-6">Menyu</h2>
-      <nav class="space-y-4">
-        <a href="dashboard.html" class="block text-yellow-700 hover:underline">🏠 Bosh sahifa</a>
-        <a href="#" class="block text-yellow-700 hover:underline">🪕 Cholg‘ular</a>
-        <a href="favorites.html" class="block text-yellow-700 hover:underline">❤️ Sevimlilar</a>
-        <a href="comments.html" class="block text-yellow-700 hover:underline">📝 Izohlarim</a>
-        <a href="profile.html" class="block text-yellow-700 hover:underline">👤 Profil</a>
-        <a href="admin.html" class="block text-yellow-900 font-semibold underline">🛠️ Admin Panel</a>
-        <a href="index.html" class="block text-yellow-700 hover:underline">⬅️ Saytga qaytish</a>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          🎵
+        </div>
+        <h2 class="sidebar-title">O'zbek Cholg'u Laboratoriyasi</h2>
+      </div>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="dashboard.html" class="nav-link">
+              <i class="fas fa-home"></i>
+              Bosh sahifa
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="instruments.html" class="nav-link">
+              <i class="fas fa-guitar"></i>
+              Cholg'ular
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="favorites.html" class="nav-link">
+              <i class="fas fa-heart"></i>
+              Sevimlilar
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="comments.html" class="nav-link">
+              <i class="fas fa-comments"></i>
+              Izohlarim
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="profile.html" class="nav-link">
+              <i class="fas fa-user"></i>
+              Profil
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="admin.html" class="nav-link active">
+              <i class="fas fa-cog"></i>
+              Sozlamalar
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">
+              <i class="fas fa-arrow-left"></i>
+              Saytga qaytish
+            </a>
+          </li>
+        </ul>
       </nav>
     </aside>
-
-    <!-- Main content -->
-    <main class="flex-1 p-6">
-      <h1 class="text-3xl font-bold text-yellow-900 mb-6">Admin Panel</h1>
-
-      <!-- Add Instrument -->
-      <section class="bg-white shadow-md rounded-lg p-6 mb-8">
-        <h2 class="text-xl font-semibold text-yellow-800 mb-4">🆕 Yangi cholg‘u qo‘shish</h2>
-        <form class="space-y-4">
-          <input type="text" placeholder="Cholg‘u nomi" class="w-full border border-yellow-300 rounded px-4 py-2">
-          <input type="text" placeholder="Kategoriya yoki tur" class="w-full border border-yellow-300 rounded px-4 py-2">
-          <textarea placeholder="Qisqacha tavsif" rows="3" class="w-full border border-yellow-300 rounded px-4 py-2"></textarea>
-          <input type="file" class="w-full">
-          <button class="bg-yellow-700 text-white px-6 py-2 rounded hover:bg-yellow-800">Qo‘shish</button>
-        </form>
-      </section>
-
-      <!-- Manage Users -->
-      <section class="bg-white shadow-md rounded-lg p-6">
-        <h2 class="text-xl font-semibold text-yellow-800 mb-4">👥 Foydalanuvchilar ro‘yxati</h2>
-        <table class="w-full table-auto">
-          <thead>
-            <tr class="bg-yellow-100">
-              <th class="px-4 py-2 text-left">Ism</th>
-              <th class="px-4 py-2 text-left">Email</th>
-              <th class="px-4 py-2 text-left">Status</th>
-              <th class="px-4 py-2 text-left">Amallar</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="px-4 py-2">Ozodbek Nodirov</td>
-              <td class="px-4 py-2">ozodbek@example.com</td>
-              <td class="px-4 py-2">Admin</td>
-              <td class="px-4 py-2 space-x-2">
-                <button class="text-yellow-700 hover:underline">Tahrirlash</button>
-                <button class="text-red-600 hover:underline">O‘chirish</button>
-              </td>
-            </tr>
-            <!-- Yana foydalanuvchilar shu yerda ko‘rsatiladi -->
-          </tbody>
-        </table>
-      </section>
-    </main>
-  </div>
-</body>
-</html>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <div class="header">
+        <h1>Sozlamalar ⚙️</h1>
+        <p>Tizim sozlamalari, foydalanuvchi parametrlari va sayt konfiguratsiyasini boshqarish uchun bosh panel. Bu yerda barcha muhim sozlamalarni o'zgartirishingiz mumkin.</p>
+      </div>
+      
+      <!-- Success Message -->
+      <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i>
+        <span>Sozlamalar muvaffaqiyatli saqlandi!</span>
+      </div>
+      
+      <!-- Settings Grid -->
+      <div class="settings-grid">
+        
+        <!-- General Settings -->
+        <div class="settings-section">
+          <div class="section-header">
+            <div class="section-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <h3 class="section-title">Umumiy sozlamalar</h3>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Sayt nomi</label>
+            <input type="text" class="form-input" value="O'zbek Cholg'u Laboratoriyasi" placeholder="Sayt nomini kiriting">
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Til</label>
+              <select class="form-select">
+                <option value="uz" selected>O'zbekcha</option>
+                <option value="ru">Русский</option>
+                <option value="en">English</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Vaqt zonasi</label>
+              <select class="form-select">
+                <option value="asia/tashkent" selected>Toshkent (GMT+5)</option>
+                <option value="asia/samarkand">Samarqand (GMT+5)</option>
+                <option value="utc">UTC (GMT+0)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Sayt tavsifi</label>
+            <textarea class="form-textarea" placeholder="Sayt haqida qisqacha ma'lumot">O'zbek xalq cholg'u asboblarini o'rganish uchun eng yaxshi platforma. Bu yerda barcha ma'lumotlar professional darajada taqdim etiladi.</textarea>
+          </div>
+          
+          <div class="toggle-label">
+            <span>Saytni faol rejimda saqlash</span>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        
+        <!-- User Settings -->
+        <div class="settings-section">
+          <div class="section-header">
+            <div class="section-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3 class="section-title">Foydalanuvchi sozlamalari</h3>
+          </div>
+          
+          <div class="toggle-label">
+            <span>Yangi foydalanuvchilar ro'yxatdan o'ta olsin</span>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="toggle-label">
+            <span>Email tasdiqlash majburiy bo'lsin</span>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="toggle-label">
+            <span>Izohlar moderatsiyadan o'tsin</span>
+            <label class="toggle-switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Maksimal izoh uzunligi</label>
+              <input type="number" class="form-input" value="500" placeholder="Belgilar soni">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Kunlik izohlar soni</label>
+              <input type="number" class="form-input" value="10" placeholder="Bir kunlik limit">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Theme Settings -->
+        <div class="settings-section">
+          <div class="section-header">
+            <div class="section-icon">
+              <i class="fas fa-palette"></i>
+            </div>
+            <h3 class="section-title">Mavzu va dizayn</h3>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Asosiy rang sxemasi</label>
+            <div class="color-picker">
+              <div class="color-option active" style="background: linear-gradient(45deg, #667eea, #764ba2);" data-theme="default"></div>
+              <div class="color-option" style="background: linear-gradient(45deg, #ff6b6b, #feca57);" data-theme="warm"></div>
+              <div class="color-option" style="background: linear-gradient(45deg, #4ecdc4, #44a08d);" data-theme="cool"></div>
+              <div class="color-option" style="background: linear-gradient(45deg, #a8edea, #fed6e3);" data-theme="pastel"></div>
+              <div class="color-option" style="background: linear-gradient(45deg, #2c3e50, #34495e);" data-theme="dark"></div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Logo yuklash</label>
+            <div class="file-upload">
+              <input type="file" id="logoUpload" accept="image/*">
+              <label for="logoUpload" class="file-upload-label">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>Logo faylini tanlang</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="toggle-label">
+            <span>Animatsiyalarni yoqish</span>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="toggle-label">
+            <span>Qorong'u rejim</span>
+            <label class="toggle-switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        
+        <!-- Security Settings -->
+        <div class="settings-section">
+          <div class="section-header">
+            <div class="section-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="section-title">Xavfsizlik sozlamalari</h3>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Minimal parol uzunligi</label>
+            <input type="number" class="form-input" value="8" min="6" max="20">
+          </div>
+          
+          <div class="toggle-label">
+            <span>Ikki bosqichli autentifikatsiya</span>
+            <label class="toggle-switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="toggle-label">
+            <span>IP manzil bloklash</span>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Session vaqti (daqiqa)</label>
+            <input type="number" class="form-input" value="120" placeholder="Session davomiyligi">
+          </div>
+          
+          <div class="toggle-label">
+            <span>Brute force himoyasi</span>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        
+        <!-- Email Settings -->
+        <div class="settings-section">
+          <div class="section-header">
+            <div class="section-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3 class="section-title">Email sozlamalari</h3>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">SMTP server</label>
+              <input type="text" class="form-input" value="smtp.gmail.com" placeholder="SMTP server manzili">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Port</label>
+              <input type="number" class="form-input" value="587" placeholder="Port raqami">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Email manzil</label>
+              <input type="email" class="form-input" placeholder="admin@cholgulab.uz">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Jo'natuvchi nomi</label>
+              <input type="text" class="form-input" value="Cholg'u Laboratoriyasi" placeholder="Jo'natuvchi nomi">
+            </div>
+          </div>
+          
+          <div class="toggle-label">
