@@ -3,22 +3,1250 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dutar - Cholg‘u Tafsiloti</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Dutar - O'zbek Cholg'u Laboratoriyasi</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fef3c7, #fcd34d, #f59e0b);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    /* Animated background particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 25s infinite linear;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    .header {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: #92400e;
+    }
+    
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #fbbf24, #f59e0b);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .nav-link {
+      color: #92400e;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+    }
+    
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .btn-dashboard {
+      background: linear-gradient(45deg, #fbbf24, #f59e0b);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-dashboard:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shine 4s infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+    
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #92400e;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #b45309;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .stat-item {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 1rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+    
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #92400e;
+      display: block;
+    }
+    
+    .stat-label {
+      color: #b45309;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    
+    .hero-image {
+      position: relative;
+    }
+    
+    .main-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      border: 3px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    .floating-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #fbbf24, #f59e0b);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 20px;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    /* Action Buttons */
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(45deg, #fbbf24, #f59e0b);
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.3);
+      color: #92400e;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Content Sections */
+    .content-section {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .content-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #92400e;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .section-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #fbbf24, #f59e0b);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .content-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #b45309;
+      margin-bottom: 2rem;
+    }
+    
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+      color: white;
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: all 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+    
+    /* Audio Player */
+    .audio-player {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+    
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .play-btn {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #fbbf24, #f59e0b);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .play-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    .track-info {
+      flex: 1;
+    }
+    
+    .track-title {
+      font-weight: 600;
+      color: #92400e;
+      margin-bottom: 0.5rem;
+    }
+    
+    .track-artist {
+      color: #b45309;
+      font-size: 0.9rem;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(45deg, #fbbf24, #f59e0b);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    /* Video Player */
+    .video-container {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 2rem 0;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .video-player {
+      width: 100%;
+      height: 300px;
+      background: #000;
+      border-radius: 20px;
+    }
+    
+    /* Specifications Table */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    
+    .specs-table th,
+    .specs-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .specs-table th {
+      background: rgba(255, 255, 255, 0.2);
+      font-weight: 600;
+      color: #92400e;
+    }
+    
+    .specs-table td {
+      color: #b45309;
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-stats {
+        justify-content: center;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Favorite Button */
+    .favorite-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #ef4444, #dc2626);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+    
+    .favorite-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    .favorite-btn.active {
+      background: linear-gradient(45deg, #f59e0b, #d97706);
+    }
+    
+    /* Comments Section */
+    .comments-section {
+      margin-top: 3rem;
+    }
+    
+    .comment-form {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 2rem;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      color: #92400e;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #92400e;
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: #fbbf24;
+      box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+    }
+    
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .comment-item {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .comment-author {
+      font-weight: 600;
+      color: #92400e;
+      margin-bottom: 0.5rem;
+    }
+    
+    .comment-text {
+      color: #b45309;
+      line-height: 1.6;
+    }
+    
+    .comment-date {
+      color: #d97706;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+  </style>
 </head>
-<body class="bg-yellow-50 font-sans">
-  <div class="max-w-4xl mx-auto p-6 bg-white mt-10 shadow-lg rounded-lg">
-    <h1 class="text-3xl font-bold text-yellow-900 mb-4">Dutar</h1>
-    <img src="img/dutar.jpg" alt="Dutar" class="w-full h-64 object-cover rounded mb-4">
-    <p class="text-gray-700 mb-2">Bu sahifada Dutar cholg‘usining tarixi, tuzilishi, ohangi, va madaniy ahamiyati haqida ma’lumotlar taqdim etiladi.</p>
-    <ul class="list-disc pl-5 text-gray-700 space-y-1">
-      <li>Tarixi va kelib chiqishi</li>
-      <li>Foydalanish hududlari</li>
-      <li>Material va tuzilma</li>
-      <li>Ohang namunasi</li>
-      <li>Yasash jarayoni haqida</li>
-    </ul>
-    <a href="instruments.html" class="inline-block mt-6 text-yellow-700 hover:underline">⬅️ Cholg‘ular sahifasiga qaytish</a>
+<body>
+  <!-- Animated background particles -->
+  <div class="particles" id="particles"></div>
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">🎵</div>
+          <div class="logo-text">Cholg'u Lab</div>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html" class="nav-link">🏠 Bosh sahifa</a>
+          <a href="instruments.html" class="nav-link">🎵 Cholg'ular</a>
+          <a href="dashboard.html" class="btn-dashboard">📊 Dashboard</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <div class="container">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>🎸 Dutar</h1>
+          <p>
+            Dutar - o'zbek xalq musiqasining eng muhim torli cholg'ularidan biri. 
+            Ikki torli bu asbob o'zining nozik va chuqur ohanglariga ega bo'lib, 
+            ko'ngildagi eng nozik his-tuyg'ularni ifoda eta oladi.
+          </p>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">2</span>
+              <span class="stat-label">Tor soni</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">17</span>
+              <span class="stat-label">Parda</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">90cm</span>
+              <span class="stat-label">Uzunlik</span>
+            </div>
+          </div>
+          
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="playDutarSound()">
+              <i class="fas fa-play"></i>
+              Ovozini eshitish
+            </button>
+            <button class="btn btn-secondary" onclick="showSpecs()">
+              <i class="fas fa-info-circle"></i>
+              Texnik ma'lumotlar
+            </button>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dutar" class="main-image">
+          <div class="floating-badge">
+            ⭐ Mashhur asbob
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- History Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">📜</div>
+        Tarix va kelib chiqishi
+      </h2>
+      <div class="content-text">
+        <p>
+          Dutar qadimiy zamonlardan beri O'zbekiston hududida keng tarqalgan. 
+          Bu asbobning ildizlari Markaziy Osiyoning qadimgi madaniyatlariga borib taqaladi. 
+          "Du" so'zi ikki, "tar" esa tor ma'nosini bildiradi.
+        </p>
+        <br>
+        <p>
+          Dutarning eng qadimgi namunalari X-XI asrlarda paydo bo'lgan va o'sha davr 
+          musiqachilarining sevimli asboblaridan biri bo'lgan. Ayniqsa, badiylar va 
+          xalq qo'shiqchilarida keng qo'llanilgan.
+        </p>
+      </div>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Qadimiy dutar">
+          <div class="gallery-overlay">
+            <h4>Qadimiy dutar namunasi</h4>
+            <p>XVIII asr</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Ustad ishlab chiqarmoqda">
+          <div class="gallery-overlay">
+            <h4>Ustad dutar yasaydi</h4>
+            <p>An'anaviy usul</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Zamonaviy dutar">
+          <div class="gallery-overlay">
+            <h4>Zamonaviy dutar</h4>
+            <p>XXI asr</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Audio Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎵</div>
+        Audio namunalar
+      </h2>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track1')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">Klassik dutar kuysi</div>
+            <div class="track-artist">Ustad Turgun Alimatov</div>
+          </div>
+          <span class="track-duration">3:45</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress1"></div>
+        </div>
+      </div>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track2')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">Zamonaviy dutar ijrosi</div>
+            <div class="track-artist">Yosh ijrochi</div>
+          </div>
+          <span class="track-duration">2:30</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress2"></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Construction Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🔨</div>
+        Yasalish texnologiyasi
+      </h2>
+      <div class="content-text">
+        <p>
+          Dutar odatda tut yoki terak yog'ochidan yasaladi. Asbobning asosiy qismlari:
+        </p>
+        <ul style="margin: 1rem 0; padding-left: 2rem; color: #b45309;">
+          <li><strong>Tana (korpus):</strong> Tovush rezonatorining asosiy qismi</li>
+          <li><strong>Bo'yin:</strong> Pardalar o'rnatilgan qism</li>
+          <li><strong>Torlar:</strong> Odatda ip yoki metall torlar</li>
+          <li><strong>Koltok:</strong> Torlarni tortib turuvchi mexanizm</li>
+          <li><strong>Pardalar:</strong> 17 ta parda</li>
+        </ul>
+      </div>
+      
+      <div class="video-container">
+        <video class="video-player" controls poster="https://images.unsplash.com/photo-1516280440614-37939bbacd81?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+          <source src="#" type="video/mp4">
+          Video yuklanmadi
+        </video>
+      </div>
+      
+      <table class="specs-table">
+        <thead>
+          <tr>
+            <th>Xususiyat</th>
+            <th>Ma'lumot</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Umumiy uzunlik</td>
+            <td>85-95 sm</td>
+          </tr>
+          <tr>
+            <td>Tananing kengligi</td>
+            <td>25-30 sm</td>
+          </tr>
+          <tr>
+            <td>Torlar soni</td>
+            <td>2 ta</td>
+          </tr>
+          <tr>
+            <td>Pardalar soni</td>
+            <td>17 ta</td>
+          </tr>
+          <tr>
+            <td>Material</td>
+            <td>Tut, terak yog'ochi</td>
+          </tr>
+          <tr>
+            <td>Ovoz diapazoni</td>
+            <td>2.5 oktava</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    
+    <!-- Comments Section -->
+    <section class="content-section comments-section">
+      <h2 class="section-title">
+        <div class="section-icon">💬</div>
+        Izohlar va fikrlar
+      </h2>
+      
+      <div class="comment-form">
+        <h3 style="color: #92400e; margin-bottom: 1rem;">Izoh qoldiring</h3>
+        <form onsubmit="addComment(event)">
+          <div class="form-group">
+            <label class="form-label">Ismingiz</label>
+            <input type="text" class="form-input" required placeholder="Ismingizni kiriting">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Izohingiz</label>
+            <textarea class="form-textarea" required placeholder="Dutar haqida fikringizni bildiring..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i>
+            Izoh yuborish
+          </button>
+        </form>
+      </div>
+      
+      <div id="commentsList">
+        <div class="comment-item">
+          <div class="comment-author">🎵 Ahmad Rahmonov</div>
+          <div class="comment-text">
+            Dutarning ovozi haqiqatan ham juda ta'sirli. Bu asbobni chalishni o'rganish orzuim. 
+            Videolar juda foydali bo'ldi, rahmat!
+          </div>
+          <div class="comment-date">2025-07-07</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">🎶 Malika Toshmatova</div>
+          <div class="comment-text">
+            Mening bobom ham dutar chalardi. Bu sahifa orqali uning xotiralarini esladim. 
+            Juda chiroyli va batafsil ma'lumotlar.
+          </div>
+          <div class="comment-date">2025-07-06</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">🎸 Sardor Karimov</div>
+          <div class="comment-text">
+            Professional darajada tayyorlangan sahifa. Audio yozuvlar sifati ajoyib. 
+            Boshqa cholg'ular haqida ham bunday sahifalar bo'lsa yaxshi bo'lardi.
+          </div>
+          <div class="comment-date">2025-07-05</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Related Instruments -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎵</div>
+        O'xshash cholg'ular
+      </h2>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="window.location.href='rubab.html'">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Rubab">
+          <div class="gallery-overlay">
+            <h4>🎻 Rubab</h4>
+            <p>Torli cholg'u, 6 tor</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="window.location.href='chang.html'">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chang">
+          <div class="gallery-overlay">
+            <h4>🎼 Chang</h4>
+            <p>Ko'p torli cholg'u</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="window.location.href='ud.html'">
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Ud">
+          <div class="gallery-overlay">
+            <h4>🎵 Ud</h4>
+            <p>Sharq musiqasining asosi</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
+  
+  <!-- Favorite Button -->
+  <button class="favorite-btn" onclick="toggleFavorite()" id="favoriteBtn">
+    <i class="far fa-heart"></i>
+  </button>
+  
+  <script>
+    // Create animated particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 30;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        const size = Math.random() * 6 + 2;
+        const left = Math.random() * 100;
+        const delay = Math.random() * 25;
+        const duration = Math.random() * 15 + 15;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${left}%`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.animationDuration = `${duration}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Audio player functionality
+    let currentPlaying = null;
+    let currentProgress = null;
+    
+    function togglePlay(button, trackId) {
+      const icon = button.querySelector('i');
+      const progressElement = document.getElementById('progress' + trackId.slice(-1));
+      
+      // Stop current playing track
+      if (currentPlaying && currentPlaying !== button) {
+        const currentIcon = currentPlaying.querySelector('i');
+        currentIcon.className = 'fas fa-play';
+        if (currentProgress) {
+          clearInterval(currentProgress);
+        }
+      }
+      
+      if (icon.classList.contains('fa-play')) {
+        // Start playing
+        icon.className = 'fas fa-pause';
+        currentPlaying = button;
+        
+        // Simulate progress
+        let progress = 0;
+        currentProgress = setInterval(() => {
+          progress += 1;
+          progressElement.style.width = progress + '%';
+          
+          if (progress >= 100) {
+            clearInterval(currentProgress);
+            icon.className = 'fas fa-play';
+            progressElement.style.width = '0%';
+            currentPlaying = null;
+          }
+        }, 100);
+        
+      } else {
+        // Stop playing
+        icon.className = 'fas fa-play';
+        clearInterval(currentProgress);
+        progressElement.style.width = '0%';
+        currentPlaying = null;
+      }
+    }
+    
+    // Play main dutar sound
+    function playDutarSound() {
+      // Simulate playing dutar sound
+      const button = event.target;
+      const originalText = button.innerHTML;
+      
+      button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Ijro etilmoqda...';
+      button.disabled = true;
+      
+      setTimeout(() => {
+        button.innerHTML = originalText;
+        button.disabled = false;
+      }, 3000);
+    }
+    
+    // Show specifications
+    function showSpecs() {
+      const specsTable = document.querySelector('.specs-table');
+      specsTable.scrollIntoView({ behavior: 'smooth' });
+      
+      // Highlight table
+      specsTable.style.border = '3px solid #fbbf24';
+      setTimeout(() => {
+        specsTable.style.border = 'none';
+      }, 2000);
+    }
+    
+    // Toggle favorite
+    function toggleFavorite() {
+      const btn = document.getElementById('favoriteBtn');
+      const icon = btn.querySelector('i');
+      
+      if (icon.classList.contains('far')) {
+        icon.className = 'fas fa-heart';
+        btn.classList.add('active');
+        
+        // Show notification
+        showNotification('Dutar sevimlilar ro\'yxatiga qo\'shildi! ❤️', 'success');
+      } else {
+        icon.className = 'far fa-heart';
+        btn.classList.remove('active');
+        
+        showNotification('Dutar sevimlilardan olib tashlandi', 'info');
+      }
+    }
+    
+    // Add comment functionality
+    function addComment(event) {
+      event.preventDefault();
+      
+      const form = event.target;
+      const name = form.querySelector('input[type="text"]').value;
+      const comment = form.querySelector('textarea').value;
+      
+      if (name && comment) {
+        const commentsList = document.getElementById('commentsList');
+        const newComment = document.createElement('div');
+        newComment.className = 'comment-item';
+        newComment.style.opacity = '0';
+        newComment.style.transform = 'translateY(20px)';
+        
+        const currentDate = new Date().toISOString().split('T')[0];
+        
+        newComment.innerHTML = `
+          <div class="comment-author">🎵 ${name}</div>
+          <div class="comment-text">${comment}</div>
+          <div class="comment-date">${currentDate}</div>
+        `;
+        
+        commentsList.insertBefore(newComment, commentsList.firstChild);
+        
+        // Animate in
+        setTimeout(() => {
+          newComment.style.transition = 'all 0.5s ease';
+          newComment.style.opacity = '1';
+          newComment.style.transform = 'translateY(0)';
+        }, 100);
+        
+        // Reset form
+        form.reset();
+        
+        showNotification('Izohingiz muvaffaqiyatli qo\'shildi! 🎉', 'success');
+      }
+    }
+    
+    // Notification system
+    function showNotification(message, type = 'info') {
+      const notification = document.createElement('div');
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'success' ? '#10b981' : '#3b82f6'};
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        z-index: 10000;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+        font-weight: 600;
+        max-width: 300px;
+      `;
+      
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      
+      // Show notification
+      setTimeout(() => {
+        notification.style.opacity = '1';
+        notification.style.transform = 'translateX(0)';
+      }, 100);
+      
+      // Hide notification
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 300);
+      }, 3000);
+    }
+    
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    
+    // Add scroll animation for elements
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all content sections
+    document.querySelectorAll('.content-section').forEach((section, index) => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(30px)';
+      section.style.transition = `all 0.6s ease ${index * 0.1}s`;
+      observer.observe(section);
+    });
+    
+    // Copy link functionality
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href);
+      showNotification('Sahifa havolasi nusxalandi! 📋', 'success');
+    }
+    
+    // Print page functionality
+    function printPage() {
+      window.print();
+    }
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      // Spacebar to play/pause first audio
+      if (e.code === 'Space' && !e.target.matches('input, textarea')) {
+        e.preventDefault();
+        const firstPlayBtn = document.querySelector('.play-btn');
+        if (firstPlayBtn) {
+          firstPlayBtn.click();
+        }
+      }
+      
+      // F key for favorite
+      if (e.code === 'KeyF' && !e.target.matches('input, textarea')) {
+        e.preventDefault();
+        toggleFavorite();
+      }
+    });
+    
+    // Initialize particles and other features
+    document.addEventListener('DOMContentLoaded', () => {
+      createParticles();
+      
+      // Show welcome message
+      setTimeout(() => {
+        showNotification('Dutar sahifasiga xush kelibsiz! 🎸', 'info');
+      }, 1000);
+    });
+    
+    // Add floating action menu
+    function createFloatingMenu() {
+      const menu = document.createElement('div');
+      menu.style.cssText = `
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 999;
+      `;
+      
+      const actions = [
+        { icon: '🔗', title: 'Havolani nusxalash', action: copyLink },
+        { icon: '🖨️', title: 'Chop etish', action: printPage },
+        { icon: '📤', title: 'Ulashish', action: () => showNotification('Ulashish funksiyasi tez orada!', 'info') }
+      ];
+      
+      actions.forEach(item => {
+        const btn = document.createElement('button');
+        btn.style.cssText = `
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          border: none;
+          background: rgba(255, 255, 255, 0.9);
+          color: #92400e;
+          font-size: 1.2rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        `;
+        
+        btn.innerHTML = item.icon;
+        btn.title = item.title;
+        btn.onclick = item.action;
+        
+        btn.addEventListener('mouseenter', () => {
+          btn.style.transform = 'scale(1.1)';
+          btn.style.background = '#fbbf24';
+          btn.style.color = 'white';
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transform = 'scale(1)';
+          btn.style.background = 'rgba(255, 255, 255, 0.9)';
+          btn.style.color = '#92400e';
+        });
+        
+        menu.appendChild(btn);
+      });
+      
+      document.body.appendChild(menu);
+    }
+    
+    // Initialize floating menu
+    createFloatingMenu();
+  </script>
 </body>
 </html>
