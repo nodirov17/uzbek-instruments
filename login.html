@@ -682,7 +682,7 @@
       </a>
       <nav class="nav-links">
         <a href="index.html" class="nav-link">🏠 Bosh sahifa</a>
-        <a href="#instruments" class="nav-link">🎵 Cholg'ular</a>
+        <a href="instruments.html" class="nav-link">🎵 Cholg'ular</a>
         <a href="register.html" class="nav-link">📝 Ro'yxat</a>
       </nav>
     </div>
@@ -699,13 +699,38 @@
         <h1 class="card-title">Kirish</h1>
         <p class="card-subtitle">
           O'zbek cholg'u asboblari dunyosiga qaytib kelganingizdan xursandmiz!
+        </p>
+      </div>
+      
+      <!-- Demo Credentials -->
+      <div class="demo-credentials">
+        <div class="demo-title">
+          <i class="fas fa-info-circle"></i>
+          Test uchun
+        </div>
+        <div class="demo-info">
+          <strong>Email:</strong> test@gmail.com<br>
+          <strong>Parol:</strong> 123456
+        </div>
+        <div class="demo-copy">
+          <button class="copy-btn" onclick="copyToClipboard('test@gmail.com')">
+            <i class="fas fa-copy"></i> Email
+          </button>
+          <button class="copy-btn" onclick="copyToClipboard('123456')">
+            <i class="fas fa-copy"></i> Parol
+          </button>
+          <button class="copy-btn" onclick="fillTestData()">
+            <i class="fas fa-magic"></i> To'ldirish
+          </button>
+        </div>
+      </div>
       
       <!-- Login Form -->
       <form class="login-form" id="loginForm" novalidate>
         <div class="form-group">
           <label class="form-label">Email manzil</label>
           <div style="position: relative;">
-            <input type="email" class="form-input" name="email" required placeholder="test@example.com" id="emailInput">
+            <input type="email" class="form-input" name="email" required placeholder="test@gmail.com" id="emailInput">
             <i class="fas fa-envelope input-icon"></i>
           </div>
           <div class="error-message" id="emailError"></div>
@@ -714,7 +739,7 @@
         <div class="form-group">
           <label class="form-label">Parol</label>
           <div style="position: relative;">
-            <input type="password" class="form-input" name="password" required placeholder="123456" id="passwordInput">
+            <input type="password" class="form-input" name="password" required placeholder="Parolingizni kiriting" id="passwordInput">
             <i class="fas fa-lock input-icon"></i>
             <i class="fas fa-eye password-toggle" id="passwordToggle" onclick="togglePassword()"></i>
           </div>
@@ -830,7 +855,7 @@
     }
     
     // Test credentials
-    const TEST_EMAIL = 'test@example.com';
+    const TEST_EMAIL = 'test@gmail.com';
     const TEST_PASSWORD = '123456';
     
     // Copy to clipboard
@@ -855,4 +880,407 @@
     }
     
     // Toggle password visibility
-    function togglePassword()
+    function togglePassword() {
+      const passwordInput = document.getElementById('passwordInput');
+      const passwordToggle = document.getElementById('passwordToggle');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        passwordToggle.classList.remove('fa-eye');
+        passwordToggle.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        passwordToggle.classList.remove('fa-eye-slash');
+        passwordToggle.classList.add('fa-eye');
+      }
+    }
+    
+    // Toggle remember me
+    let rememberMe = false;
+    function toggleRememberMe() {
+      rememberMe = !rememberMe;
+      const checkbox = document.getElementById('rememberCheckbox');
+      
+      if (rememberMe) {
+        checkbox.classList.add('checked');
+      } else {
+        checkbox.classList.remove('checked');
+      }
+    }
+    
+    // Form validation
+    function validateEmail() {
+      const emailInput = document.getElementById('emailInput');
+      const emailError = document.getElementById('emailError');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      if (!emailInput.value.trim()) {
+        showError(emailInput, emailError, 'Email manzil kiritilishi shart');
+        return false;
+      } else if (!emailRegex.test(emailInput.value)) {
+        showError(emailInput, emailError, 'Email manzil noto\'g\'ri formatda');
+        return false;
+      } else {
+        showSuccess(emailInput, emailError);
+        return true;
+      }
+    }
+    
+    function validatePassword() {
+      const passwordInput = document.getElementById('passwordInput');
+      const passwordError = document.getElementById('passwordError');
+      
+      if (!passwordInput.value) {
+        showError(passwordInput, passwordError, 'Parol kiritilishi shart');
+        return false;
+      } else if (passwordInput.value.length < 3) {
+        showError(passwordInput, passwordError, 'Parol kamida 3 ta belgidan iborat bo\'lishi kerak');
+        return false;
+      } else {
+        showSuccess(passwordInput, passwordError);
+        return true;
+      }
+    }
+    
+    function showError(field, errorElement, message) {
+      field.classList.add('error');
+      field.classList.remove('success');
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
+    }
+    
+    function showSuccess(field, errorElement) {
+      field.classList.add('success');
+      field.classList.remove('error');
+      errorElement.style.display = 'none';
+    }
+    
+    // Real-time validation
+    document.getElementById('emailInput').addEventListener('input', validateEmail);
+    document.getElementById('passwordInput').addEventListener('input', validatePassword);
+    
+    // Form submission
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const emailValid = validateEmail();
+      const passwordValid = validatePassword();
+      
+      if (!emailValid || !passwordValid) {
+        showNotification('Iltimos, barcha maydonlarni to\'g\'ri to\'ldiring', 'error');
+        return;
+      }
+      
+      const email = document.getElementById('emailInput').value;
+      const password = document.getElementById('passwordInput').value;
+      
+      // Check test credentials
+      if (email === TEST_EMAIL && password === TEST_PASSWORD) {
+        // Successful login
+        loginSuccess();
+      } else {
+        // Failed login
+        showNotification('Email yoki parol noto\'g\'ri!', 'error');
+        
+        // Add shake animation to form
+        const loginCard = document.querySelector('.login-card');
+        loginCard.style.animation = 'shake 0.5s ease-in-out';
+        setTimeout(() => {
+          loginCard.style.animation = '';
+        }, 500);
+      }
+    });
+    
+    function loginSuccess() {
+      // Hide form
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('socialSection').style.display = 'none';
+      document.getElementById('registerSection').style.display = 'none';
+      
+      // Show loading
+      document.getElementById('loadingAnimation').style.display = 'block';
+      
+      // Simulate login process
+      setTimeout(() => {
+        // Hide loading
+        document.getElementById('loadingAnimation').style.display = 'none';
+        
+        // Show success animation
+        document.getElementById('successAnimation').style.display = 'block';
+        
+        // Save login state if remember me is checked
+        if (rememberMe) {
+          localStorage.setItem('rememberedEmail', document.getElementById('emailInput').value);
+          localStorage.setItem('isLoggedIn', 'true');
+        }
+        
+        // Redirect to dashboard after 2 seconds
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 2000);
+        
+        showNotification('Muvaffaqiyatli kirildi!', 'success');
+      }, 2000);
+    }
+    
+    // Social login
+    function socialLogin(provider) {
+      showNotification(`${provider} orqali kirish tez orada ishga tushadi!`, 'info');
+    }
+    
+    // Forgot password
+    function forgotPassword() {
+      showNotification('Parolni tiklash sahifasi tez orada ishga tushadi!', 'info');
+    }
+    
+    // Notification system
+    function showNotification(message, type = 'info') {
+      const notification = document.createElement('div');
+      const colors = {
+        'success': '#10b981',
+        'error': '#ef4444',
+        'info': '#3b82f6',
+        'warning': '#f59e0b'
+      };
+      
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${colors[type] || colors.info};
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        z-index: 10000;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+        font-weight: 600;
+        max-width: 350px;
+        backdrop-filter: blur(10px);
+      `;
+      
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      
+      // Show notification
+      setTimeout(() => {
+        notification.style.opacity = '1';
+        notification.style.transform = 'translateX(0)';
+      }, 100);
+      
+      // Hide notification
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+          if (document.body.contains(notification)) {
+            document.body.removeChild(notification);
+          }
+        }, 300);
+      }, 4000);
+    }
+    
+    // Add shake animation CSS
+    const shakeCSS = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+        20%, 40%, 60%, 80% { transform: translateX(5px); }
+      }
+    `;
+    const style = document.createElement('style');
+    style.textContent = shakeCSS;
+    document.head.appendChild(style);
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      // Enter to submit form
+      if (e.key === 'Enter' && !e.target.matches('button')) {
+        e.preventDefault();
+        document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+      }
+      
+      // Ctrl/Cmd + T to fill test data
+      if ((e.ctrlKey || e.metaKey) && e.key === 't') {
+        e.preventDefault();
+        fillTestData();
+      }
+      
+      // Escape to clear form
+      if (e.key === 'Escape') {
+        document.getElementById('emailInput').value = '';
+        document.getElementById('passwordInput').value = '';
+        document.getElementById('emailInput').classList.remove('error', 'success');
+        document.getElementById('passwordInput').classList.remove('error', 'success');
+        document.getElementById('emailError').style.display = 'none';
+        document.getElementById('passwordError').style.display = 'none';
+      }
+    });
+    
+    // Load remembered email
+    function loadRememberedData() {
+      const rememberedEmail = localStorage.getItem('rememberedEmail');
+      if (rememberedEmail) {
+        document.getElementById('emailInput').value = rememberedEmail;
+        toggleRememberMe(); // Check the remember me box
+        validateEmail(); // Validate the loaded email
+      }
+      
+      // Check if user is already logged in
+      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      if (isLoggedIn === 'true') {
+        showNotification('Siz allaqachon tizimga kirgan ekansiz', 'info');
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 2000);
+      }
+    }
+    
+    // Auto-fill animation
+    function animateAutoFill() {
+      const emailInput = document.getElementById('emailInput');
+      const passwordInput = document.getElementById('passwordInput');
+      
+      // Simulate typing animation
+      function typeText(element, text, callback) {
+        element.value = '';
+        let i = 0;
+        const typing = setInterval(() => {
+          element.value += text[i];
+          i++;
+          if (i >= text.length) {
+            clearInterval(typing);
+            if (callback) callback();
+          }
+        }, 100);
+      }
+      
+      typeText(emailInput, TEST_EMAIL, () => {
+        validateEmail();
+        typeText(passwordInput, TEST_PASSWORD, () => {
+          validatePassword();
+        });
+      });
+    }
+    
+    // Demo mode toggle
+    let demoMode = false;
+    function toggleDemoMode() {
+      demoMode = !demoMode;
+      if (demoMode) {
+        showNotification('Demo rejim yoqildi. Har 10 sekundda avtomatik to\'ldirish', 'info');
+        setInterval(() => {
+          if (demoMode && !document.getElementById('emailInput').value) {
+            animateAutoFill();
+          }
+        }, 10000);
+      }
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      createParticles();
+      createSecurityAnimation();
+      loadRememberedData();
+      
+      // Show welcome message
+      setTimeout(() => {
+        showNotification('Kirish sahifasiga xush kelibsiz! 🔐', 'info');
+      }, 1000);
+      
+      // Show keyboard shortcuts info
+      setTimeout(() => {
+        showNotification('Klaviatura: Enter-yuborish, Ctrl+T-test ma\'lumotlari, Esc-tozalash', 'info');
+      }, 4000);
+      
+      // Auto-focus on email input
+      document.getElementById('emailInput').focus();
+    });
+    
+    // Security enhancement - prevent multiple failed attempts
+    let failedAttempts = 0;
+    const maxAttempts = 5;
+    
+    function handleFailedLogin() {
+      failedAttempts++;
+      
+      if (failedAttempts >= maxAttempts) {
+        document.getElementById('submitBtn').disabled = true;
+        document.getElementById('submitBtn').innerHTML = '<i class="fas fa-ban"></i> Bloklandi';
+        showNotification(`${maxAttempts} marta noto'g'ri urinish. 5 daqiqa kutib turing.`, 'error');
+        
+        // Unblock after 5 minutes (for demo purposes, using 10 seconds)
+        setTimeout(() => {
+          failedAttempts = 0;
+          document.getElementById('submitBtn').disabled = false;
+          document.getElementById('submitBtn').innerHTML = '<i class="fas fa-sign-in-alt"></i> Kirish';
+          showNotification('Endi qayta urinib ko\'rishingiz mumkin', 'info');
+        }, 10000);
+      }
+    }
+    
+    // Add failed login handling to the original submission
+    const originalSubmit = document.getElementById('loginForm').onsubmit;
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const emailValid = validateEmail();
+      const passwordValid = validatePassword();
+      
+      if (!emailValid || !passwordValid) {
+        showNotification('Iltimos, barcha maydonlarni to\'g\'ri to\'ldiring', 'error');
+        return;
+      }
+      
+      const email = document.getElementById('emailInput').value;
+      const password = document.getElementById('passwordInput').value;
+      
+      // Check test credentials
+      if (email === TEST_EMAIL && password === TEST_PASSWORD) {
+        failedAttempts = 0; // Reset on successful login
+        loginSuccess();
+      } else {
+        handleFailedLogin();
+        showNotification(`Email yoki parol noto'g'ri! (${failedAttempts}/${maxAttempts})`, 'error');
+        
+        // Add shake animation to form
+        const loginCard = document.querySelector('.login-card');
+        loginCard.style.animation = 'shake 0.5s ease-in-out';
+        setTimeout(() => {
+          loginCard.style.animation = '';
+        }, 500);
+      }
+    });
+    
+    // Add floating hints for better UX
+    function createFloatingHints() {
+      const hints = [
+        { element: '#emailInput', text: 'test@gmail.com ni ishlatib ko\'ring' },
+        { element: '#passwordInput', text: 'Parol: 123456' },
+        { element: '.copy-btn', text: 'Tezkor to\'ldirish uchun bosing' }
+      ];
+      
+      hints.forEach((hint, index) => {
+        setTimeout(() => {
+          const element = document.querySelector(hint.element);
+          if (element && !element.value) {
+            showNotification(hint.text, 'info');
+          }
+        }, (index + 1) * 3000);
+      });
+    }
+    
+    // Show hints after 5 seconds if form is empty
+    setTimeout(() => {
+      const email = document.getElementById('emailInput').value;
+      const password = document.getElementById('passwordInput').value;
+      
+      if (!email && !password) {
+        createFloatingHints();
+      }
+    }, 5000);
+  </script>
+</body>
+</html>
