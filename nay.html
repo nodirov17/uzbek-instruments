@@ -1,24 +1,1806 @@
-<!DOCTYPE html>
+<h3 style="color: #1e40af; font-weight: 600; margin-bottom: 1rem;">Asosiy gamma (Do mayor)</h3>
+        <div class="scale-notes">
+          <button class="note-button" onclick="playNote('do')" data-note="Do">Do</button>
+          <button class="note-button" onclick="playNote('re')" data-note="Re">Re</button>
+          <button class="note-button" onclick="playNote('mi')" data-note="Mi">Mi</button>
+          <button class="note-button" onclick="playNote('fa')" data-note="Fa">Fa</button>
+          <button class="note-button" onclick="playNote('sol')" data-note="Sol">Sol</button>
+          <button class="note-button" onclick="playNote('la')" data-note="La">La</button>
+          <button class="note-button" onclick="playNote('si')" data-note="Si">Si</button>
+          <button class="note-button" onclick="playNote('do2')" data-note="Do²">Do²</button>
+        </div>
+        
+        <div style="margin-top: 2rem;">
+          <button class="btn btn-primary" onclick="playFullScale()">
+            <i class="fas fa-play"></i>
+            To'liq gamma ijrosi
+          </button>
+          <button class="btn btn-secondary" onclick="playMelody()">
+            <i class="fas fa-music"></i>
+            Namuna kuy
+          </button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Meditation Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🧘</div>
+        Nay meditatsiyasi
+      </h2>
+      <div class="content-text">
+        <p>
+          Nay ovozi meditatsiya va ruhiy tinchlik uchun juda foydali. 
+          Quyidagi mashqni bajarib, ichki osoyishtalikka erishing.
+        </p>
+      </div>
+      
+      <div class="meditation-section">
+        <div class="meditation-circle" onclick="startMeditation()" id="meditationCircle">
+          🧘‍♂️
+        </div>
+        <h3 style="color: #1e40af; margin-bottom: 1rem;">5 daqiqalik meditatsiya</h3>
+        <p style="color: #2563eb;">Doiraga bosib, nay ovozi bilan meditatsiya seansini boshlang</p>
+      </div>
+    </section>
+    
+    <!-- History Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">📜</div>
+        Tarix va ma'naviy ahamiyati
+      </h2>
+      <div class="content-text">
+        <p>
+          Nay ming yillardan buyon Sharq xalqlari orasida keng tarqalgan. 
+          Bu asbob nafaqat musiqa, balki ma'naviy amaliyotlarda ham ishlatilgan. 
+          Sufiy darvishlar nayni zikr va meditatsiya paytida chalishgan.
+        </p>
+        <br>
+        <p>
+          Alisher Navoiyning "Xamsa"sida ham nay haqida she'rlar mavjud. 
+          Jaloliddin Rumiyning mashhur "Mathnavi"si ham nayning nolasi bilan boshlanadi: 
+          "Naydan eshit, nola qilmoqda..." Bu misralar nayning ruhiy kuchini tasdiqlaydi.
+        </p>
+      </div>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Qadimiy nay">
+          <div class="gallery-overlay">
+            <h4>Qadimiy nay namunasi</h4>
+            <p>XV asr</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Sufiy darvish">
+          <div class="gallery-overlay">
+            <h4>Sufiy darvish nay bilan</h4>
+            <p>Ma'naviy amaliyot</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Zamonaviy ijrochi">
+          <div class="gallery-overlay">
+            <h4>Zamonaviy nay ijrochisi</h4>
+            <p>XXI asr san'ati</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Audio Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎵</div>
+        Audio namunalar
+      </h2>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track1')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">Klassik nay maqomi</div>
+            <div class="track-artist">Ustad Ahmad Zahir</div>
+          </div>
+          <span class="track-duration">6:33</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress1"></div>
+        </div>
+      </div>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track2')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">Sufiy nay meditatsiyasi</div>
+            <div class="track-artist">Ruhiy musiqa to'plami</div>
+          </div>
+          <span class="track-duration">8:45</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress2"></div>
+        </div>
+      </div>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track3')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">Zamonaviy nay kompozitsiyasi</div>
+            <div class="track-artist">Yosh ijrochilar</div>
+          </div>
+          <span class="track-duration">4:12</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress3"></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Techniques Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎯</div>
+        Ijro texnikasi va o'rganish
+      </h2>
+      <div class="content-text">
+        <p>
+          Nay chalish juda nozik texnikani talab qiladi. Nafas nazorati, 
+          barmoq pozitsiyasi va lab pozitsiyasi muhim elementlardir.
+        </p>
+      </div>
+      
+      <table class="techniques-table">
+        <thead>
+          <tr>
+            <th>Texnika</th>
+            <th>Tavsif</th>
+            <th>Qiyinlik darajasi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Asosiy nafas</td>
+            <td>Diafragma bilan chuqur nafas olish</td>
+            <td>⭐</td>
+          </tr>
+          <tr>
+            <td>Lab pozitsiyasi</td>
+            <td>To'g'ri embouchure texnikasi</td>
+            <td>⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Barmoq texnikasi</td>
+            <td>Teshiklarni to'g'ri yopish va ochish</td>
+            <td>⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Vibrato</td>
+            <td>Tovushga tebranish berish</td>
+            <td>⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Glissando</td>
+            <td>Notalar orasida yumshoq o'tish</td>
+            <td>⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Multiphonics</td>
+            <td>Bir vaqtda bir necha tovush</td>
+            <td>⭐⭐⭐⭐</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div style="margin-top: 2rem;">
+        <h3 style="color: #1e40af; font-weight: 600; margin-bottom: 1rem;">O'rganish bosqichlari:</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+          <div style="background: rgba(255, 255, 255, 0.15); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.3);">
+            <h4 style="color: #1e40af; margin-bottom: 0.5rem;">1-bosqich: Nafas</h4>
+            <p style="color: #2563eb; font-size: 0.9rem;">Diafragma nafasi va uzun nafas saqlash</p>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.15); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.3);">
+            <h4 style="color: #1e40af; margin-bottom: 0.5rem;">2-bosqich: Tovush</h4>
+            <p style="color: #2563eb; font-size: 0.9rem;">Asosiy tovush chiqarish va stabillik</p>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.15); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.3);">
+            <h4 style="color: #1e40af; margin-bottom: 0.5rem;">3-bosqich: Notalar</h4>
+            <p style="color: #2563eb; font-size: 0.9rem;">Turli notalarni aniq ijro etish</p>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.15); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.3);">
+            <h4 style="color: #1e40af; margin-bottom: 0.5rem;">4-bosqich: Kuylar</h4>
+            <p style="color: #2563eb; font-size: 0.9rem;">Oddiy melodiyalar va maqomlar</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Comments Section -->
+    <section class="content-section comments-section">
+      <h2 class="section-title">
+        <div class="section-icon">💬</div>
+        Izohlar va tajribalar
+      </h2>
+      
+      <div class="comment-form">
+        <h3 style="color: #1e40af; margin-bottom: 1rem;">Nay haqida fikringizni bildiring</h3>
+        <form onsubmit="addComment(event)">
+          <div class="form-group">
+            <label class="form-label">Ismingiz</label>
+            <input type="text" class="form-input" required placeholder="Ismingizni kiriting">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tajribangiz yoki fikringiz</label>
+            <textarea class="form-textarea" required placeholder="Nay chalish tajribangiz, bu asbob haqida fikringiz yoki meditatsiya tajribangizni baham ko'ring..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i>
+            Izoh yuborish
+          </button>
+        </form>
+      </div>
+      
+      <div id="commentsList">
+        <div class="comment-item">
+          <div class="comment-author">🎶 Oybek Nazarov</div>
+          <div class="comment-text">
+            Nay chalishni 15 yil oldin boshlaganman. Bu asbob nafaqat musiqa, balki ruhiy bilim ham beradi. 
+            Har kuni nay chalib meditatsiya qilaman. Bu sahifadagi nafas mashqlari juda foydali!
+          </div>
+          <div class="comment-date">2025-07-07</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">🌟 Nodira Karimova</div>
+          <div class="comment-text">
+            Nay ovozi meni har doim yig'latadi. Bunday chuqur va ruhiy tovush boshqa hech qaysi asbobda yo'q. 
+            Audio namunalar juda professional. Rahmat!
+          </div>
+          <div class="comment-date">2025-07-06</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">🧘‍♂️ Farrux Yusupov</div>
+          <div class="comment-text">
+            Sufiylik bilan shug'ullanaman. Nay bizning amaliyotda muhim o'rin tutadi. 
+            Bu sahifadagi meditatsiya bo'limi juda yaxshi tuzilgan. Barchaga tavsiya qilaman.
+          </div>
+          <div class="comment-date">2025-07-05</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">🎵 Zilola Ahmadova</div>
+          <div class="comment-text">
+            Qizim nay o'rganmoqchi. Bu sahifa orqali u nafas texnikasini yaxshi tushundi. 
+            Interaktiv elementlar bolalar uchun juda qiziq va foydali.
+          </div>
+          <div class="comment-date">2025-07-04</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Related Instruments -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎵</div>
+        O'xshash cholg'ular
+      </h2>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="window.location.href='surnay.html'">
+          <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Surnay">
+          <div class="gallery-overlay">
+            <h4>🎺 Surnay</h4>
+            <p>Baland ovozli nafas cholg'usi</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="window.location.href='karnay.html'">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Karnay">
+          <div class="gallery-overlay">
+            <h4>📯 Karnay</h4>
+            <p>Tantanali nafas asbob</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="window.location.href='dutar.html'">
+          <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dutar">
+          <div class="gallery-overlay">
+            <h4>🎸 Dutar</h4>
+            <p>Ikki torli cholg'u</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <!-- Favorite Button -->
+  <button class="favorite-btn" onclick="toggleFavorite()" id="favoriteBtn">
+    <i class="far fa-heart"></i>
+  </button>
+  
+  <script>
+    // Create animated particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 25;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        const size = Math.random() * 6 + 2;
+        const left = Math.random() * 100;
+        const delay = Math.random() * 30;
+        const duration = Math.random() * 20 + 25;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${left}%`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.animationDuration = `${duration}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Create wind effect
+    function createWindLines() {
+      const windContainer = document.getElementById('windLines');
+      const lineCount = 8;
+      
+      for (let i = 0; i < lineCount; i++) {
+        const line = document.createElement('div');
+        line.className = 'wind-line';
+        
+        const top = Math.random() * 100;
+        const delay = Math.random() * 4;
+        
+        line.style.top = `${top}%`;
+        line.style.animationDelay = `${delay}s`;
+        
+        windContainer.appendChild(line);
+      }
+    }
+    
+    // Audio player functionality
+    let currentPlaying = null;
+    let currentProgress = null;
+    
+    function togglePlay(button, trackId) {
+      const icon = button.querySelector('i');
+      const progressElement = document.getElementById('progress' + trackId.slice(-1));
+      
+      // Stop current playing track
+      if (currentPlaying && currentPlaying !== button) {
+        const currentIcon = currentPlaying.querySelector('i');
+        currentIcon.className = 'fas fa-play';
+        if (currentProgress) {
+          clearInterval(currentProgress);
+        }
+      }
+      
+      if (icon.classList.contains('fa-play')) {
+        // Start playing
+        icon.className = 'fas fa-pause';
+        currentPlaying = button;
+        
+        // Simulate progress
+        let progress = 0;
+        currentProgress = setInterval(() => {
+          progress += 0.5;
+          progressElement.style.width = progress + '%';
+          
+          if (progress >= 100) {
+            clearInterval(currentProgress);
+            icon.className = 'fas fa-play';
+            progressElement.style.width = '0%';
+            currentPlaying = null;
+          }
+        }, 100);
+        
+      } else {
+        // Stop playing
+        icon.className = 'fas fa-play';
+        clearInterval(currentProgress);
+        progressElement.style.width = '0%';
+        currentPlaying = null;
+      }
+    }
+    
+    // Play nay sound
+    function playNaySound() {
+      const button = event.target;
+      const originalText = button.innerHTML;
+      
+      button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Nay sadosi...';
+      button.disabled = true;
+      
+      // Add wind effect
+      const windLines = document.querySelectorAll('.wind-line');
+      windLines.forEach(line => {
+        line.style.animationDuration = '1s';
+      });
+      
+      setTimeout(() => {
+        button.innerHTML = originalText;
+        button.disabled = false;
+        
+        // Reset wind effect
+        windLines.forEach(line => {
+          line.style.animationDuration = '4s';
+        });
+      }, 3000);
+    }
+    
+    // Breathing exercise
+    let breathingActive = false;
+    let breathingInterval;
+    
+    function startBreathingExercise() {
+      const circle = document.getElementById('breathCircle');
+      const instructions = document.getElementById('breathInstructions');
+      
+      if (breathingActive) {
+        // Stop breathing exercise
+        breathingActive = false;
+        clearInterval(breathingInterval);
+        circle.classList.remove('active');
+        circle.innerHTML = '<div class="breath-text">Boshlash uchun bosing</div>';
+        instructions.textContent = 'Nafas mashqini boshlash uchun doiraga bosing. 4 sekund nafas oling, 4 sekund ushlab turing, 4 sekund chiqaring.';
+        return;
+      }
+      
+      breathingActive = true;
+      circle.classList.add('active');
+      
+      const phases = [
+        { text: 'Nafas oling', duration: 4000, instruction: 'Chuqur nafas oling... (4 sekund)' },
+        { text: 'Ushlab turing', duration: 4000, instruction: 'Nafasni ushlab turing... (4 sekund)' },
+        { text: 'Nafas chiqaring', duration: 4000, instruction: 'Sekin nafas chiqaring... (4 sekund)' },
+        { text: 'Dam oling', duration: 2000, instruction: 'Qisqa dam oling... (2 sekund)' }
+      ];
+      
+      let currentPhase = 0;
+      
+      function nextPhase() {
+        if (!breathingActive) return;
+        
+        const phase = phases[currentPhase];
+        circle.innerHTML = `<div class="breath-text">${phase.text}</div>`;
+        instructions.textContent = phase.instruction;
+        
+        setTimeout(() => {
+          currentPhase = (currentPhase + 1) % phases.length;
+          nextPhase();
+        }, phase.duration);
+      }
+      
+      nextPhase();
+      showNotification('Nafas mashqi boshlandi. To\'xtatish uchun doiraga qayta bosing.', 'info');
+    }
+    
+    // Start breath exercise (alternative function)
+    function startBreathExercise() {
+      startBreathingExercise();
+    }
+    
+    // Play musical notes
+    function playNote(note) {
+      const button = event.target;
+      const allButtons = document.querySelectorAll('.note-button');
+      
+      // Remove active class from all buttons
+      allButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Add active class to clicked button
+      button.classList.add('active');
+      
+      // Show note being played
+      showNotification(`Nota: ${note.toUpperCase()} 🎵`, 'info');
+      
+      // Remove active class after animation
+      setTimeout(() => {
+        button.classList.remove('active');
+      }, 500);
+    }
+    
+    // Play full scale
+    function playFullScale() {
+      const buttons = document.querySelectorAll('.note-button');
+      let index = 0;
+      
+      const playNext = () => {
+        if (index < buttons.length) {
+          buttons[index].click();
+          index++;
+          setTimeout(playNext, 600);
+        } else {
+          showNotification('To\'liq gamma ijrosi tugadi! 🎼', 'success');
+        }
+      };
+      
+      playNext();
+    }
+    
+    // Play melody
+    function playMelody() {
+      showNotification('Namuna kuy ijro etilmoqda... 🎶', 'info');
+      
+      const melody = [0, 2, 4, 2, 0, 4, 2, 0]; // Note indices
+      const buttons = document.querySelectorAll('.note-button');
+      let index = 0;
+      
+      const playNext = () => {
+        if (index < melody.length) {
+          buttons[melody[index]].click();
+          index++;
+          setTimeout(playNext, 800);
+        } else {
+          showNotification('Namuna kuy tugadi! 🎵', 'success');
+        }
+      };
+      
+      setTimeout(playNext, 500);
+    }
+    
+    // Start meditation
+    let meditationActive = false;
+    
+    function startMeditation() {
+      const circle = document.getElementById('meditationCircle');
+      
+      if (meditationActive) {
+        meditationActive = false;
+        circle.classList.remove('active');
+        showNotification('Meditatsiya to\'xtatildi 🧘‍♂️', 'info');
+        return;
+      }
+      
+      meditationActive = true;
+      circle.classList.add('active');
+      showNotification('5 daqiqalik meditatsiya boshlandi... 🧘‍♂️', 'success');
+      
+      // Auto-stop after 5 minutes (300 seconds)
+      setTimeout(() => {
+        if (meditationActive) {
+          meditationActive = false;
+          circle.classList.remove('active');
+          showNotification('Meditatsiya tugadi. Rahmat! 🙏', 'success');
+        }
+      }, 300000);
+    }
+    
+    // Toggle favorite
+    function toggleFavorite() {
+      const btn = document.getElementById('favoriteBtn');
+      const icon = btn.querySelector('i');
+      
+      if (icon.classList.contains('far')) {
+        icon.className = 'fas fa-heart';
+        btn.classList.add('active');
+        showNotification('Nay sevimlilar ro\'yxatiga qo\'shildi! ❤️', 'success');
+      } else {
+        icon.className = 'far fa-heart';
+        btn.classList.remove('active');
+        showNotification('Nay sevimlilardan olib tashlandi', 'info');
+      }
+    }
+    
+    // Add comment functionality
+    function addComment(event) {
+      event.preventDefault();
+      
+      const form = event.target;
+      const name = form.querySelector('input[type="text"]').value;
+      const comment = form.querySelector('textarea').value;
+      
+      if (name && comment) {
+        const commentsList = document.getElementById('commentsList');
+        const newComment = document.createElement('div');
+        newComment.className = 'comment-item';
+        newComment.style.opacity = '0';
+        newComment.style.transform = 'translateY(20px)';
+        
+        const currentDate = new Date().toISOString().split('T')[0];
+        
+        newComment.innerHTML = `
+          <div class="comment-author">🎶 ${name}</div>
+          <div class="comment-text">${comment}</div>
+          <div class="comment-date">${currentDate}</div>
+        `;
+        
+        commentsList.insertBefore(newComment, commentsList.firstChild);
+        
+        // Animate in
+        setTimeout(() => {
+          newComment.style.transition = 'all 0.5s ease';
+          newComment.style.opacity = '1';
+          newComment.style.transform = 'translateY(0)';
+        }, 100);
+        
+        // Reset form
+        form.reset();
+        
+        showNotification('Izohingiz muvaffaqiyatli qo\'shildi! 🎉', 'success');
+      }
+    }
+    
+    // Notification system
+    function showNotification(message, type = 'info') {
+      const notification = document.createElement('div');
+      const colors = {
+        'success': '#10b981',
+        'info': '#3b82f6',
+        'warning': '#f59e0b'
+      };
+      
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${colors[type] || colors.info};
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        z-index: 10000;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+        font-weight: 600;
+        max-width: 300px;
+      `;
+      
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      
+      // Show notification
+      setTimeout(() => {
+        notification.style.opacity = '1';
+        notification.style.transform = 'translateX(0)';
+      }, 100);
+      
+      // Hide notification
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+          if (document.body.contains(notification)) {
+            document.body.removeChild(notification);
+          }
+        }, 300);
+      }, 4000);
+    }
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      // Spacebar to play nay sound
+      if (e.code === 'Space' && !e.target.matches('input, textarea')) {
+        e.preventDefault();
+        playNaySound();
+      }
+      
+      // F key for favorite
+      if (e.code === 'KeyF' && !e.target.matches('input, textarea')) {
+        e.preventDefault();
+        toggleFavorite();
+      }
+      
+      // B key for breathing exercise
+      if (e.code === 'KeyB' && !e.target.matches('input, textarea')) {
+        e.preventDefault();
+        startBreathingExercise();
+      }
+      
+      // M key for meditation
+      if (e.code === 'KeyM' && !e.target.matches('input, textarea')) {
+        e.preventDefault();
+        startMeditation();
+      }
+      
+      // Number keys for notes (1-8)
+      if (e.code.startsWith('Digit') && !e.target.matches('input, textarea')) {
+        e.preventDefault();
+        const number = parseInt(e.code.slice(-1));
+        if (number >= 1 && number <= 8) {
+          const buttons = document.querySelectorAll('.note-button');
+          if (buttons[number - 1]) {
+            buttons[number - 1].click();
+          }
+        }
+      }
+    });
+    
+    // Add scroll animation for elements
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all content sections
+    document.querySelectorAll('.content-section').forEach((section, index) => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(30px)';
+      section.style.transition = `all 0.6s ease ${index * 0.1}s`;
+      observer.observe(section);
+    });
+    
+    // Auto-breathing demo
+    function startAutoBreathingDemo() {
+      setTimeout(() => {
+        const windLines = document.querySelectorAll('.wind-line');
+        windLines.forEach((line, index) => {
+          setTimeout(() => {
+            line.style.animationDuration = '2s';
+            setTimeout(() => {
+              line.style.animationDuration = '4s';
+            }, 2000);
+          }, index * 200);
+        });
+      }, 2000);
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      createParticles();
+      createWindLines();
+      
+      // Show welcome message
+      setTimeout(() => {
+        showNotification('Nay sahifasiga xush kelibsiz! 🎶', 'info');
+      }, 1000);
+      
+      // Start auto breathing demo
+      startAutoBreathingDemo();
+      
+      // Keyboard shortcuts info
+      setTimeout(() => {
+        showNotification('Klaviatura: Space-nay, B-nafas, M-meditatsiya, 1-8-notalar', 'info');
+      }, 5000);
+    });
+    
+    // Add floating action menu with nay-specific actions
+    function createFloatingMenu() {
+      const menu = document.createElement('div');
+      menu.style.cssText = `
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 999;
+      `;
+      
+      const actions = [
+        { icon: '🫁', title: 'Nafas mashqi', action: startBreathingExercise },
+        { icon: '🧘‍♂️', title: 'Meditatsiya', action: startMeditation },
+        { icon: '🎵', title: 'Gamma ijrosi', action: playFullScale },
+        { icon: '🎶', title: 'Namuna kuy', action: playMelody }
+      ];
+      
+      actions.forEach(item => {
+        const btn = document.createElement('button');
+        btn.style.cssText = `
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          border: none;
+          background: rgba(255, 255, 255, 0.9);
+          color: #1e40af;
+          font-size: 1.2rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        `;
+        
+        btn.innerHTML = item.icon;
+        btn.title = item.title;
+        btn.onclick = item.action;
+        
+        btn.addEventListener('mouseenter', () => {
+          btn.style.transform = 'scale(1.1)';
+          btn.style.background = '#60a5fa';
+          btn.style.color = 'white';
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transform = 'scale(1)';
+          btn.style.background = 'rgba(255, 255, 255, 0.9)';
+          btn.style.color = '#1e40af';
+        });
+        
+        menu.appendChild(btn);
+      });
+      
+      document.body.appendChild(menu);
+    }
+    
+    // Wind sound effect simulation
+    function simulateWind() {
+      const windLines = document.querySelectorAll('.wind-line');
+      windLines.forEach((line, index) => {
+        setTimeout(() => {
+          line.style.opacity = '0.8';
+          line.style.animationDuration = '1.5s';
+          
+          setTimeout(() => {
+            line.style.opacity = '';
+            line.style.animationDuration = '4s';
+          }, 1500);
+        }, index * 100);
+      });
+    }
+    
+    // Automatic wind effect every 30 seconds
+    setInterval(() => {
+      if (!breathingActive && !meditationActive) {
+        simulateWind();
+      }
+    }, 30000);
+    
+    // Scale practice mode
+    let scalePracticeMode = false;
+    function toggleScalePractice() {
+      scalePracticeMode = !scalePracticeMode;
+      if (scalePracticeMode) {
+        showNotification('Gamma mashq rejimi yoqildi. Klaviaturada 1-8 raqamlarini bosing', 'info');
+      } else {
+        showNotification('Gamma mashq rejimi o\'chirildi', 'info');
+      }
+    }
+    
+    // Initialize floating menu
+    createFloatingMenu();
+    
+    // Breath visualization
+    function createBreathVisualization() {
+      const hero = document.querySelector('.hero');
+      const breathVisuals = document.createElement('div');
+      breathVisuals.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        overflow: hidden;
+      `;
+      
+      for (let i = 0; i < 3; i++) {
+        const circle = document.createElement('div');
+        circle.style.cssText = `
+          position: absolute;
+          width: ${100 + i * 50}px;
+          height: ${100 + i * 50}px;
+          border: 2px solid rgba(96, 165, 250, ${0.3 - i * 0.1});
+          border-radius: 50%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          animation: breathVisualization ${4 + i}s infinite ease-in-out;
+          animation-delay: ${i * 0.5}s;
+        `;
+        breathVisuals.appendChild(circle);
+      }
+      
+      hero.appendChild(breathVisuals);
+      
+      // Add CSS for breath visualization
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes breathVisualization {
+          0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+          50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.1; }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    
+    // Initialize breath visualization
+    createBreathVisualization();
+  </script>
+</body>
+</html><!DOCTYPE html>
 <html lang="uz">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nay - Cholg‘u Tafsiloti</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Nay - O'zbek Cholg'u Laboratoriyasi</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe, #60a5fa, #3b82f6);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    /* Animated background particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: float 30s infinite linear;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    /* Wind effect animation */
+    .wind-lines {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    
+    .wind-line {
+      position: absolute;
+      width: 2px;
+      height: 100px;
+      background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: windFlow 4s infinite ease-in-out;
+    }
+    
+    @keyframes windFlow {
+      0%, 100% { transform: translateX(-100px) translateY(0) rotate(15deg); opacity: 0; }
+      50% { transform: translateX(100vw) translateY(-50px) rotate(15deg); opacity: 1; }
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    .header {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: #1e40af;
+    }
+    
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #60a5fa, #3b82f6);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .nav-link {
+      color: #1e40af;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+    }
+    
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .btn-dashboard {
+      background: linear-gradient(45deg, #60a5fa, #3b82f6);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-dashboard:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shine 5s infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+    
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #1e40af;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #2563eb;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .stat-item {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 1rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      transition: all 0.3s ease;
+    }
+    
+    .stat-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1e40af;
+      display: block;
+    }
+    
+    .stat-label {
+      color: #2563eb;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    
+    .hero-image {
+      position: relative;
+    }
+    
+    .main-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      border: 3px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    .floating-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #60a5fa, #3b82f6);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 20px;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: breathe 3s infinite ease-in-out;
+    }
+    
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    /* Action Buttons */
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(45deg, #60a5fa, #3b82f6);
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.3);
+      color: #1e40af;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Content Sections */
+    .content-section {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .content-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e40af;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .section-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #60a5fa, #3b82f6);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .content-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #2563eb;
+      margin-bottom: 2rem;
+    }
+    
+    /* Breath Control Section */
+    .breath-section {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .breath-exercise {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2rem 0;
+    }
+    
+    .breath-circle {
+      width: 200px;
+      height: 200px;
+      border: 4px solid #60a5fa;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(45deg, rgba(96, 165, 250, 0.2), rgba(59, 130, 246, 0.2));
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .breath-circle:hover {
+      transform: scale(1.05);
+    }
+    
+    .breath-circle.active {
+      animation: breathingExercise 4s infinite ease-in-out;
+    }
+    
+    @keyframes breathingExercise {
+      0%, 100% { transform: scale(1); border-color: #60a5fa; }
+      50% { transform: scale(1.2); border-color: #3b82f6; }
+    }
+    
+    .breath-text {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1e40af;
+      text-align: center;
+    }
+    
+    .breath-instructions {
+      text-align: center;
+      margin-top: 1rem;
+      color: #2563eb;
+    }
+    
+    /* Scale Demonstration */
+    .scale-section {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .scale-notes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    
+    .note-button {
+      width: 80px;
+      height: 80px;
+      border: none;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #60a5fa, #3b82f6);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .note-button:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .note-button.active {
+      animation: noteGlow 0.5s ease-in-out;
+    }
+    
+    @keyframes noteGlow {
+      0%, 100% { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
+      50% { box-shadow: 0 0 30px #60a5fa; }
+    }
+    
+    /* Meditation Section */
+    .meditation-section {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
+      border-radius: 25px;
+      padding: 3rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .meditation-circle {
+      width: 150px;
+      height: 150px;
+      border: 3px solid #60a5fa;
+      border-radius: 50%;
+      margin: 0 auto 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      font-size: 3rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .meditation-circle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(96, 165, 250, 0.5);
+    }
+    
+    .meditation-circle.active {
+      animation: meditation 6s infinite ease-in-out;
+    }
+    
+    @keyframes meditation {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.7; }
+    }
+    
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+      color: white;
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: all 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+    
+    /* Audio Player */
+    .audio-player {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+    
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .play-btn {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #60a5fa, #3b82f6);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .play-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    .track-info {
+      flex: 1;
+    }
+    
+    .track-title {
+      font-weight: 600;
+      color: #1e40af;
+      margin-bottom: 0.5rem;
+    }
+    
+    .track-artist {
+      color: #2563eb;
+      font-size: 0.9rem;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(45deg, #60a5fa, #3b82f6);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    /* Techniques Table */
+    .techniques-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    
+    .techniques-table th,
+    .techniques-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .techniques-table th {
+      background: rgba(255, 255, 255, 0.2);
+      font-weight: 600;
+      color: #1e40af;
+    }
+    
+    .techniques-table td {
+      color: #2563eb;
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-stats {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .scale-notes {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      
+      .breath-circle {
+        width: 150px;
+        height: 150px;
+      }
+    }
+    
+    /* Favorite Button */
+    .favorite-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #ef4444, #dc2626);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+    
+    .favorite-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    .favorite-btn.active {
+      background: linear-gradient(45deg, #60a5fa, #3b82f6);
+    }
+    
+    /* Comments Section */
+    .comments-section {
+      margin-top: 3rem;
+    }
+    
+    .comment-form {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 2rem;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      color: #1e40af;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #1e40af;
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: #60a5fa;
+      box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+    }
+    
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .comment-item {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .comment-author {
+      font-weight: 600;
+      color: #1e40af;
+      margin-bottom: 0.5rem;
+    }
+    
+    .comment-text {
+      color: #2563eb;
+      line-height: 1.6;
+    }
+    
+    .comment-date {
+      color: #3b82f6;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+  </style>
 </head>
-<body class="bg-yellow-50 font-sans">
-  <div class="max-w-4xl mx-auto p-6 bg-white mt-10 shadow-lg rounded-lg">
-    <h1 class="text-3xl font-bold text-yellow-900 mb-4">Nay</h1>
-    <img src="img/nay.jpg" alt="Nay" class="w-full h-64 object-cover rounded mb-4">
-    <p class="text-gray-700 mb-2">Bu sahifada Nay cholg‘usining tarixi, tuzilishi, ohangi, va madaniy ahamiyati haqida ma’lumotlar taqdim etiladi.</p>
-    <ul class="list-disc pl-5 text-gray-700 space-y-1">
-      <li>Tarixi va kelib chiqishi</li>
-      <li>Foydalanish hududlari</li>
-      <li>Material va tuzilma</li>
-      <li>Ohang namunasi</li>
-      <li>Yasash jarayoni haqida</li>
-    </ul>
-    <a href="instruments.html" class="inline-block mt-6 text-yellow-700 hover:underline">⬅️ Cholg‘ular sahifasiga qaytish</a>
-  </div>
-</body>
-</html>
+<body>
+  <!-- Animated background particles -->
+  <div class="particles" id="particles"></div>
+  
+  <!-- Wind effect -->
+  <div class="wind-lines" id="windLines"></div>
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">🎶</div>
+          <div class="logo-text">Cholg'u Lab</div>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html" class="nav-link">🏠 Bosh sahifa</a>
+          <a href="instruments.html" class="nav-link">🎵 Cholg'ular</a>
+          <a href="dashboard.html" class="btn-dashboard">📊 Dashboard</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <div class="container">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>🎶 Nay</h1>
+          <p>
+            Nay - qamishdan yasalgan nafis cholg'u, klassik va sufiy musiqaning ruhi. 
+            Bu asbobning ruhiy va chuqur ohanglariga eshituvchilar bosh egadilar. 
+            Nay nafas orqali ijro etiladigan eng qadimiy asboblardan biri bo'lib, 
+            meditatsiya va ma'naviy bilim olishda muhim o'rin tutadi.
+          </p>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">7-9</span>
+              <span class="stat-label">Teshik soni</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">50-70cm</span>
+              <span class="stat-label">Uzunlik</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">3000+</span>
+              <span class="stat-label">Yillik tarix</span>
+            </div>
+          </div>
+          
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="playNaySound()">
+              <i class="fas fa-wind"></i>
+              Nay ovozini eshitish
+            </button>
+            <button class="btn btn-secondary" onclick="startBreathExercise()">
+              <i class="fas fa-lungs"></i>
+              Nafas mashqi
+            </button>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1465821185615-20b3c2fbf41b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Nay" class="main-image">
+          <div class="floating-badge">
+            🌟 Ruhiy asbob
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Breath Control Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🫁</div>
+        Nafas nazorati va texnikasi
+      </h2>
+      <div class="content-text">
+        <p>
+          Nay chalishning asosi - to'g'ri nafas olish. Bu mashq nafaqat nay chalish uchun, 
+          balki umumiy salomatlik va ruhiy tinchlik uchun ham foydalidir.
+        </p>
+      </div>
+      
+      <div class="breath-section">
+        <div class="breath-exercise">
+          <div class="breath-circle" onclick="startBreathingExercise()" id="breathCircle">
+            <div class="breath-text">Boshlash uchun bosing</div>
+          </div>
+          <div class="breath-instructions" id="breathInstructions">
+            Nafas mashqini boshlash uchun doiraga bosing. 4 sekund nafas oling, 4 sekund ushlab turing, 4 sekund chiqaring.
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Scale and Notes Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎼</div>
+        Nay gammalari va notalar
+      </h2>
+      <div class="content-text">
+        <p>
+          Nayning asosiy gammalari va har bir teshikning funksiyasi. 
+          Quyidagi tugmalarni bosib, turli notalarni eshiting.
+        </p>
+      </div>
+      
+      <div class="scale-section">
+        <h3
