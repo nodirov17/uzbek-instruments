@@ -3,22 +3,1531 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Doira - Cholg‘u Tafsiloti</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Doira - O'zbek Cholg'u Laboratoriyasi</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fed7aa, #fb923c, #ea580c, #c2410c);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    /* Animated background particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      animation: float 20s infinite linear;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    /* Rhythm pulse animation */
+    .rhythm-pulse {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: rhythmPulse 2s infinite ease-in-out;
+    }
+    
+    @keyframes rhythmPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.5; }
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    .header {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: #9a3412;
+    }
+    
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #fb923c, #ea580c);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .nav-link {
+      color: #9a3412;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+    }
+    
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .btn-dashboard {
+      background: linear-gradient(45deg, #fb923c, #ea580c);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-dashboard:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shine 4s infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+    
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #9a3412;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #c2410c;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .stat-item {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 1rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      transition: all 0.3s ease;
+    }
+    
+    .stat-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #9a3412;
+      display: block;
+    }
+    
+    .stat-label {
+      color: #c2410c;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    
+    .hero-image {
+      position: relative;
+    }
+    
+    .main-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      border: 3px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    .floating-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #fb923c, #ea580c);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 20px;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    /* Rhythm patterns overlay */
+    .rhythm-patterns {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+    }
+    
+    .rhythm-patterns .rhythm-pulse:nth-child(1) {
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    .rhythm-patterns .rhythm-pulse:nth-child(2) {
+      top: 60%;
+      right: 15%;
+      animation-delay: 0.5s;
+    }
+    
+    .rhythm-patterns .rhythm-pulse:nth-child(3) {
+      bottom: 20%;
+      left: 20%;
+      animation-delay: 1s;
+    }
+    
+    /* Action Buttons */
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(45deg, #fb923c, #ea580c);
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.3);
+      color: #9a3412;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Content Sections */
+    .content-section {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .content-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #9a3412;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .section-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #fb923c, #ea580c);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .content-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #c2410c;
+      margin-bottom: 2rem;
+    }
+    
+    /* Rhythm Patterns Section */
+    .rhythm-section {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .rhythm-patterns-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .rhythm-pattern {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .rhythm-pattern:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .pattern-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #9a3412;
+      margin-bottom: 1rem;
+    }
+    
+    .pattern-notation {
+      font-family: 'Courier New', monospace;
+      font-size: 1.1rem;
+      color: #c2410c;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+    
+    .pattern-description {
+      color: #c2410c;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    
+    /* Interactive Doira */
+    .interactive-doira {
+      display: flex;
+      justify-content: center;
+      margin: 3rem 0;
+    }
+    
+    .doira-circle {
+      width: 300px;
+      height: 300px;
+      border: 8px solid #fb923c;
+      border-radius: 50%;
+      position: relative;
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .doira-circle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .doira-center {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(45deg, #fb923c, #ea580c);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .doira-ring {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ea580c;
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .doira-ring:nth-child(2) { top: 10px; left: 50%; transform: translateX(-50%); }
+    .doira-ring:nth-child(3) { top: 50%; right: 10px; transform: translateY(-50%); }
+    .doira-ring:nth-child(4) { bottom: 10px; left: 50%; transform: translateX(-50%); }
+    .doira-ring:nth-child(5) { top: 50%; left: 10px; transform: translateY(-50%); }
+    
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+      color: white;
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: all 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+    
+    /* Audio Player */
+    .audio-player {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+    
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .play-btn {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #fb923c, #ea580c);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .play-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    .track-info {
+      flex: 1;
+    }
+    
+    .track-title {
+      font-weight: 600;
+      color: #9a3412;
+      margin-bottom: 0.5rem;
+    }
+    
+    .track-artist {
+      color: #c2410c;
+      font-size: 0.9rem;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(45deg, #fb923c, #ea580c);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-stats {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .gallery-grid, .rhythm-patterns-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .doira-circle {
+        width: 250px;
+        height: 250px;
+      }
+    }
+    
+    /* Favorite Button */
+    .favorite-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #ef4444, #dc2626);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+    
+    .favorite-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    .favorite-btn.active {
+      background: linear-gradient(45deg, #fb923c, #ea580c);
+    }
+    
+    /* Comments Section */
+    .comments-section {
+      margin-top: 3rem;
+    }
+    
+    .comment-form {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 2rem;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      color: #9a3412;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #9a3412;
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: #fb923c;
+      box-shadow: 0 0 20px rgba(251, 146, 60, 0.3);
+    }
+    
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .comment-item {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .comment-author {
+      font-weight: 600;
+      color: #9a3412;
+      margin-bottom: 0.5rem;
+    }
+    
+    .comment-text {
+      color: #c2410c;
+      line-height: 1.6;
+    }
+    
+    .comment-date {
+      color: #ea580c;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+  </style>
 </head>
-<body class="bg-yellow-50 font-sans">
-  <div class="max-w-4xl mx-auto p-6 bg-white mt-10 shadow-lg rounded-lg">
-    <h1 class="text-3xl font-bold text-yellow-900 mb-4">Doira</h1>
-    <img src="img/doira.jpg" alt="Doira" class="w-full h-64 object-cover rounded mb-4">
-    <p class="text-gray-700 mb-2">Bu sahifada Doira cholg‘usining tarixi, tuzilishi, ohangi, va madaniy ahamiyati haqida ma’lumotlar taqdim etiladi.</p>
-    <ul class="list-disc pl-5 text-gray-700 space-y-1">
-      <li>Tarixi va kelib chiqishi</li>
-      <li>Foydalanish hududlari</li>
-      <li>Material va tuzilma</li>
-      <li>Ohang namunasi</li>
-      <li>Yasash jarayoni haqida</li>
-    </ul>
-    <a href="instruments.html" class="inline-block mt-6 text-yellow-700 hover:underline">⬅️ Cholg‘ular sahifasiga qaytish</a>
+<body>
+  <!-- Animated background particles -->
+  <div class="particles" id="particles"></div>
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">🥁</div>
+          <div class="logo-text">Cholg'u Lab</div>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html" class="nav-link">🏠 Bosh sahifa</a>
+          <a href="instruments.html" class="nav-link">🎵 Cholg'ular</a>
+          <a href="dashboard.html" class="btn-dashboard">📊 Dashboard</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <div class="container">
+    <section class="hero">
+      <div class="rhythm-patterns">
+        <div class="rhythm-pulse"></div>
+        <div class="rhythm-pulse"></div>
+        <div class="rhythm-pulse"></div>
+      </div>
+      
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>🥁 Doira</h1>
+          <p>
+            Doira - o'zbek xalq musiqasining ritmik asosi bo'lgan urmali cholg'u. 
+            Dumaloq ramka shaklidagi bu asbob raqs, qo'shiq va folklore 
+            tadbirlarining ajralmas qismidir. Uning ritmik ohanglarisiz 
+            o'zbek musiqasi tasavvur qilib bo'lmaydi.
+          </p>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">25-35cm</span>
+              <span class="stat-label">Diametri</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">72</span>
+              <span class="stat-label">Jingling qo'ng'iroqlar</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">1000+</span>
+              <span class="stat-label">Yillik tarix</span>
+            </div>
+          </div>
+          
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="playDoiraRhythm()">
+              <i class="fas fa-play"></i>
+              Ritm eshitish
+            </button>
+            <button class="btn btn-secondary" onclick="showRhythmPatterns()">
+              <i class="fas fa-music"></i>
+              Ritm naqshlari
+            </button>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1520637836862-4d197d17c927?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Doira" class="main-image">
+          <div class="floating-badge">
+            🎵 Ritm ustasi
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Interactive Doira Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎯</div>
+        Interaktiv doira
+      </h2>
+      <div class="content-text">
+        <p>
+          Quyidagi doiraga bosib, turli xil ritm naqshlarini eshiting. 
+          Har bir qism alohida tovush chiqaradi va turli ritm texnikalarini namoyish etadi.
+        </p>
+      </div>
+      
+      <div class="interactive-doira">
+        <div class="doira-circle" onclick="playDoiraSound('center')">
+          <div class="doira-ring" onclick="playDoiraSound('ring1', event)"></div>
+          <div class="doira-ring" onclick="playDoiraSound('ring2', event)"></div>
+          <div class="doira-ring" onclick="playDoiraSound('ring3', event)"></div>
+          <div class="doira-ring" onclick="playDoiraSound('ring4', event)"></div>
+          <div class="doira-center" onclick="playDoiraSound('center', event)">
+            DOIRA
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Rhythm Patterns Section -->
+    <section class="content-section rhythm-section" id="rhythmPatterns">
+      <h2 class="section-title">
+        <div class="section-icon">🎼</div>
+        Ritm naqshlari va texnikalar
+      </h2>
+      
+      <div class="rhythm-patterns-grid">
+        <div class="rhythm-pattern" onclick="playPattern('usul')">
+          <div class="pattern-name">🎵 Usul (Asosiy ritm)</div>
+          <div class="pattern-notation">dum - tak - tak - dum</div>
+          <div class="pattern-description">
+            Eng oddiy va keng tarqalgan ritm naqshi. Barcha o'zbek xalq qo'shiqlari uchun asos.
+          </div>
+        </div>
+        
+        <div class="rhythm-pattern" onclick="playPattern('sama')">
+          <div class="pattern-name">🌟 Sama (Tantanali ritm)</div>
+          <div class="pattern-notation">dum-dum - tak - dum - tak-tak</div>
+          <div class="pattern-description">
+            Bayramlarda va tantanali tadbirlarda qo'llaniladigan kuchli ritm.
+          </div>
+        </div>
+        
+        <div class="rhythm-pattern" onclick="playPattern('raqsona')">
+          <div class="pattern-name">💃 Raqsona (Raqs ritmi)</div>
+          <div class="pattern-notation">tak-tak-dum - tak - tak-dum-dum</div>
+          <div class="pattern-description">
+            Raqs va ko'ngilochar tadbirlar uchun mo'ljallangan tez ritm.
+          </div>
+        </div>
+        
+        <div class="rhythm-pattern" onclick="playPattern('dastgoh')">
+          <div class="pattern-name">🎭 Dastgoh (Klassik ritm)</div>
+          <div class="pattern-notation">dum - - tak - dum - tak - -</div>
+          <div class="pattern-description">
+            Maqom musiqasida qo'llaniladigan murakkab va nafis ritm naqshi.
+          </div>
+        </div>
+        
+        <div class="rhythm-pattern" onclick="playPattern('folkdance')">
+          <div class="pattern-name">🏞️ Xalq raqsi ritmi</div>
+          <div class="pattern-notation">tak-dum-tak - dum-dum - tak</div>
+          <div class="pattern-description">
+            Viloyat raqslarida ishlatiluvchi o'ziga xos ritm.
+          </div>
+        </div>
+        
+        <div class="rhythm-pattern" onclick="playPattern('wedding')">
+          <div class="pattern-name">💒 To'y ritmi</div>
+          <div class="pattern-notation">dum-tak-tak-dum - tak-dum-tak</div>
+          <div class="pattern-description">
+            To'y marosimlarida ayniqsa ko'p ishlatiluvchi quvnoq ritm.
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- History Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">📜</div>
+        Tarix va madaniy ahamiyati
+      </h2>
+      <div class="content-text">
+        <p>
+          Doira ming yillardan buyon Markaziy Osiyoda ishlatilayotgan qadimiy asbob. 
+          Bu cholg'u nafaqat musiqa, balki marosim va ibodatlarda ham muhim o'rin tutgan. 
+          Qadimgi sufiy tartiblarida doira ruhiy holatga kelish uchun ishlatilgan.
+        </p>
+        <br>
+        <p>
+          O'zbek xalqida doira - "ayol cholg'usi" sifatida tanilgan. An'anaviy ravishda 
+          ayollar tomonidan chalingan va ular bu asbobda alohida mahoratga ega bo'lganlar. 
+          Hozirgi kunda ham ko'plab professional ayol ijrochilar doira ustasi hisoblanadi.
+        </p>
+      </div>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Qadimiy doira">
+          <div class="gallery-overlay">
+            <h4>Qadimiy doira namunasi</h4>
+            <p>XIX asr</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Ijrochi ayol">
+          <div class="gallery-overlay">
+            <h4>Professional ijrochi</h4>
+            <p>Zamonaviy mahorat</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="To'y marosimi">
+          <div class="gallery-overlay">
+            <h4>To'y marosimida doira</h4>
+            <p>An'anaviy ishlatilish</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Audio Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎵</div>
+        Audio namunalar va ijro texnikasi
+      </h2>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track1')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">Klassik doira ijrosi</div>
+            <div class="track-artist">Xalima Nosirova - Xalq artisti</div>
+          </div>
+          <span class="track-duration">4:12</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress1"></div>
+        </div>
+      </div>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track2')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">Zamonaviy doira texnikasi</div>
+            <div class="track-artist">Yosh ijrochilar guruhi</div>
+          </div>
+          <span class="track-duration">3:28</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress2"></div>
+        </div>
+      </div>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track3')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">To'y doirasi</div>
+            <div class="track-artist">An'anaviy ijro</div>
+          </div>
+          <span class="track-duration">5:45</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress3"></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Construction and Types Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🔨</div>
+        Tuzilishi va turlari
+      </h2>
+      <div class="content-text">
+        <p>
+          Doira asosan ikki qismdan iborat: yog'och ramka va cho'zilgan teri. 
+          Ramkaning ichki tomonida kichik metall halqalar (jingling) o'rnatilgan bo'lib, 
+          ular doira chalinganida xususiy tovush chiqaradi.
+        </p>
+        <br>
+        <h3 style="color: #9a3412; font-weight: 600; margin: 1.5rem 0 1rem 0;">Doira turlari:</h3>
+        <ul style="margin: 1rem 0; padding-left: 2rem; color: #c2410c;">
+          <li><strong>Katta doira:</strong> 30-35 sm diametrli, chuqur tovush</li>
+          <li><strong>O'rta doira:</strong> 25-30 sm diametrli, universal ishlatilish</li>
+          <li><strong>Kichik doira:</strong> 20-25 sm diametrli, yuqori tonli</li>
+          <li><strong>Raqs doirasi:</strong> Engil va tez harakatlarda ishlatiladi</li>
+          <li><strong>Marosim doirasi:</strong> Maxsus tantanalar uchun bezatilgan</li>
+        </ul>
+      </div>
+      
+      <div class="rhythm-section">
+        <h3 style="color: #9a3412; font-weight: 600; margin-bottom: 1rem;">Asosiy ijro texnikasi:</h3>
+        <div class="rhythm-patterns-grid">
+          <div class="rhythm-pattern">
+            <div class="pattern-name">👆 Barmoq texnikasi</div>
+            <div class="pattern-description">
+              Barmoqlar bilan zarb berish - "tak" tovushi uchun
+            </div>
+          </div>
+          <div class="rhythm-pattern">
+            <div class="pattern-name">🤚 Kaft texnikasi</div>
+            <div class="pattern-description">
+              To'liq kaft bilan zarb berish - "dum" tovushi uchun
+            </div>
+          </div>
+          <div class="rhythm-pattern">
+            <div class="pattern-name">🔄 Silkitish texnikasi</div>
+            <div class="pattern-description">
+              Jingling tovushlari uchun doirani silkitish
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Learning Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">📚</div>
+        O'rganish yo'llari
+      </h2>
+      <div class="content-text">
+        <p>
+          Doira chalishni o'rganish uchun dastlab asosiy ritm naqshlarini egallash kerak. 
+          Bu jarayon sabr va muntazam mashg'ulotlarni talab qiladi.
+        </p>
+      </div>
+      
+      <div class="rhythm-patterns-grid">
+        <div class="rhythm-pattern">
+          <div class="pattern-name">1-bosqich: Asoslar</div>
+          <div class="pattern-notation">dum - tak - tak - dum</div>
+          <div class="pattern-description">
+            Oddiy ritm bilan boshlang. Bir qo'l bilan dum, ikkinchisi bilan tak.
+          </div>
+        </div>
+        
+        <div class="rhythm-pattern">
+          <div class="pattern-name">2-bosqich: Tezlikni oshirish</div>
+          <div class="pattern-notation">dum-tak-dum-tak</div>
+          <div class="pattern-description">
+            Asosiy ritmni tezroq ijro etishni o'rganing.
+          </div>
+        </div>
+        
+        <div class="rhythm-pattern">
+          <div class="pattern-name">3-bosqich: Murakkab naqshlar</div>
+          <div class="pattern-notation">dum-tak-tak-dum-tak</div>
+          <div class="pattern-description">
+            Ko'proq elementi bo'lgan ritmlarni mashq qiling.
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Comments Section -->
+    <section class="content-section comments-section">
+      <h2 class="section-title">
+        <div class="section-icon">💬</div>
+        Izohlar va tajribalar
+      </h2>
+      
+      <div class="comment-form">
+        <h3 style="color: #9a3412; margin-bottom: 1rem;">Tajribangizni baham ko'ring</h3>
+        <form onsubmit="addComment(event)">
+          <div class="form-group">
+            <label class="form-label">Ismingiz</label>
+            <input type="text" class="form-input" required placeholder="Ismingizni kiriting">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Doira haqida fikringiz</label>
+            <textarea class="form-textarea" required placeholder="Doira chalish tajribangiz yoki bu asbob haqida fikringizni bildiring..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i>
+            Izoh yuborish
+          </button>
+        </form>
+      </div>
+      
+      <div id="commentsList">
+        <div class="comment-item">
+          <div class="comment-author">🥁 Gulnora Karimova</div>
+          <div class="comment-text">
+            Doira chalishni 10 yoshdan boshlaganman. Bu asbob nafaqat musiqa, balki ruhiy holatni ham boshqaradi. 
+            Har bir ritm alohida ma'noga ega va his-tuyg'ularni ifoda etadi.
+          </div>
+          <div class="comment-date">2025-07-07</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">🎵 Aziz Rahmonov</div>
+          <div class="comment-text">
+            Onamdan doira chalishni o'rganganman. Bu sahifadagi ritm naqshlari juda foydali. 
+            Ayniqsa interaktiv doira - ajoyib g'oya!
+          </div>
+          <div class="comment-date">2025-07-06</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">🌟 Madina Toshmatova</div>
+          <div class="comment-text">
+            To'yimda doira chalib, mehmonlarni hayratda qoldirganman. Bu asbob har bir ayolning 
+            bilishi kerak bo'lgan cholg'u. Rahmat bunday batafsil ma'lumot uchun!
+          </div>
+          <div class="comment-date">2025-07-05</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">🎭 Farrux Boboqulov</div>
+          <div class="comment-text">
+            Men erkak bo'lsam ham, doira chalishni yaxshi ko'raman. Bu asbob jinsga bog'liq emas, 
+            musiqa sevgisiga bog'liq. Barcha ritm naqshlari juda aniq tushuntirilgan.
+          </div>
+          <div class="comment-date">2025-07-04</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Related Instruments -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎵</div>
+        O'xshash cholg'ular
+      </h2>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="window.location.href='nagora.html'">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nagora">
+          <div class="gallery-overlay">
+            <h4>🥁 Nagora</h4>
+            <p>Katta urmali cholg'u</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="window.location.href='dutar.html'">
+          <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dutar">
+          <div class="gallery-overlay">
+            <h4>🎸 Dutar</h4>
+            <p>Ikki torli cholg'u</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="window.location.href='nay.html'">
+          <img src="https://images.unsplash.com/photo-1465821185615-20b3c2fbf41b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nay">
+          <div class="gallery-overlay">
+            <h4>🎶 Nay</h4>
+            <p>Nafas cholg'usi</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
+  
+  <!-- Favorite Button -->
+  <button class="favorite-btn" onclick="toggleFavorite()" id="favoriteBtn">
+    <i class="far fa-heart"></i>
+  </button>
+  
+  <script>
+    // Create animated particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 40;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        const size = Math.random() * 8 + 3;
+        const left = Math.random() * 100;
+        const delay = Math.random() * 20;
+        const duration = Math.random() * 10 + 15;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${left}%`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.animationDuration = `${duration}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Audio player functionality
+    let currentPlaying = null;
+    let currentProgress = null;
+    
+    function togglePlay(button, trackId) {
+      const icon = button.querySelector('i');
+      const progressElement = document.getElementById('progress' + trackId.slice(-1));
+      
+      // Stop current playing track
+      if (currentPlaying && currentPlaying !== button) {
+        const currentIcon = currentPlaying.querySelector('i');
+        currentIcon.className = 'fas fa-play';
+        if (currentProgress) {
+          clearInterval(currentProgress);
+        }
+      }
+      
+      if (icon.classList.contains('fa-play')) {
+        // Start playing
+        icon.className = 'fas fa-pause';
+        currentPlaying = button;
+        
+        // Simulate progress
+        let progress = 0;
+        currentProgress = setInterval(() => {
+          progress += 0.8;
+          progressElement.style.width = progress + '%';
+          
+          if (progress >= 100) {
+            clearInterval(currentProgress);
+            icon.className = 'fas fa-play';
+            progressElement.style.width = '0%';
+            currentPlaying = null;
+          }
+        }, 100);
+        
+      } else {
+        // Stop playing
+        icon.className = 'fas fa-play';
+        clearInterval(currentProgress);
+        progressElement.style.width = '0%';
+        currentPlaying = null;
+      }
+    }
+    
+    // Play doira rhythm
+    function playDoiraRhythm() {
+      const button = event.target;
+      const originalText = button.innerHTML;
+      
+      button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Ijro etilmoqda...';
+      button.disabled = true;
+      
+      // Simulate rhythm playing with visual feedback
+      const rhythmPulses = document.querySelectorAll('.rhythm-pulse');
+      let pulseIndex = 0;
+      
+      const rhythmInterval = setInterval(() => {
+        // Reset all pulses
+        rhythmPulses.forEach(pulse => pulse.style.animation = 'none');
+        
+        // Trigger current pulse
+        if (rhythmPulses[pulseIndex]) {
+          rhythmPulses[pulseIndex].style.animation = 'rhythmPulse 0.5s ease-in-out';
+        }
+        
+        pulseIndex = (pulseIndex + 1) % rhythmPulses.length;
+      }, 500);
+      
+      setTimeout(() => {
+        clearInterval(rhythmInterval);
+        button.innerHTML = originalText;
+        button.disabled = false;
+        
+        // Reset all pulses
+        rhythmPulses.forEach(pulse => {
+          pulse.style.animation = 'rhythmPulse 2s infinite ease-in-out';
+        });
+      }, 4000);
+    }
+    
+    // Show rhythm patterns
+    function showRhythmPatterns() {
+      const rhythmSection = document.getElementById('rhythmPatterns');
+      rhythmSection.scrollIntoView({ behavior: 'smooth' });
+      
+      // Highlight section
+      rhythmSection.style.border = '3px solid #fb923c';
+      setTimeout(() => {
+        rhythmSection.style.border = '1px solid rgba(255, 255, 255, 0.3)';
+      }, 2000);
+    }
+    
+    // Play doira sound (interactive doira)
+    function playDoiraSound(section, event) {
+      if (event) {
+        event.stopPropagation();
+      }
+      
+      const sounds = {
+        'center': 'DUM! 🥁',
+        'ring1': 'tak',
+        'ring2': 'ting',
+        'ring3': 'tak',
+        'ring4': 'ting'
+      };
+      
+      const sound = sounds[section] || 'tak';
+      
+      // Visual feedback
+      let targetElement;
+      if (section === 'center') {
+        targetElement = document.querySelector('.doira-center');
+      } else {
+        targetElement = event.target;
+      }
+      
+      // Add hit effect
+      targetElement.style.transform = 'scale(0.9)';
+      targetElement.style.boxShadow = '0 0 20px #fb923c';
+      
+      setTimeout(() => {
+        targetElement.style.transform = '';
+        targetElement.style.boxShadow = '';
+      }, 200);
+      
+      // Show sound notation
+      showNotification(`Tovush: ${sound}`, 'info');
+    }
+    
+    // Play rhythm pattern
+    function playPattern(patternName) {
+      const patterns = {
+        'usul': 'DUM - tak - tak - DUM 🎵',
+        'sama': 'DUM-DUM - tak - DUM - tak-tak 🌟',
+        'raqsona': 'tak-tak-DUM - tak - tak-DUM-DUM 💃',
+        'dastgoh': 'DUM - - tak - DUM - tak - - 🎭',
+        'folkdance': 'tak-DUM-tak - DUM-DUM - tak 🏞️',
+        'wedding': 'DUM-tak-tak-DUM - tak-DUM-tak 💒'
+      };
+      
+      const pattern = patterns[patternName];
+      if (pattern) {
+        showNotification(`Ijro etilmoqda: ${pattern}`, 'success');
+        
+        // Add visual effect to clicked pattern
+        const clickedPattern = event.currentTarget;
+        clickedPattern.style.transform = 'scale(1.05)';
+        clickedPattern.style.background = 'rgba(251, 146, 60, 0.3)';
+        
+        setTimeout(() => {
+          clickedPattern.style.transform = '';
+          clickedPattern.style.background = '';
+        }, 1000);
+      }
+    }
+    
+    // Toggle favorite
+    function toggleFavorite() {
+      const btn = document.getElementById('favoriteBtn');
+      const icon = btn.querySelector('i');
+      
+      if (icon.classList.contains('far')) {
+        icon.className = 'fas fa-heart';
+        btn.classList.add('active');
+        showNotification('Doira sevimlilar ro\'yxatiga qo\'shildi! ❤️', 'success');
+      } else {
+        icon.className = 'far fa-heart';
+        btn.classList.remove('active');
+        showNotification('Doira sevimlilardan olib tashlandi', 'info');
+      }
+    }
+    
+    // Add comment functionality
+    function addComment(event) {
+      event.preventDefault();
+      
+      const form = event.target;
+      const name = form.querySelector('input[type="text"]').value;
+      const comment = form.querySelector('textarea').value;
+      
+      if (name && comment) {
+        const commentsList = document.getElementById('commentsList');
+        const newComment = document.createElement('div');
+        newComment.className = 'comment-item';
+        newComment.style.opacity = '0';
+        newComment.style.transform = 'translateY(20px)';
+        
+        const currentDate = new Date().toISOString().split('T')[0];
+        
+        newComment.innerHTML = `
+          <div class="comment-author">🥁 ${name}</div>
+          <div class="comment-text">${comment}</div>
+          <div class="comment-date">${currentDate}</div>
+        `;
+        
+        commentsList.insertBefore(newComment, commentsList.firstChild);
+        
+        // Animate in
+        setTimeout(() => {
+          newComment.style.transition = 'all 0.5s ease';
+          newComment.style.opacity = '1';
+          newComment.style.transform = 'translateY(0)';
+        }, 100);
+        
+        // Reset form
+        form.reset();
+        
+        showNotification('Izohingiz muvaffaqiyatli qo\'shildi! 🎉', 'success');
+      }
+    }
+    
+    // Notification system
+    function showNotification(message, type = 'info') {
+      const notification = document.createElement('div');
+      const colors = {
+        'success': '#10b981',
+        'info': '#3b82f6',
+        'warning': '#f59e0b'
+      };
+      
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${colors[type] || colors.info};
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        z-index: 10000;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+        font-weight: 600;
+        max-width: 300px;
+      `;
+      
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      
+      // Show notification
+      setTimeout(() => {
+        notification.style.opacity = '1';
+        notification.style.transform = 'translateX(0)';
+      }, 100);
+      
+      // Hide notification
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+          if (document.body.contains(notification)) {
+            document.body.removeChild(notification);
+          }
+        }, 300);
+      }, 4000);
+    }
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      // Spacebar to play rhythm
+      if (e.code === 'Space' && !e.target.matches('input, textarea')) {
+        e.preventDefault();
+        playDoiraRhythm();
+      }
+      
+      // F key for favorite
+      if (e.code === 'KeyF' && !e.target.matches('input, textarea')) {
+        e.preventDefault();
+        toggleFavorite();
+      }
+      
+      // R key for rhythm patterns
+      if (e.code === 'KeyR' && !e.target.matches('input, textarea')) {
+        e.preventDefault();
+        showRhythmPatterns();
+      }
+    });
+    
+    // Add scroll animation for elements
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all content sections
+    document.querySelectorAll('.content-section').forEach((section, index) => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(30px)';
+      section.style.transition = `all 0.6s ease ${index * 0.1}s`;
+      observer.observe(section);
+    });
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      createParticles();
+      
+      // Show welcome message
+      setTimeout(() => {
+        showNotification('Doira sahifasiga xush kelibsiz! 🥁', 'info');
+      }, 1000);
+      
+      // Auto-demo after 3 seconds
+      setTimeout(() => {
+        const rhythmPulses = document.querySelectorAll('.rhythm-pulse');
+        rhythmPulses.forEach((pulse, index) => {
+          setTimeout(() => {
+            pulse.style.animation = 'rhythmPulse 0.5s ease-in-out';
+            setTimeout(() => {
+              pulse.style.animation = 'rhythmPulse 2s infinite ease-in-out';
+            }, 500);
+          }, index * 300);
+        });
+      }, 3000);
+    });
+  </script>
 </body>
 </html>
