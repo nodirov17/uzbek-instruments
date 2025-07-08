@@ -1,24 +1,1502 @@
-<!DOCTYPE html>
+<div class="stat-item">
+              <span class="stat-number">24</span>
+              <span class="stat-label">Parda</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">90cm</span>
+              <span class="stat-label">Uzunlik</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">2000+</span>
+              <span class="stat-label">Yillik tarix</span>
+            </div>
+          </div>
+          
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="playRubabSound()">
+              <i class="fas fa-play"></i>
+              Rubab ovozini eshitish
+            </button>
+            <button class="btn btn-secondary" onclick="showMaqomInfo()">
+              <i class="fas fa-music"></i>
+              Maqom ma'lumotlari
+            </button>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Rubab" class="main-image">
+          <div class="floating-badge">
+            👑 Sharqning shohi
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Interactive Rubab Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎯</div>
+        Interaktiv rubab
+      </h2>
+      <div class="content-text">
+        <p>
+          Quyidagi rubab tasviriga bosib, torlarni chalishni sinab ko'ring. 
+          Har bir tor o'zining noyob ovoziga ega.
+        </p>
+      </div>
+      
+      <div class="interactive-rubab">
+        <div class="rubab-body" onclick="playRubabBody()">
+          <div class="rubab-neck"></div>
+          <div class="rubab-hole"></div>
+          <div class="rubab-strings">
+            <div class="rubab-string" onclick="playString(1, event)" data-note="G"></div>
+            <div class="rubab-string" onclick="playString(2, event)" data-note="D"></div>
+            <div class="rubab-string" onclick="playString(3, event)" data-note="A"></div>
+            <div class="rubab-string" onclick="playString(4, event)" data-note="E"></div>
+            <div class="rubab-string" onclick="playString(5, event)" data-note="B"></div>
+            <div class="rubab-string" onclick="playString(6, event)" data-note="F#"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- String Configuration Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎼</div>
+        Torlar konfiguratsiyasi
+      </h2>
+      
+      <div class="string-section">
+        <h3 style="color: white; font-weight: 600; margin-bottom: 1rem;">Asosiy torlar (6 ta)</h3>
+        <div class="strings-grid">
+          <div class="string-item" onclick="playStringInfo('bass')">
+            <div class="string-name">1-tor (Bass)</div>
+            <div class="string-note">G</div>
+            <div class="string-description">Eng qalin tor, asosiy bass ovoz beradi</div>
+          </div>
+          
+          <div class="string-item" onclick="playStringInfo('tenor1')">
+            <div class="string-name">2-tor (Tenor)</div>
+            <div class="string-note">D</div>
+            <div class="string-description">O'rta registr, kuchli rezonans</div>
+          </div>
+          
+          <div class="string-item" onclick="playStringInfo('tenor2')">
+            <div class="string-name">3-tor (Alto)</div>
+            <div class="string-note">A</div>
+            <div class="string-description">Melodiya uchun asosiy tor</div>
+          </div>
+          
+          <div class="string-item" onclick="playStringInfo('melody1')">
+            <div class="string-name">4-tor (Melodiya)</div>
+            <div class="string-note">E</div>
+            <div class="string-description">Yuqori melodiya ijrosi</div>
+          </div>
+          
+          <div class="string-item" onclick="playStringInfo('melody2')">
+            <div class="string-name">5-tor (Diskant)</div>
+            <div class="string-note">B</div>
+            <div class="string-description">Yupqa va yorqin ovoz</div>
+          </div>
+          
+          <div class="string-item" onclick="playStringInfo('high')">
+            <div class="string-name">6-tor (Soprano)</div>
+            <div class="string-note">F#</div>
+            <div class="string-description">Eng yuqori tor, bezak uchun</div>
+          </div>
+        </div>
+        
+        <h3 style="color: white; font-weight: 600; margin: 2rem 0 1rem 0;">Rezonans torlar (11 ta)</h3>
+        <div class="content-text">
+          <p>
+            Rezonans torlar chalmasdan turib, asosiy torlar chalinganida o'z-o'zidan jaranglaydi. 
+            Bu rubabning noyob ovoz boyligini yaratadi va uzoq vaqt davom etuvchi rezonans beradi.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Maqom Section -->
+    <section class="content-section" id="maqomSection">
+      <h2 class="section-title">
+        <div class="section-icon">🎭</div>
+        Rubab maqomlari
+      </h2>
+      <div class="content-text">
+        <p>
+          Rubab o'zbek klassik maqom musiqasining asosiy asbobidir. 
+          Har bir maqomning o'ziga xos xarakteri va ruhiy ta'siri bor.
+        </p>
+      </div>
+      
+      <div class="maqom-section">
+        <div class="maqom-grid">
+          <div class="maqom-card" onclick="playMaqom('rost')">
+            <div class="maqom-name">🌅 Rost</div>
+            <div class="maqom-description">
+              Eng muhim va asosiy maqom. Tongni, yangilanishni va umidni ifodalaydi.
+            </div>
+            <div class="maqom-notes">C - D - E♭ - F - G - A - B♭</div>
+          </div>
+          
+          <div class="maqom-card" onclick="playMaqom('buzruk')">
+            <div class="maqom-name">🏔️ Buzruk</div>
+            <div class="maqom-description">
+              Kuchli va tantanali maqom. Qudrat va ulug'vorlikni aks ettiradi.
+            </div>
+            <div class="maqom-notes">D - E - F - G - A - B♭ - C</div>
+          </div>
+          
+          <div class="maqom-card" onclick="playMaqom('segoh')">
+            <div class="maqom-name">🌸 Segoh</div>
+            <div class="maqom-description">
+              Nozik va lirik maqom. Sevgi va mehr hissiyotlarini ifodalaydi.
+            </div>
+            <div class="maqom-notes">E♭ - F - G - A♭ - B♭ - C - D</div>
+          </div>
+          
+          <div class="maqom-card" onclick="playMaqom('chorgoh')">
+            <div class="maqom-name">🎨 Chorgoh</div>
+            <div class="maqom-description">
+              Rangli va ko'p qirrali maqom. Hayotning turli jihatlarini tasvirlaydi.
+            </div>
+            <div class="maqom-notes">F - G - A♭ - B♭ - C - D♭ - E♭</div>
+          </div>
+          
+          <div class="maqom-card" onclick="playMaqom('panjgoh')">
+            <div class="maqom-name">🌙 Panjgoh</div>
+            <div class="maqom-description">
+              Kechki va sehrli maqom. Tafakkur va chuqur his-tuyg'ular uchun.
+            </div>
+            <div class="maqom-notes">G - A - B♭ - C - D - E♭ - F</div>
+          </div>
+          
+          <div class="maqom-card" onclick="playMaqom('husayni')">
+            <div class="maqom-name">😢 Husayni</div>
+            <div class="maqom-description">
+              G'amgin va ta'sirli maqom. Qayg'u va hasratni ifodalaydi.
+            </div>
+            <div class="maqom-notes">A - B♭ - C - D♭ - E♭ - F - G</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- History Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">📜</div>
+        Tarix va madaniy ahamiyati
+      </h2>
+      <div class="content-text">
+        <p>
+          Rubab qadimgi Forsiy madaniyatidan kelib chiqgan va Markaziy Osiyoda 
+          o'ziga xos rivojlanishga erishgan. O'zbek rubabi boshqa davlatlarning 
+          rubablaridan farq qiladi va noyob xususiyatlarga ega.
+        </p>
+        <br>
+        <p>
+          Bu asbob Shayx Ahmad Donish, Hoji Abdulaziz Rasulov, Turgun Alimatov 
+          kabi buyuk ustalar tomonidan yangi cho'qqilarga olib chiqilgan. 
+          Hozirgi kunda ham ko'plab ijrochilar rubab san'atini rivojlantirmoqda.
+        </p>
+      </div>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Qadimiy rubab">
+          <div class="gallery-overlay">
+            <h4>Qadimiy rubab namunasi</h4>
+            <p>XVIII asr</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Ustad Turgun Alimatov">
+          <div class="gallery-overlay">
+            <h4>Ustad Turgun Alimatov</h4>
+            <p>Buyuk rubabchi</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Zamonaviy rubab">
+          <div class="gallery-overlay">
+            <h4>Zamonaviy rubab ijrosi</h4>
+            <p>XXI asr san'ati</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Audio Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎵</div>
+        Audio namunalar va ijro ustaligi
+      </h2>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track1')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">Klassik Rost maqomi</div>
+            <div class="track-artist">Ustad Turgun Alimatov</div>
+          </div>
+          <span class="track-duration">8:24</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress1"></div>
+        </div>
+      </div>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track2')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">Buzruk maqomi</div>
+            <div class="track-artist">Hoji Abdulaziz Rasulov</div>
+          </div>
+          <span class="track-duration">6:45</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress2"></div>
+        </div>
+      </div>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track3')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">Zamonaviy rubab kompozitsiyasi</div>
+            <div class="track-artist">Yosh ijrochilar guruhi</div>
+          </div>
+          <span class="track-duration">5:12</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress3"></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Techniques Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎯</div>
+        Ijro texnikasi va o'rganish
+      </h2>
+      <div class="content-text">
+        <p>
+          Rubab chalish juda murakkab texnikani talab qiladi. Asosiy torlarni chalish bilan birga 
+          rezonans torlarning ovozini ham boshqarish kerak.
+        </p>
+      </div>
+      
+      <table class="techniques-table">
+        <thead>
+          <tr>
+            <th>Texnika</th>
+            <th>Tavsif</th>
+            <th>Qiyinlik</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mizrab usuli</td>
+            <td>Maxsus zarbak bilan torlarni chalish</td>
+            <td>⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Parda bosish</td>
+            <td>Chap qo'l bilan pardalarni to'g'ri bosish</td>
+            <td>⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Rezonans nazorati</td>
+            <td>Rezonans torlarning ovozini boshqarish</td>
+            <td>⭐⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Maqom o'tish</td>
+            <td>Maqomlar orasida yumshoq o'tish</td>
+            <td>⭐⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Taqsim</td>
+            <td>Improvizatsiya va solo ijro</td>
+            <td>⭐⭐⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Ansamblik ijro</td>
+            <td>Boshqa asboblar bilan hamohang</td>
+            <td>⭐⭐⭐⭐⭐</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div style="margin-top: 2rem;">
+        <h3 style="color: white; font-weight: 600; margin-bottom: 1rem;">O'rganish bosqichlari:</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+          <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <h4 style="color: white; margin-bottom: 0.5rem;">1-bosqich: Asbobni bilish</h4>
+            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Rubab tuzilishi va asosiy qismlar</p>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <h4 style="color: white; margin-bottom: 0.5rem;">2-bosqich: Mizrab</h4>
+            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">To'g'ri ushlab, asosiy zarbalar</p>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <h4 style="color: white; margin-bottom: 0.5rem;">3-bosqich: Pardalar</h4>
+            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Asosiy pardalarni o'rganish</p>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <h4 style="color: white; margin-bottom: 0.5rem;">4-bosqich: Maqomlar</h4>
+            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Asosiy maqomlarni o'zlashtirish</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Comments Section -->
+    <section class="content-section comments-section">
+      <h2 class="section-title">
+        <div class="section-icon">💬</div>
+        Izohlar va tajribalar
+      </h2>
+      
+      <div class="comment-form">
+        <h3 style="color: white; margin-bottom: 1rem;">Rubab haqida fikringizni bildiring</h3>
+        <form onsubmit="addComment(event)">
+          <div class="form-group">
+            <label class="form-label">Ismingiz</label>
+            <input type="text" class="form-input" required placeholder="Ismingizni kiriting">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tajribangiz yoki fikringiz</label>
+            <textarea class="form-textarea" required placeholder="Rubab chalish tajribangiz, maqom musiqasi haqida fikringiz yoki bu asbob haqida mulohazalaringizni baham ko'ring..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i>
+            Izoh yuborish
+          </button>
+        </form>
+      </div>
+      
+      <div id="commentsList">
+        <div class="comment-item">
+          <div class="comment-author">🎻 Bobur Karimov</div>
+          <div class="comment-text">
+            20 yildan beri rubab chalaman. Bu asbob haqiqatan ham "Sharqning shohi". 
+            Har bir maqomning o'ziga xos ruhi bor. Bu sahifadagi maqom ma'lumotlari juda to'g'ri va batafsil.
+          </div>
+          <div class="comment-date">2025-07-07</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">👑 Malika Turdiyeva</div>
+          <div class="comment-text">
+            Otam rubabchi edi. Uning qo'lida bu asbob haqiqiy sehrgarlik qilardi. 
+            Bu sahifani ko'rganim bilan uning xotiralarini esladim. Juda chiroyli tayyorlangan!
+          </div>
+          <div class="comment-date">2025-07-06</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">🎭 Jasur Rahmonov</div>
+          <div class="comment-text">
+            Maqom musiqasi haqida o'rganmoqchiman. Bu sahifadagi maqom tushuntirishlari va 
+            audio namunalar juda yordam berdi. Interaktiv rubab ham ajoyib g'oya!
+          </div>
+          <div class="comment-date">2025-07-05</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">🌟 Nodira Alimatova</div>
+          <div class="comment-text">
+            Conservatoriyada rubab o'qitaman. Talabalarimga bu sahifani tavsiya qilaman. 
+            Ayniqsa, torlar konfiguratsiyasi va texnikalar jadvali juda muhim ma'lumotlar.
+          </div>
+          <div class="comment-date">2025-07-04</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Related Instruments -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎵</div>
+        O'xshash cholg'ular
+      </h2>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="window.location.href='dutar.html'">
+          <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dutar">
+          <div class="gallery-overlay">
+            <h4>🎸 Dutar</h4>
+            <p>Ikki torli cholg'u</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="window.location.href='chang.html'">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chang">
+          <div class="gallery-overlay">
+            <h4>🎼 Chang</h4>
+            <p>Ko'p torli klassik asbob</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="window.location.href='ud.html'">
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Ud">
+          <div class="gallery-overlay">
+            <h4>🎵 Ud</h4>
+            <p>Sharq musiqasining asosi</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <!-- Favorite Button -->
+  <button class="favorite-btn" onclick="toggleFavorite()" id="favoriteBtn">
+    <i class="far fa-heart"></i>
+  </button>
+  
+  <script>
+    // Create animated particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 35;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        const size = Math.random() * 7 + 3;
+        const left = Math.random() * 100;
+        const delay = Math.random() * 20;
+        const duration = Math.random() * 15 + 15;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${left}%`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.animationDuration = `${duration}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Create string vibration effect
+    function createStringVibration() {
+      const stringContainer = document.getElementById('stringVibration');
+      const stringCount = 6;
+      
+      for (let i = 0; i < stringCount; i++) {
+        const string = document.createElement('div');
+        string.className = 'string-line';
+        
+        const left = 20 + (i * 12); // Spread strings across the screen
+        const delay = i * 0.5;
+        
+        string.style.left = `${left}%`;
+        string.style.animationDelay = `${delay}s`;
+        
+        stringContainer.appendChild(string);
+      }
+    }
+    
+    // Audio player functionality
+    let currentPlaying = null;
+    let currentProgress = null;
+    
+    function togglePlay(button, trackId) {
+      const icon = button.querySelector('i');
+      const progressElement = document.getElementById('progress' + trackId.slice(-1));
+      
+      // Stop current playing track
+      if (currentPlaying && currentPlaying !== button) {
+        const currentIcon = currentPlaying.querySelector('i');
+        currentIcon.className = 'fas fa-play';
+        if (currentProgress) {
+          clearInterval(currentProgress);
+        }
+      }
+      
+      if (icon.classList.contains('fa-play')) {
+        // Start playing
+        icon.className = 'fas fa-pause';
+        currentPlaying = button;
+        
+        // Simulate progress
+        let progress = 0;
+        currentProgress = setInterval(() => {
+          progress += 0.3;
+          progressElement.style.width = progress + '%';
+          
+          if (progress >= 100) {
+            clearInterval(currentProgress);
+            icon.className = 'fas fa-play';
+            progressElement.style.width = '0%';
+            currentPlaying = null;
+          }
+        }, 100);
+        
+      } else {
+        // Stop playing
+        icon.className = 'fas fa-play';
+        clearInterval(currentProgress);
+        progressElement.style.width = '0%';
+        currentPlaying = null;
+      }
+    }
+    
+    // Play rubab sound
+    function playRubabSound() {
+      const button = event.target;
+      const originalText = button.innerHTML;
+      
+      button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Rubab sadosi...';
+      button.disabled = true;
+      
+      // Add string vibration effect
+      const strings = document.querySelectorAll('.string-line');
+      strings.forEach((string, index) => {
+        setTimeout(() => {
+          string.style.animationDuration = '0.5s';
+          string.style.opacity = '1';
+        }, index * 100);
+      });
+      
+      setTimeout(() => {
+        button.innerHTML = originalText;
+        button.disabled = false;
+        
+        // Reset string effect
+        strings.forEach(string => {
+          string.style.animationDuration = '3s';
+          string.style.opacity = '';
+        });
+      }, 4000);
+    }
+    
+    // Play string sound
+    function playString(stringNum, event) {
+      if (event) {
+        event.stopPropagation();
+      }
+      
+      const stringElement = event.target;
+      const note = stringElement.getAttribute('data-note');
+      
+      // Visual feedback
+      stringElement.style.background = 'linear-gradient(to bottom, #ff6b6b, #feca57)';
+      stringElement.style.animation = 'stringPluck 0.5s ease-in-out';
+      
+      setTimeout(() => {
+        stringElement.style.background = '';
+        stringElement.style.animation = '';
+      }, 500);
+      
+      showNotification(`${stringNum}-tor chalingan: ${note} 🎵`, 'info');
+    }
+    
+    // Play rubab body
+    function playRubabBody() {
+      // Trigger all strings
+      const strings = document.querySelectorAll('.rubab-string');
+      strings.forEach((string, index) => {
+        setTimeout(() => {
+          string.style.background = 'linear-gradient(to bottom, #ff6b6b, #feca57)';
+          string.style.animation = 'stringPluck 0.5s ease-in-out';
+        }, index * 100);
+      });
+      
+      <!DOCTYPE html>
 <html lang="uz">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rubab - Cholg‘u Tafsiloti</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Rubab - O'zbek Cholg'u Laboratoriyasi</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #7c3aed 0%, #a855f7 25%, #c084fc 50%, #e879f9 75%, #f0abfc 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    /* Animated background particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      animation: float 20s infinite linear;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    /* String vibration animation */
+    .string-vibration {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    
+    .string-line {
+      position: absolute;
+      width: 2px;
+      height: 100vh;
+      background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.2), transparent);
+      animation: stringVibrate 3s infinite ease-in-out;
+    }
+    
+    @keyframes stringVibrate {
+      0%, 100% { transform: translateX(0) scaleY(1); opacity: 0.3; }
+      50% { transform: translateX(5px) scaleY(1.1); opacity: 0.8; }
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    .header {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: white;
+    }
+    
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #7c3aed, #a855f7);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+    }
+    
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .btn-dashboard {
+      background: linear-gradient(45deg, #7c3aed, #a855f7);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-dashboard:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(25px);
+      border-radius: 30px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shine 4s infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+    
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-text p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .stat-item {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 1rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .stat-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      display: block;
+    }
+    
+    .stat-label {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    
+    .hero-image {
+      position: relative;
+    }
+    
+    .main-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      border: 3px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    .floating-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #7c3aed, #a855f7);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 20px;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: royalPulse 3s infinite;
+    }
+    
+    @keyframes royalPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4); }
+    }
+    
+    /* Action Buttons */
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(45deg, #7c3aed, #a855f7);
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Content Sections */
+    .content-section {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(25px);
+      border-radius: 25px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .content-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .section-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #7c3aed, #a855f7);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .content-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+    }
+    
+    /* String Configuration */
+    .string-section {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .strings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .string-item {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .string-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.25);
+    }
+    
+    .string-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(45deg, #7c3aed, #a855f7);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .string-item:hover::after {
+      transform: scaleX(1);
+    }
+    
+    .string-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    
+    .string-note {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #c084fc;
+      margin-bottom: 0.5rem;
+    }
+    
+    .string-description {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    
+    /* Interactive Rubab */
+    .interactive-rubab {
+      display: flex;
+      justify-content: center;
+      margin: 3rem 0;
+    }
+    
+    .rubab-body {
+      position: relative;
+      width: 300px;
+      height: 500px;
+      background: linear-gradient(145deg, rgba(139, 69, 19, 0.8), rgba(160, 82, 45, 0.6));
+      border-radius: 50px 50px 20px 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .rubab-body:hover {
+      transform: scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    }
+    
+    .rubab-hole {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      margin-bottom: 2rem;
+    }
+    
+    .rubab-strings {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+      height: 80%;
+    }
+    
+    .rubab-string {
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, #ffd700, #ffed4e);
+      border-radius: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: stringIdle 4s infinite ease-in-out;
+    }
+    
+    .rubab-string:hover {
+      background: linear-gradient(to bottom, #ff6b6b, #feca57);
+      animation: stringPluck 0.5s ease-in-out;
+    }
+    
+    @keyframes stringIdle {
+      0%, 100% { transform: scaleX(1); }
+      50% { transform: scaleX(1.2); }
+    }
+    
+    @keyframes stringPluck {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-3px); }
+      75% { transform: translateX(3px); }
+    }
+    
+    .rubab-neck {
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 100px;
+      background: linear-gradient(145deg, rgba(101, 67, 33, 0.8), rgba(139, 69, 19, 0.6));
+      border-radius: 10px 10px 0 0;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    /* Maqom Scales */
+    .maqom-section {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .maqom-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .maqom-card {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .maqom-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.25);
+    }
+    
+    .maqom-name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 1rem;
+    }
+    
+    .maqom-description {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    
+    .maqom-notes {
+      background: rgba(124, 58, 237, 0.2);
+      padding: 0.5rem;
+      border-radius: 8px;
+      font-family: monospace;
+      color: #c084fc;
+      font-size: 0.9rem;
+    }
+    
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+      color: white;
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: all 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+    
+    /* Audio Player */
+    .audio-player {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .play-btn {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #7c3aed, #a855f7);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .play-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+    }
+    
+    .track-info {
+      flex: 1;
+    }
+    
+    .track-title {
+      font-weight: 600;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    
+    .track-artist {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(45deg, #7c3aed, #a855f7);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    /* Techniques Table */
+    .techniques-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    
+    .techniques-table th,
+    .techniques-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .techniques-table th {
+      background: rgba(255, 255, 255, 0.2);
+      font-weight: 600;
+      color: white;
+    }
+    
+    .techniques-table td {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-stats {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .gallery-grid, .strings-grid, .maqom-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .rubab-body {
+        width: 250px;
+        height: 400px;
+      }
+    }
+    
+    /* Favorite Button */
+    .favorite-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #ef4444, #dc2626);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+    
+    .favorite-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    .favorite-btn.active {
+      background: linear-gradient(45deg, #7c3aed, #a855f7);
+    }
+    
+    /* Comments Section */
+    .comments-section {
+      margin-top: 3rem;
+    }
+    
+    .comment-form {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2rem;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      color: white;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: #7c3aed;
+      box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+    }
+    
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .comment-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .comment-author {
+      font-weight: 600;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    
+    .comment-text {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+    }
+    
+    .comment-date {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+  </style>
 </head>
-<body class="bg-yellow-50 font-sans">
-  <div class="max-w-4xl mx-auto p-6 bg-white mt-10 shadow-lg rounded-lg">
-    <h1 class="text-3xl font-bold text-yellow-900 mb-4">Rubab</h1>
-    <img src="img/rubab.jpg" alt="Rubab" class="w-full h-64 object-cover rounded mb-4">
-    <p class="text-gray-700 mb-2">Bu sahifada Rubab cholg‘usining tarixi, tuzilishi, ohangi, va madaniy ahamiyati haqida ma’lumotlar taqdim etiladi.</p>
-    <ul class="list-disc pl-5 text-gray-700 space-y-1">
-      <li>Tarixi va kelib chiqishi</li>
-      <li>Foydalanish hududlari</li>
-      <li>Material va tuzilma</li>
-      <li>Ohang namunasi</li>
-      <li>Yasash jarayoni haqida</li>
-    </ul>
-    <a href="instruments.html" class="inline-block mt-6 text-yellow-700 hover:underline">⬅️ Cholg‘ular sahifasiga qaytish</a>
-  </div>
-</body>
-</html>
+<body>
+  <!-- Animated background particles -->
+  <div class="particles" id="particles"></div>
+  
+  <!-- String vibration animation -->
+  <div class="string-vibration" id="stringVibration"></div>
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">🎻</div>
+          <div class="logo-text">Cholg'u Lab</div>
+        </a>
+        <nav class="nav-links">
+          <a href="dashboard.html" class="nav-link">🏠 Bosh sahifa</a>
+          <a href="instruments.html" class="nav-link">🎵 Cholg'ular</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <div class="container">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>🎻 Rubab</h1>
+          <p>
+            Rubab - "Sharqning shohi" deb atalgan eng noyob va murakkab torli cholg'u. 
+            6 ta asosiy tor va 11 ta rezonans toriga ega bo'lgan bu asbob o'zbek 
+            klassik musiqasining poeti hisoblanadi. Uning chuqur va boy ovozi 
+            hech kimni befarq qoldirmaydi.
+          </p>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">6+11</span>
+              <span class="stat-label">Torlar soni</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">24</span>
+              <span class="stat-label">Parda</span>
