@@ -407,75 +407,91 @@
       flex-wrap: wrap;
     }
     
-    /* Color Picker */
-    .color-picker {
+    /* Profile Image */
+    .profile-image-section {
       display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-top: 0.5rem;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
     }
     
-    .color-option {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      cursor: pointer;
-      border: 3px solid transparent;
-      transition: all 0.3s ease;
-    }
-    
-    .color-option.active {
-      border-color: white;
-      transform: scale(1.1);
-    }
-    
-    /* File Upload */
-    .file-upload {
+    .profile-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 20px;
+      background: linear-gradient(45deg, #ff6b6b, #feca57);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       position: relative;
-      display: inline-block;
-      cursor: pointer;
-      width: 100%;
+      overflow: hidden;
     }
     
-    .file-upload input[type=file] {
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+    
+    .image-upload {
+      position: relative;
+    }
+    
+    .image-upload input[type=file] {
       position: absolute;
       left: -9999px;
     }
     
-    .file-upload-label {
-      display: flex;
+    .image-upload-label {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 0.5rem;
-      padding: 2rem;
-      border: 2px dashed rgba(255, 255, 255, 0.5);
-      border-radius: 15px;
-      background: rgba(255, 255, 255, 0.1);
+      padding: 0.75rem 1.5rem;
+      background: rgba(255, 255, 255, 0.2);
       color: white;
-      transition: all 0.3s ease;
+      border-radius: 10px;
       cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
     
-    .file-upload-label:hover {
-      border-color: rgba(255, 255, 255, 0.8);
-      background: rgba(255, 255, 255, 0.2);
+    .image-upload-label:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
     }
     
-    /* Progress Bar */
-    .progress-bar {
-      width: 100%;
-      height: 8px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-top: 0.5rem;
+    /* Statistics Cards */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
     }
     
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(45deg, #ff6b6b, #feca57);
-      border-radius: 10px;
-      transition: width 0.3s ease;
+    .stat-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
     }
     
     /* Mobile Responsive */
@@ -512,6 +528,15 @@
       
       .btn {
         justify-content: center;
+      }
+      
+      .profile-image-section {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
     
@@ -645,7 +670,7 @@
       <!-- Header -->
       <div class="header">
         <h1>Sozlamalar ⚙️</h1>
-        <p>Tizim sozlamalari, foydalanuvchi parametrlari va sayt konfiguratsiyasini boshqarish uchun bosh panel. Bu yerda barcha muhim sozlamalarni o'zgartirishingiz mumkin.</p>
+        <p>Shaxsiy profilingiz va foydalanuvchi parametrlarini sozlash uchun bosh panel. Bu yerda o'zingizga qulay muhitni yarating.</p>
       </div>
       
       <!-- Success Message -->
@@ -657,135 +682,22 @@
       <!-- Settings Grid -->
       <div class="settings-grid">
         
-        <!-- General Settings -->
+        <!-- Profile Settings -->
         <div class="settings-section">
           <div class="section-header">
             <div class="section-icon">
-              <i class="fas fa-globe"></i>
+              <i class="fas fa-user"></i>
             </div>
-            <h3 class="section-title">Umumiy sozlamalar</h3>
+            <h3 class="section-title">Ko'rinish sozlamalari</h3>
           </div>
           
           <div class="form-group">
-            <label class="form-label">Sayt nomi</label>
-            <input type="text" class="form-input" value="O'zbek Cholg'u Laboratoriyasi" placeholder="Sayt nomini kiriting">
-          </div>
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Til</label>
-              <select class="form-select">
-                <option value="uz" selected>O'zbekcha</option>
-                <option value="ru">Русский</option>
-                <option value="en">English</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Vaqt zonasi</label>
-              <select class="form-select">
-                <option value="asia/tashkent" selected>Toshkent (GMT+5)</option>
-                <option value="asia/samarkand">Samarqand (GMT+5)</option>
-                <option value="utc">UTC (GMT+0)</option>
-              </select>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label class="form-label">Sayt tavsifi</label>
-            <textarea class="form-textarea" placeholder="Sayt haqida qisqacha ma'lumot">O'zbek xalq cholg'u asboblarini o'rganish uchun eng yaxshi platforma. Bu yerda barcha ma'lumotlar professional darajada taqdim etiladi.</textarea>
-          </div>
-          
-          <div class="toggle-label">
-            <span>Saytni faol rejimda saqlash</span>
-            <label class="toggle-switch">
-              <input type="checkbox" checked>
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-        
-        <!-- User Settings -->
-        <div class="settings-section">
-          <div class="section-header">
-            <div class="section-icon">
-              <i class="fas fa-users"></i>
-            </div>
-            <h3 class="section-title">Foydalanuvchi sozlamalari</h3>
-          </div>
-          
-          <div class="toggle-label">
-            <span>Yangi foydalanuvchilar ro'yxatdan o'ta olsin</span>
-            <label class="toggle-switch">
-              <input type="checkbox" checked>
-              <span class="slider"></span>
-            </label>
-          </div>
-          
-          <div class="toggle-label">
-            <span>Email tasdiqlash majburiy bo'lsin</span>
-            <label class="toggle-switch">
-              <input type="checkbox" checked>
-              <span class="slider"></span>
-            </label>
-          </div>
-          
-          <div class="toggle-label">
-            <span>Izohlar moderatsiyadan o'tsin</span>
-            <label class="toggle-switch">
-              <input type="checkbox">
-              <span class="slider"></span>
-            </label>
-          </div>
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Maksimal izoh uzunligi</label>
-              <input type="number" class="form-input" value="500" placeholder="Belgilar soni">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Kunlik izohlar soni</label>
-              <input type="number" class="form-input" value="10" placeholder="Bir kunlik limit">
-            </div>
-          </div>
-        </div>
-        
-        <!-- Theme Settings -->
-        <div class="settings-section">
-          <div class="section-header">
-            <div class="section-icon">
-              <i class="fas fa-palette"></i>
-            </div>
-            <h3 class="section-title">Mavzu va dizayn</h3>
-          </div>
-          
-          <div class="form-group">
-            <label class="form-label">Asosiy rang sxemasi</label>
-            <div class="color-picker">
-              <div class="color-option active" style="background: linear-gradient(45deg, #667eea, #764ba2);" data-theme="default"></div>
-              <div class="color-option" style="background: linear-gradient(45deg, #ff6b6b, #feca57);" data-theme="warm"></div>
-              <div class="color-option" style="background: linear-gradient(45deg, #4ecdc4, #44a08d);" data-theme="cool"></div>
-              <div class="color-option" style="background: linear-gradient(45deg, #a8edea, #fed6e3);" data-theme="pastel"></div>
-              <div class="color-option" style="background: linear-gradient(45deg, #2c3e50, #34495e);" data-theme="dark"></div>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label class="form-label">Logo yuklash</label>
-            <div class="file-upload">
-              <input type="file" id="logoUpload" accept="image/*">
-              <label for="logoUpload" class="file-upload-label">
-                <i class="fas fa-cloud-upload-alt"></i>
-                <span>Logo faylini tanlang</span>
-              </label>
-            </div>
-          </div>
-          
-          <div class="toggle-label">
-            <span>Animatsiyalarni yoqish</span>
-            <label class="toggle-switch">
-              <input type="checkbox" checked>
-              <span class="slider"></span>
-            </label>
+            <label class="form-label">Til</label>
+            <select class="form-select">
+              <option value="uz" selected>O'zbekcha</option>
+              <option value="ru">Русский</option>
+              <option value="en">English</option>
+            </select>
           </div>
           
           <div class="toggle-label">
@@ -795,20 +707,108 @@
               <span class="slider"></span>
             </label>
           </div>
+          
+          <div class="toggle-label">
+            <span>Animatsiyalarni ko'rsatish</span>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="toggle-label">
+            <span>Tovushli bildirishnomalar</span>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Shrift o'lchami</label>
+            <select class="form-select">
+              <option value="small">Kichik</option>
+              <option value="medium" selected>O'rta</option>
+              <option value="large">Katta</option>
+            </select>
+          </div>
         </div>
         
-        <!-- Security Settings -->
+        <!-- Notification Settings -->
+        <div class="settings-section">
+          <div class="section-header">
+            <div class="section-icon">
+              <i class="fas fa-bell"></i>
+            </div>
+            <h3 class="section-title">Bildirishnomalar</h3>
+          </div>
+          
+          <div class="toggle-label">
+            <span>Email bildirishnomalar</span>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="toggle-label">
+            <span>Yangi izohlar haqida xabar</span>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="toggle-label">
+            <span>Yangi cholg'ular haqida xabar</span>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="toggle-label">
+            <span>Haftalik xulosalar</span>
+            <label class="toggle-switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Bildirishnoma vaqti</label>
+            <select class="form-select">
+              <option value="instant" selected>Darhol</option>
+              <option value="daily">Kunlik</option>
+              <option value="weekly">Haftalik</option>
+              <option value="never">Hech qachon</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Privacy Settings -->
         <div class="settings-section">
           <div class="section-header">
             <div class="section-icon">
               <i class="fas fa-shield-alt"></i>
             </div>
-            <h3 class="section-title">Xavfsizlik sozlamalari</h3>
+            <h3 class="section-title">Maxfiylik va xavfsizlik</h3>
           </div>
           
-          <div class="form-group">
-            <label class="form-label">Minimal parol uzunligi</label>
-            <input type="number" class="form-input" value="8" min="6" max="20">
+          <div class="toggle-label">
+            <span>Profilni ommaga ko'rsatish</span>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="toggle-label">
+            <span>Faoliyat tarixini ko'rsatish</span>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
           </div>
           
           <div class="toggle-label">
@@ -819,57 +819,11 @@
             </label>
           </div>
           
-          <div class="toggle-label">
-            <span>IP manzil bloklash</span>
-            <label class="toggle-switch">
-              <input type="checkbox" checked>
-              <span class="slider"></span>
-            </label>
-          </div>
-          
           <div class="form-group">
-            <label class="form-label">Session vaqti (daqiqa)</label>
-            <input type="number" class="form-input" value="120" placeholder="Session davomiyligi">
-          </div>
-          
-          <div class="toggle-label">
-            <span>Brute force himoyasi</span>
-            <label class="toggle-switch">
-              <input type="checkbox" checked>
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-        
-        <!-- Email Settings -->
-        <div class="settings-section">
-          <div class="section-header">
-            <div class="section-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <h3 class="section-title">Email sozlamalari</h3>
+            <label class="form-label">Joriy parol</label>
+            <input type="password" class="form-input" placeholder="Joriy parolingizni kiriting">
           </div>
           
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">SMTP server</label>
-              <input type="text" class="form-input" value="smtp.gmail.com" placeholder="SMTP server manzili">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Port</label>
-              <input type="number" class="form-input" value="587" placeholder="Port raqami">
-            </div>
-          </div>
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Email manzil</label>
-              <input type="email" class="form-input" placeholder="admin@cholgulab.uz">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Jo'natuvchi nomi</label>
-              <input type="text" class="form-input" value="Cholg'u Laboratoriyasi" placeholder="Jo'natuvchi nomi">
-            </div>
-          </div>
-          
-          <div class="toggle-label">
+              <label class="form-label">Yangi parol
