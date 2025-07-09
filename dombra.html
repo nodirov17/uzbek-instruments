@@ -3,22 +3,1855 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dombra - Cholg‘u Tafsiloti</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Dombra - O'zbek Cholg'u Laboratoriyasi</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #2563eb 0%, #3b82f6 25%, #60a5fa 50%, #93c5fd 75%, #dbeafe 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    /* Animated background particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      animation: float 20s infinite linear;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    /* String vibration animation */
+    .string-vibration {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    
+    .string-line {
+      position: absolute;
+      width: 2px;
+      height: 100vh;
+      background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.2), transparent);
+      animation: stringVibrate 3s infinite ease-in-out;
+    }
+    
+    @keyframes stringVibrate {
+      0%, 100% { transform: translateX(0) scaleY(1); opacity: 0.3; }
+      50% { transform: translateX(5px) scaleY(1.1); opacity: 0.8; }
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    .header {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: white;
+    }
+    
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #2563eb, #3b82f6);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+    }
+    
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .btn-dashboard {
+      background: linear-gradient(45deg, #2563eb, #3b82f6);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-dashboard:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(25px);
+      border-radius: 30px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shine 4s infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+    
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-text p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .stat-item {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 1rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .stat-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      display: block;
+    }
+    
+    .stat-label {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    
+    .hero-image {
+      position: relative;
+    }
+    
+    .main-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      border: 3px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    .floating-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #2563eb, #3b82f6);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 20px;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: steppeFlutter 3s infinite;
+    }
+    
+    @keyframes steppeFlutter {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4); }
+    }
+    
+    /* Action Buttons */
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(45deg, #2563eb, #3b82f6);
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Content Sections */
+    .content-section {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(25px);
+      border-radius: 25px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .content-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .section-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #2563eb, #3b82f6);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .content-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+    }
+    
+    /* Interactive Dombra */
+    .interactive-dombra {
+      display: flex;
+      justify-content: center;
+      margin: 3rem 0;
+    }
+    
+    .dombra-body {
+      position: relative;
+      width: 250px;
+      height: 450px;
+      background: linear-gradient(145deg, rgba(139, 69, 19, 0.8), rgba(160, 82, 45, 0.6));
+      border-radius: 40px 40px 15px 15px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .dombra-body:hover {
+      transform: scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    }
+    
+    .dombra-hole {
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      margin-bottom: 2rem;
+    }
+    
+    .dombra-strings {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 40px;
+      height: 80%;
+    }
+    
+    .dombra-string {
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, #ffd700, #ffed4e);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: stringIdle 4s infinite ease-in-out;
+    }
+    
+    .dombra-string:hover {
+      background: linear-gradient(to bottom, #ff6b6b, #feca57);
+      animation: stringPluck 0.5s ease-in-out;
+    }
+    
+    @keyframes stringIdle {
+      0%, 100% { transform: scaleX(1); }
+      50% { transform: scaleX(1.3); }
+    }
+    
+    @keyframes stringPluck {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+    
+    .dombra-neck {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 80px;
+      background: linear-gradient(145deg, rgba(101, 67, 33, 0.8), rgba(139, 69, 19, 0.6));
+      border-radius: 8px 8px 0 0;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    /* String Configuration */
+    .string-section {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .strings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .string-item {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .string-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.25);
+    }
+    
+    .string-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(45deg, #2563eb, #3b82f6);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .string-item:hover::after {
+      transform: scaleX(1);
+    }
+    
+    .string-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    
+    .string-note {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #60a5fa;
+      margin-bottom: 0.5rem;
+    }
+    
+    .string-description {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    
+    /* Kui Scales */
+    .kui-section {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .kui-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .kui-card {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .kui-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.25);
+    }
+    
+    .kui-name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 1rem;
+    }
+    
+    .kui-description {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    
+    .kui-style {
+      background: rgba(37, 99, 235, 0.2);
+      padding: 0.5rem;
+      border-radius: 8px;
+      font-family: monospace;
+      color: #60a5fa;
+      font-size: 0.9rem;
+    }
+    
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+      color: white;
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: all 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+    
+    /* Audio Player */
+    .audio-player {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .play-btn {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #2563eb, #3b82f6);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .play-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+    }
+    
+    .track-info {
+      flex: 1;
+    }
+    
+    .track-title {
+      font-weight: 600;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    
+    .track-artist {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+    }
+    
+    .track-duration {
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 500;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(45deg, #2563eb, #3b82f6);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    /* Techniques Table */
+    .techniques-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    
+    .techniques-table th,
+    .techniques-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .techniques-table th {
+      background: rgba(255, 255, 255, 0.2);
+      font-weight: 600;
+      color: white;
+    }
+    
+    .techniques-table td {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    /* Comments Section */
+    .comments-section {
+      margin-top: 3rem;
+    }
+    
+    .comment-form {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2rem;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      color: white;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+    }
+    
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .comment-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .comment-author {
+      font-weight: 600;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    
+    .comment-text {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+    
+    .comment-date {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+    
+    /* Favorite Button */
+    .favorite-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #ef4444, #dc2626);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+    
+    .favorite-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    .favorite-btn.active {
+      background: linear-gradient(45deg, #2563eb, #3b82f6);
+    }
+    
+    /* Notification */
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .notification.show {
+      transform: translateX(0);
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-stats {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .gallery-grid, .strings-grid, .kui-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .dombra-body {
+        width: 200px;
+        height: 350px;
+      }
+      
+      .techniques-table {
+        font-size: 0.9rem;
+      }
+      
+      .techniques-table th,
+      .techniques-table td {
+        padding: 0.5rem;
+      }
+    }
+  </style>
 </head>
-<body class="bg-yellow-50 font-sans">
-  <div class="max-w-4xl mx-auto p-6 bg-white mt-10 shadow-lg rounded-lg">
-    <h1 class="text-3xl font-bold text-yellow-900 mb-4">Dombra</h1>
-    <img src="img/dombra.jpg" alt="Dombra" class="w-full h-64 object-cover rounded mb-4">
-    <p class="text-gray-700 mb-2">Bu sahifada Dombra cholg‘usining tarixi, tuzilishi, ohangi, va madaniy ahamiyati haqida ma’lumotlar taqdim etiladi.</p>
-    <ul class="list-disc pl-5 text-gray-700 space-y-1">
-      <li>Tarixi va kelib chiqishi</li>
-      <li>Foydalanish hududlari</li>
-      <li>Material va tuzilma</li>
-      <li>Ohang namunasi</li>
-      <li>Yasash jarayoni haqida</li>
-    </ul>
-    <a href="instruments.html" class="inline-block mt-6 text-yellow-700 hover:underline">⬅️ Cholg‘ular sahifasiga qaytish</a>
+<body>
+  <!-- Animated background particles -->
+  <div class="particles" id="particles"></div>
+  
+  <!-- String vibration animation -->
+  <div class="string-vibration" id="stringVibration"></div>
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">🎻</div>
+          <div class="logo-text">Cholg'u Lab</div>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html" class="nav-link">🏠 Bosh sahifa</a>
+          <a href="instruments.html" class="nav-link">🎵 Cholg'ular</a>
+          <a href="dashboard.html" class="btn-dashboard">📊 Dashboard</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <div class="container">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>🎸 Dombra</h1>
+          <p>
+            Dombra - qozoq va qozoq-o'zbek hududlarining eng mashhur ikki torli cholg'usi. 
+            Oddiy ko'rinishiga qaramay, bu asbob chuqur ma'noga ega va dala hayotining 
+            barcha jihatlarini aks ettira oladi. Dombra - qahramonlik dostonlari va 
+            lirik qo'shiqlarning sodiq hamrohi.
+          </p>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">2</span>
+              <span class="stat-label">Torlar soni</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">13</span>
+              <span class="stat-label">Parda</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">85cm</span>
+              <span class="stat-label">Uzunlik</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">1500+</span>
+              <span class="stat-label">Yillik tarix</span>
+            </div>
+          </div>
+          
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="playDombraSound()">
+              <i class="fas fa-play"></i>
+              Dombra ovozini eshitish
+            </button>
+            <button class="btn btn-secondary" onclick="showKuiInfo()">
+              <i class="fas fa-music"></i>
+              Kui ma'lumotlari
+            </button>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1520637836862-4d197d17c38a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dombra" class="main-image">
+          <div class="floating-badge">
+            🏔️ Dala ovozi
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Interactive Dombra Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎯</div>
+        Interaktiv dombra
+      </h2>
+      <div class="content-text">
+        <p>
+          Quyidagi dombra tasviriga bosib, torlarni chalishni sinab ko'ring. 
+          Ikki tor turli ovozlar chiqaradi va birgalikda chiroyli uyg'unlik yaratadi.
+        </p>
+      </div>
+      
+      <div class="interactive-dombra">
+        <div class="dombra-body" onclick="playDombraBody()">
+          <div class="dombra-neck"></div>
+          <div class="dombra-hole"></div>
+          <div class="dombra-strings">
+            <div class="dombra-string" onclick="playString(1, event)" data-note="E"></div>
+            <div class="dombra-string" onclick="playString(2, event)" data-note="A"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- String Configuration Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎼</div>
+        Torlar konfiguratsiyasi
+      </h2>
+      
+      <div class="string-section">
+        <h3 style="color: white; font-weight: 600; margin-bottom: 1rem;">Ikki asosiy tor</h3>
+        <div class="strings-grid">
+          <div class="string-item" onclick="playStringInfo('first')">
+            <div class="string-name">1-tor (Yuqori tor)</div>
+            <div class="string-note">E</div>
+            <div class="string-description">
+              Yupqa tor, yuqori ovozlar uchun. Melodiya va bezak notalari ijro qilinadi. 
+              Bu tor eng ko'p ishlatiladi va asosiy kuy liniyalarini olib boradi.
+            </div>
+          </div>
+          
+          <div class="string-item" onclick="playStringInfo('second')">
+            <div class="string-name">2-tor (Pastki tor)</div>
+            <div class="string-note">A</div>
+            <div class="string-description">
+              Qalin tor, bass va ritm uchun. Asosiy akkord va ostinato naqshlarini yaratadi. 
+              Bu tor dombra ovozining to'liqligini ta'minlaydi.
+            </div>
+          </div>
+        </div>
+        
+        <h3 style="color: white; font-weight: 600; margin: 2rem 0 1rem 0;">Sozlash usullari</h3>
+        <div class="content-text">
+          <p>
+            Dombra turli usullarda sozlanishi mumkin - bu ijrochiningen maqsadi va 
+            ijro qilinadigan kuyga qarab o'zgaradi. Eng mashhur sozlash - E va A notelari.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Kui Section -->
+    <section class="content-section" id="kuiSection">
+      <h2 class="section-title">
+        <div class="section-icon">🎭</div>
+        Dombra kuylari
+      </h2>
+      <div class="content-text">
+        <p>
+          Kui - qozoq xalqining eng qadimiy musiqiy janri. Har bir kui alohida hikoya, 
+          his-tuyg'u yoki voqeani aks ettiradi. Dombra kuylari odatda instrumental bo'ladi.
+        </p>
+      </div>
+      
+      <div class="kui-section">
+        <div class="kui-grid">
+          <div class="kui-card" onclick="playKui('adai')">
+            <div class="kui-name">🏇 Adai</div>
+            <div class="kui-description">
+              Mashhur qahramonlik kuyi. Otliqning tez yugurishi va jangchilarning 
+              jasoratini aks ettiradi. Tez tempda ijro qilinadi.
+            </div>
+            <div class="kui-style">Jangchilik uslubi</div>
+          </div>
+          
+          <div class="kui-card" onclick="playKui('saryarka')">
+            <div class="kui-name">🏜️ Saryarka</div>
+            <div class="kui-description">
+              Qozoq dalalarining go'zalligini tasvirlovchi lirik kui. Tabiat manzaralari 
+              va ona yurtga bo'lgan sevgini ifodalaydi.
+            </div>
+            <div class="kui-style">Lirik uslub</div>
+          </div>
+          
+          <div class="kui-card" onclick="playKui('korkyt')">
+            <div class="kui-name">🎼 Qorqyt</div>
+            <div class="kui-description">
+              Afsonaviy Qorqyt Ata sharafiga yaratilgan kui. Chuqur falsafiy ma'noga 
+              ega va hayot-mamot haqida o'ylashga undaydi.
+            </div>
+            <div class="kui-style">Falsafiy uslub</div>
+          </div>
+          
+          <div class="kui-card" onclick="playKui('balkaymak')">
+            <div class="kui-name">🍯 Balqaymaq</div>
+            <div class="kui-description">
+              Sevgi va mehr haqidagi nozik kui. Yoshlarning birinchi muhabbati va 
+              hayotning shirinliklarini aks ettiradi.
+            </div>
+            <div class="kui-style">Romantik uslub</div>
+          </div>
+          
+          <div class="kui-card" onclick="playKui('kambar')">
+            <div class="kui-name">⚔️ Qambar batyr</div>
+            <div class="kui-description">
+              Qahramonlik dostonlaridan ilhomlantirilgan kui. Batyrlarga bag'ishlangan 
+              va ularning jasoratini ulug'laydi.
+            </div>
+            <div class="kui-style">Epik uslub</div>
+          </div>
+          
+          <div class="kui-card" onclick="playKui('altynai')">
+            <div class="kui-name">🌙 Altynay</div>
+            <div class="kui-description">
+              Ayol go'zalligini ulug'lovchi nozik kui. Ona, xotin va qizlarning 
+              pokligini e'tirof etadi.
+            </div>
+            <div class="kui-style">Madh uslubi</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- History Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">📜</div>
+        Tarix va madaniy ahamiyati
+      </h2>
+      <div class="content-text">
+        <p>
+          Dombra qozoq xalqining milliy cholg'usi bo'lib, ko'chmanchi hayot tarzi bilan 
+          chambarchas bog'liq. Har bir qozoq oilasida dombra bo'lgan va bolalar yoshlikdan 
+          bu asbobni chalishni o'rganganlar.
+        </p>
+        <br>
+        <p>
+          Afsonalarga ko'ra, dombra Qorqyt Ata tomonidan yaratilgan. U birinchi dombrani 
+          yasab, unga ruhi kirgan va shu orqali o'lim ustidan g'alaba qozongan. 
+          Shuning uchun dombra faqat cholg'u emas, balki qudratli ramz hisoblanadi.
+        </p>
+      </div>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Qadimiy dombra">
+          <div class="gallery-overlay">
+            <h4>Qadimiy dombra namunasi</h4>
+            <p>XVII asr</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1520637736862-4d197d17c38a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dombra ustasi">
+          <div class="gallery-overlay">
+            <h4>Dombra ijrochisi</h4>
+            <p>An'anaviy libos bilan</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Zamonaviy dombra">
+          <div class="gallery-overlay">
+            <h4>Zamonaviy dombra ijrosi</h4>
+            <p>Hozirgi kunda</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Audio Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎵</div>
+        Audio namunalar va ijro ustaligi
+      </h2>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track1')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">Adai kuyi</div>
+            <div class="track-artist">An'anaviy ijro</div>
+          </div>
+          <span class="track-duration">4:15</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress1"></div>
+        </div>
+      </div>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track2')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">Saryarka kuyi</div>
+            <div class="track-artist">Zamonaviy talqin</div>
+          </div>
+          <span class="track-duration">5:30</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress2"></div>
+        </div>
+      </div>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track3')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">Qorqyt Ata kuyi</div>
+            <div class="track-artist">Klassik ijro</div>
+          </div>
+          <span class="track-duration">6:45</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress3"></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Techniques Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎯</div>
+        Ijro texnikasi va o'rganish
+      </h2>
+      <div class="content-text">
+        <p>
+          Dombra chalish nisbatan oson bo'lsa-da, professional darajaga yetish uchun 
+          ko'p mashq va sabr kerak. Asosiy texnikalar sodda, lekin ularni mukammal 
+          bajarish san'at talab qiladi.
+        </p>
+      </div>
+      
+      <table class="techniques-table">
+        <thead>
+          <tr>
+            <th>Texnika</th>
+            <th>Tavsif</th>
+            <th>Qiyinlik</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Oddiy urish</td>
+            <td>Barmoq bilan torni pastga urish</td>
+            <td>⭐</td>
+          </tr>
+          <tr>
+            <td>Pinching</td>
+            <td>Ikkala torni bir vaqtda chalish</td>
+            <td>⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Tremolo</td>
+            <td>Tez-tez urish texnikasi</td>
+            <td>⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Bend</td>
+            <td>Torni cho'zib ovoz o'zgartirish</td>
+            <td>⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Harmonics</td>
+            <td>Tabiiy garmonikalar yaratish</td>
+            <td>⭐⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Virtuoz ijro</td>
+            <td>Murakkab kuylarda mahir ijro</td>
+            <td>⭐⭐⭐⭐⭐</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div style="margin-top: 2rem;">
+        <h3 style="color: white; font-weight: 600; margin-bottom: 1rem;">O'rganish bosqichlari:</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+          <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <h4 style="color: white; margin-bottom: 0.5rem;">1-bosqich: Dombrani ushlab turish</h4>
+            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">To'g'ri o'tirish va asbobni tutish</p>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <h4 style="color: white; margin-bottom: 0.5rem;">2-bosqich: Oddiy urishlar</h4>
+            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Barmoq bilan asosiy zarbalar</p>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <h4 style="color: white; margin-bottom: 0.5rem;">3-bosqich: Sodda kuylar</h4>
+            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Oson xalq kuylari o'rganish</p>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <h4 style="color: white; margin-bottom: 0.5rem;">4-bosqich: Klassik kuylar</h4>
+            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Adai, Qorqyt kabi kuylarga o'tish</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Comments Section -->
+    <section class="content-section comments-section">
+      <h2 class="section-title">
+        <div class="section-icon">💬</div>
+        Izohlar va tajribalar
+      </h2>
+      
+      <div class="comment-form">
+        <h3 style="color: white; margin-bottom: 1rem;">Dombra haqida fikringizni bildiring</h3>
+        <form onsubmit="addComment(event)">
+          <div class="form-group">
+            <label class="form-label">Ismingiz</label>
+            <input type="text" class="form-input" required placeholder="Ismingizni kiriting">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tajribangiz yoki fikringiz</label>
+            <textarea class="form-textarea" required placeholder="Dombra chalish tajribangiz, xalq kuylari haqida fikringiz yoki bu asbob haqida mulohazalaringizni baham ko'ring..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i>
+            Izoh yuborish
+          </button>
+        </form>
+      </div>
+      
+      <div id="commentsList">
+        <div class="comment-item">
+          <div class="comment-author">🎸 Asqar Nazarbayev</div>
+          <div class="comment-text">
+            Bolaligimdan dombra chalaman. Bu asbob haqiqatan ham dalaning ruhi. 
+            Har bir kuyning o'z hikoyasi bor. Bu sahifadagi kui ma'lumotlari juda to'g'ri.
+          </div>
+          <div class="comment-date">2025-07-07</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">🏔️ Aida Qasymova</div>
+          <div class="comment-text">
+            Bobom dombra ijrochisi edi. Uning "Adai" ijrosi hali ham quloqlarimda jaranglaydi. 
+            Bu sahifa orqali yoshlar ham dombra bilan tanishishi mumkin.
+          </div>
+          <div class="comment-date">2025-07-06</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">🎵 Nurlan Abdullayev</div>
+          <div class="comment-text">
+            Qozoq musiqasi haqida o'rganmoqchiman. Bu sahifadagi audio namunalar va 
+            texnika tushuntirishlari juda yordam berdi. Interaktiv dombra ham ajoyib!
+          </div>
+          <div class="comment-date">2025-07-05</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">🌟 Gulshat Omarova</div>
+          <div class="comment-text">
+            Konservatoriyada dombra o'qitaman. Talabalarimga bu sahifani ko'rsataman. 
+            Ayniqsa, kuylardagi ma'lumotlar va tarixiy qism juda qimmatli.
+          </div>
+          <div class="comment-date">2025-07-04</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Related Instruments -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎵</div>
+        O'xshash cholg'ular
+      </h2>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="location.href='rubab.html'">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Rubab">
+          <div class="gallery-overlay">
+            <h4>🎻 Rubab</h4>
+            <p>Sharqning shohi</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="location.href='dutar.html'">
+          <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dutar">
+          <div class="gallery-overlay">
+            <h4>🎸 Dutar</h4>
+            <p>Ikki torli cholg'u</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="location.href='qobuz.html'">
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Qobuz">
+          <div class="gallery-overlay">
+            <h4>🎵 Qobuz</h4>
+            <p>Qipchoq cholg'usi</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
+  
+  <!-- Favorite Button -->
+  <button class="favorite-btn" onclick="toggleFavorite()" id="favoriteBtn">
+    <i class="far fa-heart"></i>
+  </button>
+  
+  <script>
+    // Create animated particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 30;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        const size = Math.random() * 6 + 2;
+        const left = Math.random() * 100;
+        const delay = Math.random() * 20;
+        const duration = Math.random() * 15 + 10;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${left}%`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.animationDuration = `${duration}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Create string vibration effect
+    function createStringVibration() {
+      const stringContainer = document.getElementById('stringVibration');
+      const stringCount = 2; // Dombra faqat 2 ta tor
+      
+      for (let i = 0; i < stringCount; i++) {
+        const string = document.createElement('div');
+        string.className = 'string-line';
+        
+        const left = 30 + (i * 40); // 2 ta torni kengroq joylashtirish
+        const delay = i * 0.8;
+        
+        string.style.left = `${left}%`;
+        string.style.animationDelay = `${delay}s`;
+        
+        stringContainer.appendChild(string);
+      }
+    }
+    
+    // Audio player functionality
+    let currentPlaying = null;
+    let currentProgress = null;
+    
+    function togglePlay(button, trackId) {
+      const icon = button.querySelector('i');
+      const progressElement = document.getElementById('progress' + trackId.slice(-1));
+      
+      if (currentPlaying && currentPlaying !== button) {
+        const currentIcon = currentPlaying.querySelector('i');
+        currentIcon.className = 'fas fa-play';
+        if (currentProgress) {
+          clearInterval(currentProgress);
+        }
+      }
+      
+      if (icon.classList.contains('fa-play')) {
+        icon.className = 'fas fa-pause';
+        currentPlaying = button;
+        
+        let progress = 0;
+        currentProgress = setInterval(() => {
+          progress += 0.4;
+          progressElement.style.width = progress + '%';
+          
+          if (progress >= 100) {
+            clearInterval(currentProgress);
+            icon.className = 'fas fa-play';
+            progressElement.style.width = '0%';
+            currentPlaying = null;
+          }
+        }, 100);
+        
+      } else {
+        icon.className = 'fas fa-play';
+        clearInterval(currentProgress);
+        progressElement.style.width = '0%';
+        currentPlaying = null;
+      }
+    }
+    
+    // Play dombra sound
+    function playDombraSound() {
+      const button = event.target;
+      const originalText = button.innerHTML;
+      
+      button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Dombra sadosi...';
+      button.disabled = true;
+      
+      const strings = document.querySelectorAll('.string-line');
+      strings.forEach((string, index) => {
+        setTimeout(() => {
+          string.style.animationDuration = '0.4s';
+          string.style.opacity = '1';
+        }, index * 200);
+      });
+      
+      setTimeout(() => {
+        button.innerHTML = originalText;
+        button.disabled = false;
+        
+        strings.forEach(string => {
+          string.style.animationDuration = '3s';
+          string.style.opacity = '';
+        });
+      }, 3000);
+    }
+    
+    // Play string sound
+    function playString(stringNum, event) {
+      if (event) {
+        event.stopPropagation();
+      }
+      
+      const stringElement = event.target;
+      const note = stringElement.getAttribute('data-note');
+      
+      stringElement.style.background = 'linear-gradient(to bottom, #60a5fa, #3b82f6)';
+      stringElement.style.animation = 'stringPluck 0.6s ease-in-out';
+      
+      setTimeout(() => {
+        stringElement.style.background = '';
+        stringElement.style.animation = '';
+      }, 600);
+      
+      showNotification(`${stringNum}-tor chalingan: ${note} 🎸`, 'info');
+    }
+    
+    // Play dombra body
+    function playDombraBody() {
+      const strings = document.querySelectorAll('.dombra-string');
+      strings.forEach((string, index) => {
+        setTimeout(() => {
+          string.style.background = 'linear-gradient(to bottom, #60a5fa, #3b82f6)';
+          string.style.animation = 'stringPluck 0.6s ease-in-out';
+        }, index * 150);
+      });
+      
+      setTimeout(() => {
+        strings.forEach(string => {
+          string.style.background = '';
+          string.style.animation = '';
+        });
+      }, 1200);
+      
+      showNotification('Ikkala tor chalingan! 🎶', 'success');
+    }
+    
+    // Play string info
+    function playStringInfo(stringType) {
+      const stringNames = {
+        'first': 'Yuqori tor (E)',
+        'second': 'Pastki tor (A)'
+      };
+      
+      showNotification(`${stringNames[stringType]} chalindi`, 'info');
+    }
+    
+    // Play kui
+    function playKui(kuiName) {
+      const kuiNames = {
+        'adai': 'Adai kuyi',
+        'saryarka': 'Saryarka kuyi',
+        'korkyt': 'Qorqyt Ata kuyi',
+        'balkaymak': 'Balqaymaq kuyi',
+        'kambar': 'Qambar batyr kuyi',
+        'altynai': 'Altynay kuyi'
+      };
+      
+      showNotification(`${kuiNames[kuiName]} ijro qilindi 🎭`, 'success');
+    }
+    
+    // Show kui info
+    function showKuiInfo() {
+      document.getElementById('kuiSection').scrollIntoView({ 
+        behavior: 'smooth' 
+      });
+      showNotification('Kui ma\'lumotlari ko\'rsatildi', 'info');
+    }
+    
+    // Add comment
+    function addComment(event) {
+      event.preventDefault();
+      
+      const form = event.target;
+      const name = form.querySelector('input[type="text"]').value;
+      const text = form.querySelector('textarea').value;
+      
+      const commentsList = document.getElementById('commentsList');
+      const newComment = document.createElement('div');
+      newComment.className = 'comment-item';
+      
+      const today = new Date().toISOString().split('T')[0];
+      
+      newComment.innerHTML = `
+        <div class="comment-author">🎸 ${name}</div>
+        <div class="comment-text">${text}</div>
+        <div class="comment-date">${today}</div>
+      `;
+      
+      commentsList.insertBefore(newComment, commentsList.firstChild);
+      
+      form.reset();
+      showNotification('Izohingiz muvaffaqiyatli qo\'shildi!', 'success');
+    }
+    
+    // Toggle favorite
+    function toggleFavorite() {
+      const btn = document.getElementById('favoriteBtn');
+      const icon = btn.querySelector('i');
+      
+      if (btn.classList.contains('active')) {
+        btn.classList.remove('active');
+        icon.className = 'far fa-heart';
+        showNotification('Sevimlilardan olib tashlandi', 'info');
+      } else {
+        btn.classList.add('active');
+        icon.className = 'fas fa-heart';
+        showNotification('Sevimlilarga qo\'shildi ❤️', 'success');
+      }
+    }
+    
+    // Show notification
+    function showNotification(message, type = 'info') {
+      const existingNotification = document.querySelector('.notification');
+      if (existingNotification) {
+        existingNotification.remove();
+      }
+      
+      const notification = document.createElement('div');
+      notification.className = 'notification';
+      notification.textContent = message;
+      
+      if (type === 'success') {
+        notification.style.background = 'linear-gradient(45deg, #10b981, #059669)';
+        notification.style.color = 'white';
+      } else if (type === 'error') {
+        notification.style.background = 'linear-gradient(45deg, #ef4444, #dc2626)';
+        notification.style.color = 'white';
+      }
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.classList.add('show');
+      }, 100);
+      
+      setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+          notification.remove();
+        }, 300);
+      }, 3000);
+    }
+    
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      createParticles();
+      createStringVibration();
+      
+      // Add smooth scrolling to all internal links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      
+      // Add loading animation to images
+      const images = document.querySelectorAll('img');
+      images.forEach(img => {
+        img.addEventListener('load', function() {
+          this.style.opacity = '1';
+        });
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.5s ease';
+      });
+      
+      // Initialize parallax effect for hero section
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero');
+        if (hero) {
+          hero.style.transform = `translateY(${scrolled * 0.1}px)`;
+        }
+      });
+      
+      // Add intersection observer for animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      // Observe all content sections
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(50px)';
+        section.style.transition = 'all 0.6s ease';
+        observer.observe(section);
+      });
+      
+      // Add keyboard shortcuts
+      document.addEventListener('keydown', function(e) {
+        // Space bar to play/pause first audio
+        if (e.code === 'Space' && !e.target.matches('input, textarea')) {
+          e.preventDefault();
+          const firstPlayBtn = document.querySelector('.play-btn');
+          if (firstPlayBtn) {
+            togglePlay(firstPlayBtn, 'track1');
+          }
+        }
+        
+        // F key for favorite
+        if (e.key.toLowerCase() === 'f' && !e.target.matches('input, textarea')) {
+          toggleFavorite();
+        }
+        
+        // K key for kui section
+        if (e.key.toLowerCase() === 'k' && !e.target.matches('input, textarea')) {
+          showKuiInfo();
+        }
+        
+        // 1 key for first string
+        if (e.key === '1' && !e.target.matches('input, textarea')) {
+          const firstString = document.querySelector('.dombra-string[data-note="E"]');
+          if (firstString) {
+            playString(1, { target: firstString, stopPropagation: () => {} });
+          }
+        }
+        
+        // 2 key for second string
+        if (e.key === '2' && !e.target.matches('input, textarea')) {
+          const secondString = document.querySelector('.dombra-string[data-note="A"]');
+          if (secondString) {
+            playString(2, { target: secondString, stopPropagation: () => {} });
+          }
+        }
+      });
+      
+      // Add touch gestures for mobile
+      let touchStartY = 0;
+      let touchEndY = 0;
+      
+      document.addEventListener('touchstart', e => {
+        touchStartY = e.changedTouches[0].screenY;
+      });
+      
+      document.addEventListener('touchend', e => {
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+      });
+      
+      function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartY - touchEndY;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+          if (diff > 0) {
+            // Swipe up - scroll to next section
+            const currentSection = getCurrentSection();
+            const nextSection = currentSection?.nextElementSibling;
+            if (nextSection) {
+              nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          } else {
+            // Swipe down - scroll to previous section
+            const currentSection = getCurrentSection();
+            const prevSection = currentSection?.previousElementSibling;
+            if (prevSection) {
+              prevSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }
+      }
+      
+      function getCurrentSection() {
+        const sections = document.querySelectorAll('.content-section, .hero');
+        const scrollPos = window.scrollY + window.innerHeight / 2;
+        
+        for (let section of sections) {
+          const rect = section.getBoundingClientRect();
+          const top = rect.top + window.scrollY;
+          const bottom = top + rect.height;
+          
+          if (scrollPos >= top && scrollPos <= bottom) {
+            return section;
+          }
+        }
+        return null;
+      }
+      
+      // Add dombra specific animations
+      function initDombraAnimations() {
+        const dombraBody = document.querySelector('.dombra-body');
+        if (dombraBody) {
+          dombraBody.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.02) rotate(1deg)';
+          });
+          
+          dombraBody.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotate(0deg)';
+          });
+        }
+        
+        // Add steppe wind effect
+        const steppeWind = setInterval(() => {
+          const particles = document.querySelectorAll('.particle');
+          particles.forEach(particle => {
+            const currentLeft = parseFloat(particle.style.left);
+            particle.style.left = (currentLeft + Math.random() * 2 - 1) + '%';
+          });
+        }, 3000);
+      }
+      
+      // Add search functionality for kui
+      function initKuiSearch() {
+        const kuiCards = document.querySelectorAll('.kui-card');
+        
+        // Create search input (if needed)
+        const searchInput = document.getElementById('kuiSearch');
+        if (searchInput) {
+          searchInput.addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase();
+            
+            kuiCards.forEach(card => {
+              const name = card.querySelector('.kui-name').textContent.toLowerCase();
+              const description = card.querySelector('.kui-description').textContent.toLowerCase();
+              
+              if (name.includes(query) || description.includes(query) || query === '') {
+                card.style.display = 'block';
+              } else {
+                card.style.display = 'none';
+              }
+            });
+          });
+        }
+      }
+      
+      // Initialize all features
+      initDombraAnimations();
+      initKuiSearch();
+      
+      // Show welcome message
+      setTimeout(() => {
+        showNotification('Dombra sahifasiga xush kelibsiz! 🎸', 'success');
+      }, 1000);
+      
+      // Add random kui playing effect
+      setInterval(() => {
+        if (Math.random() < 0.1) { // 10% chance every interval
+          const strings = document.querySelectorAll('.string-line');
+          strings.forEach((string, index) => {
+            setTimeout(() => {
+              string.style.opacity = '0.6';
+              string.style.animationDuration = '1s';
+            }, index * 300);
+          });
+          
+          setTimeout(() => {
+            strings.forEach(string => {
+              string.style.opacity = '';
+              string.style.animationDuration = '3s';
+            });
+          }, 2000);
+        }
+      }, 10000);
+    });
+  </script>
 </body>
 </html>
