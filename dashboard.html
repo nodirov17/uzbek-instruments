@@ -113,42 +113,22 @@
       border-radius: 15px;
       transition: all 0.3s ease;
       font-weight: 500;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
       margin-bottom: 0.5rem;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      position: relative;
-    }
-    
-    .nav-link::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-      border-radius: 15px;
-      z-index: -1;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .nav-link:hover, .nav-link.active {
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.2);
       transform: translateX(10px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      border-color: rgba(255, 255, 255, 0.4);
-      color: white;
-    }
-    
-    .nav-link:hover::before, .nav-link.active::before {
-      background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      border-color: rgba(255, 255, 255, 0.3);
     }
     
     .nav-link i {
       margin-right: 0.75rem;
       font-size: 1.1rem;
       width: 20px;
-      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
     }
     
     /* Main Content */
@@ -354,7 +334,7 @@
         height: 100vh;
         z-index: 1000;
         transition: left 0.3s ease;
-        background: rgba(30, 30, 30, 0.95);
+        background: rgba(20, 20, 40, 0.95);
         backdrop-filter: blur(25px);
         border-right: 2px solid rgba(255, 255, 255, 0.3);
       }
@@ -363,53 +343,33 @@
         left: 0;
       }
       
-      /* Mobile nav links yaxshilangan */
+      /* Mobile menyuda tugmalarni yaxshilash */
       .nav-link {
-        background: rgba(255, 255, 255, 0.15);
-        border: 2px solid rgba(255, 255, 255, 0.25);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+        border: 2px solid rgba(255, 255, 255, 0.3);
         margin-bottom: 0.8rem;
         font-weight: 600;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
         backdrop-filter: blur(15px);
-        position: relative;
-        overflow: hidden;
-      }
-      
-      .nav-link::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, 
-          rgba(255, 255, 255, 0.1) 0%, 
-          rgba(255, 255, 255, 0.05) 50%, 
-          rgba(255, 255, 255, 0.1) 100%);
-        z-index: -1;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       }
       
       .nav-link:hover, .nav-link.active {
-        background: rgba(255, 255, 255, 0.3);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.25) 100%);
         border-color: rgba(255, 255, 255, 0.5);
-        transform: translateX(5px);
+        transform: translateX(8px);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
         color: white;
       }
       
-      .nav-link:hover::after, .nav-link.active::after {
-        background: linear-gradient(135deg, 
-          rgba(255, 255, 255, 0.2) 0%, 
-          rgba(255, 255, 255, 0.1) 50%, 
-          rgba(255, 255, 255, 0.2) 100%);
-      }
-      
       .nav-link i {
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+        color: rgba(255, 255, 255, 0.95);
       }
       
       .main-content {
         padding: 1rem;
+        margin-left: 0;
       }
       
       .header h1 {
@@ -428,8 +388,8 @@
       top: 1rem;
       left: 1rem;
       z-index: 1001;
-      background: rgba(255, 255, 255, 0.25);
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 100%);
+      border: 2px solid rgba(255, 255, 255, 0.4);
       border-radius: 12px;
       padding: 0.75rem;
       color: white;
@@ -437,12 +397,14 @@
       cursor: pointer;
       backdrop-filter: blur(15px);
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
     
     .mobile-menu-btn:hover {
-      background: rgba(255, 255, 255, 0.35);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.3) 100%);
       transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     }
     
     @media (max-width: 768px) {
@@ -470,7 +432,7 @@
       background: rgba(255, 255, 255, 0.5);
     }
     
-    /* Sidebar overlay for mobile */
+    /* Sidebar overlay mobil uchun */
     .sidebar-overlay {
       display: none;
       position: fixed;
@@ -478,14 +440,13 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.6);
       z-index: 999;
       opacity: 0;
       transition: opacity 0.3s ease;
     }
     
     .sidebar-overlay.active {
-      display: block;
       opacity: 1;
     }
     
@@ -767,12 +728,16 @@
     mobileMenuBtn.addEventListener('click', () => {
       sidebar.classList.toggle('open');
       sidebarOverlay.classList.toggle('active');
+      mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+      mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
     });
     
     // Close sidebar when clicking overlay
     sidebarOverlay.addEventListener('click', () => {
       sidebar.classList.remove('open');
       sidebarOverlay.classList.remove('active');
+      mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+      mobileMenuBtn.querySelector('i').classList.remove('fa-times');
     });
     
     // Close sidebar when clicking outside on mobile
@@ -782,12 +747,13 @@
           !mobileMenuBtn.contains(e.target)) {
         sidebar.classList.remove('open');
         sidebarOverlay.classList.remove('active');
+        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
       }
     });
     
     // Navigation function
     function navigateTo(section) {
-      // Define actual file paths based on your file structure
       const routes = {
         'instruments': 'instruments.html',
         'favorites': 'favorites.html',
@@ -798,7 +764,6 @@
         'login': 'login.html',
         'dashboard': 'dashboard.html',
         'index': 'index.html',
-        // Musical instruments
         'dombra': 'dombra.html',
         'rubab': 'rubab.html',
         'dutar': 'dutar.html',
@@ -815,7 +780,6 @@
         window.location.href = routes[section];
       }
       
-      // Add click effect
       if (event && event.currentTarget) {
         event.currentTarget.style.transform = 'scale(0.95)';
         setTimeout(() => {
@@ -827,17 +791,12 @@
     // Add click effects to nav links
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', (e) => {
-        // Don't prevent default for actual navigation links
         if (link.getAttribute('href') !== '#') {
-          return; // Allow normal navigation
+          return;
         }
         
         e.preventDefault();
-        
-        // Remove active class from all links
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        
-        // Add active class to clicked link
         e.currentTarget.classList.add('active');
       });
     });
