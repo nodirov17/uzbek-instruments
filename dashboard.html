@@ -334,42 +334,14 @@
         height: 100vh;
         z-index: 1000;
         transition: left 0.3s ease;
-        background: rgba(20, 20, 40, 0.95);
-        backdrop-filter: blur(25px);
-        border-right: 2px solid rgba(255, 255, 255, 0.3);
       }
       
       .sidebar.open {
         left: 0;
       }
       
-      /* Mobile menyuda tugmalarni yaxshilash */
-      .nav-link {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        margin-bottom: 0.8rem;
-        font-weight: 600;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(15px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      }
-      
-      .nav-link:hover, .nav-link.active {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.25) 100%);
-        border-color: rgba(255, 255, 255, 0.5);
-        transform: translateX(8px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-        color: white;
-      }
-      
-      .nav-link i {
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
-        color: rgba(255, 255, 255, 0.95);
-      }
-      
       .main-content {
         padding: 1rem;
-        margin-left: 0;
       }
       
       .header h1 {
@@ -388,23 +360,14 @@
       top: 1rem;
       left: 1rem;
       z-index: 1001;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 100%);
-      border: 2px solid rgba(255, 255, 255, 0.4);
-      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 10px;
       padding: 0.75rem;
       color: white;
       font-size: 1.5rem;
       cursor: pointer;
-      backdrop-filter: blur(15px);
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    
-    .mobile-menu-btn:hover {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.3) 100%);
-      transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
     }
     
     @media (max-width: 768px) {
@@ -431,38 +394,11 @@
     ::-webkit-scrollbar-thumb:hover {
       background: rgba(255, 255, 255, 0.5);
     }
-    
-    /* Sidebar overlay mobil uchun */
-    .sidebar-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 999;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
-    .sidebar-overlay.active {
-      opacity: 1;
-    }
-    
-    @media (max-width: 768px) {
-      .sidebar-overlay {
-        display: block;
-      }
-    }
   </style>
 </head>
 <body>
   <!-- Animated background particles -->
   <div class="particles" id="particles"></div>
-  
-  <!-- Sidebar overlay for mobile -->
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
   
   <!-- Mobile menu button -->
   <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -514,7 +450,7 @@
           <li class="nav-item">
             <a href="admin.html" class="nav-link">
               <i class="fas fa-cog"></i>
-              Sozlamalar
+              Admin Panel
             </a>
           </li>
           <li class="nav-item">
@@ -537,7 +473,7 @@
       
       <!-- Dashboard Cards -->
       <div class="dashboard-grid">
-        <div class="dashboard-card" onclick="window.location.href='instruments.html'">
+        <div class="dashboard-card" onclick="location.href='instruments.html'">
           <div class="card-icon">
             <i class="fas fa-guitar"></i>
           </div>
@@ -559,7 +495,7 @@
           </div>
         </div>
         
-        <div class="dashboard-card" onclick="window.location.href='favorites.html'">
+        <div class="dashboard-card" onclick="location.href='favorites.html'">
           <div class="card-icon">
             <i class="fas fa-heart"></i>
           </div>
@@ -581,7 +517,7 @@
           </div>
         </div>
         
-        <div class="dashboard-card" onclick="window.location.href='admin.html'">
+        <div class="dashboard-card" onclick="location.href='admin.html'">
           <div class="card-icon">
             <i class="fas fa-cogs"></i>
           </div>
@@ -603,7 +539,7 @@
           </div>
         </div>
         
-        <div class="dashboard-card" onclick="window.location.href='profile.html'">
+        <div class="dashboard-card" onclick="location.href='profile.html'">
           <div class="card-icon">
             <i class="fas fa-chart-line"></i>
           </div>
@@ -625,7 +561,7 @@
           </div>
         </div>
         
-        <div class="dashboard-card" onclick="window.location.href='comments.html'">
+        <div class="dashboard-card" onclick="location.href='comments.html'">
           <div class="card-icon">
             <i class="fas fa-graduation-cap"></i>
           </div>
@@ -647,7 +583,7 @@
           </div>
         </div>
         
-        <div class="dashboard-card" onclick="window.location.href='register.html'">
+        <div class="dashboard-card" onclick="location.href='register.html'">
           <div class="card-icon">
             <i class="fas fa-users"></i>
           </div>
@@ -723,21 +659,9 @@
     // Mobile menu toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const sidebar = document.getElementById('sidebar');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
     
     mobileMenuBtn.addEventListener('click', () => {
       sidebar.classList.toggle('open');
-      sidebarOverlay.classList.toggle('active');
-      mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
-      mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
-    });
-    
-    // Close sidebar when clicking overlay
-    sidebarOverlay.addEventListener('click', () => {
-      sidebar.classList.remove('open');
-      sidebarOverlay.classList.remove('active');
-      mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-      mobileMenuBtn.querySelector('i').classList.remove('fa-times');
     });
     
     // Close sidebar when clicking outside on mobile
@@ -746,77 +670,62 @@
           !sidebar.contains(e.target) && 
           !mobileMenuBtn.contains(e.target)) {
         sidebar.classList.remove('open');
-        sidebarOverlay.classList.remove('active');
-        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
       }
     });
     
-    // Navigation function - bu yerda real yo'nalishlar
+    // Navigation function
     function navigateTo(section) {
+      // Define actual file paths based on your file structure
       const routes = {
         'instruments': 'instruments.html',
-        'favorites': 'favorites.html', 
+        'favorites': 'favorites.html',
         'admin': 'admin.html',
         'profile': 'profile.html',
         'comments': 'comments.html',
         'register': 'register.html',
         'login': 'login.html',
         'dashboard': 'dashboard.html',
-        'index': 'index.html'
+        'index': 'index.html',
+        // Musical instruments
+        'dombra': 'dombra.html',
+        'rubab': 'rubab.html',
+        'dutar': 'dutar.html',
+        'chang': 'chang.html',
+        'ud': 'ud.html',
+        'nay': 'nay.html',
+        'surnay': 'surnay.html',
+        'karnay': 'karnay.html',
+        'doira': 'doira.html',
+        'nagora': 'nagora.html'
       };
       
       if (routes[section]) {
         window.location.href = routes[section];
-      } else {
-        console.log('Sahifa topilmadi:', section);
+      }
+      
+      // Add click effect
+      if (event && event.currentTarget) {
+        event.currentTarget.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          event.currentTarget.style.transform = '';
+        }, 150);
       }
     }
-    
-    // Dashboard kartalar va action tugmalar uchun click effektlari
-    document.addEventListener('DOMContentLoaded', () => {
-      // Dashboard kartalar uchun click effekti
-      document.querySelectorAll('.dashboard-card').forEach(card => {
-        card.addEventListener('mousedown', () => {
-          card.style.transform = 'scale(0.98)';
-        });
-        
-        card.addEventListener('mouseup', () => {
-          card.style.transform = '';
-        });
-        
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = '';
-        });
-      });
-      
-      // Action tugmalar uchun click effekti
-      document.querySelectorAll('.action-btn').forEach(btn => {
-        btn.addEventListener('mousedown', () => {
-          btn.style.transform = 'scale(0.95)';
-        });
-        
-        btn.addEventListener('mouseup', () => {
-          btn.style.transform = '';
-        });
-        
-        btn.addEventListener('mouseleave', () => {
-          btn.style.transform = '';
-        });
-      });
-    });
     
     // Add click effects to nav links
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', (e) => {
-        // Agar real href bor bo'lsa, normal navigatsiya qilsin
-        const href = link.getAttribute('href');
-        if (href && href !== '#' && href.endsWith('.html')) {
-          return; // Normal navigatsiya
+        // Don't prevent default for actual navigation links
+        if (link.getAttribute('href') !== '#') {
+          return; // Allow normal navigation
         }
         
         e.preventDefault();
+        
+        // Remove active class from all links
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        
+        // Add active class to clicked link
         e.currentTarget.classList.add('active');
       });
     });
