@@ -1,24 +1,1546 @@
-<!DOCTYPE html>
+<!-- Hero Section -->
+  <div class="container">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>🎼 Chang</h1>
+          <p>
+            Chang - o'zbek klassik musiqasining eng nozik va murakkab cholg'ularidan biri. 
+            72 ta torga ega bo'lgan bu asbob haqiqiy virtuozlik talab qiladi. Chang 
+            o'zining boy ovoz diapazoni va nozik tembri bilan barcha boshqa cholg'ularni 
+            o'ziga bo'ysundiradi va orkestrlarda yetakchi rol o'ynaydi.
+          </p>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">72</span>
+              <span class="stat-label">Torlar soni</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">36</span>
+              <span class="stat-label">Oktava</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">120cm</span>
+              <span class="stat-label">Uzunlik</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">3000+</span>
+              <span class="stat-label">Yillik tarix</span>
+            </div>
+          </div>
+          
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="playChangSound()">
+              <i class="fas fa-play"></i>
+              Chang ovozini eshitish
+            </button>
+            <button class="btn btn-secondary" onclick="showModesInfo()">
+              <i class="fas fa-music"></i>
+              Musiqa rejimlari
+            </button>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chang" class="main-image">
+          <div class="floating-badge">
+            🎭 Klassik virtuoz
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Interactive Chang Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎯</div>
+        Interaktiv chang
+      </h2>
+      <div class="content-text">
+        <p>
+          Quyidagi chang tasviriga bosib, torlarni chalishni sinab ko'ring. 
+          Har bir tor o'zining noyob balandligi va tembriga ega. Chang 72 ta tordan iborat.
+        </p>
+      </div>
+      
+      <div class="interactive-chang">
+        <div class="chang-body" onclick="playChangBody()">
+          <div class="chang-frame"></div>
+          <div class="chang-bridge"></div>
+          <div class="chang-strings" id="changStrings">
+            <!-- Torlar JavaScript orqali yaratiladi -->
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- String Configuration Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎼</div>
+        Torlar konfiguratsiyasi
+      </h2>
+      
+      <div class="string-section">
+        <h3 style="color: white; font-weight: 600; margin-bottom: 1rem;">Tor guruhlari (72 ta)</h3>
+        <div class="strings-grid">
+          <div class="string-item" onclick="playStringGroup('treble')">
+            <div class="string-name">Treble torlar (1-24)</div>
+            <div class="string-note">C4 - B6</div>
+            <div class="string-description">
+              Eng yuqori ovozlar uchun. Melodiya va ornamentlar ijro qilinadi. 
+              Bu torlar eng yupqa va eng tez javob beradi.
+            </div>
+          </div>
+          
+          <div class="string-item" onclick="playStringGroup('alto')">
+            <div class="string-name">Alto torlar (25-48)</div>
+            <div class="string-note">C3 - B4</div>
+            <div class="string-description">
+              O'rta registr torlari. Garmoniya va akkordlar uchun. 
+              Changning asosiy ovoz boyligini ta'minlaydi.
+            </div>
+          </div>
+          
+          <div class="string-item" onclick="playStringGroup('bass')">
+            <div class="string-name">Bass torlar (49-72)</div>
+            <div class="string-note">C1 - B3</div>
+            <div class="string-description">
+              Eng qalin torlar, bass va ritm uchun. Asosiy akkord asoslari va 
+              ostinato naqshlarini yaratadi.
+            </div>
+          </div>
+        </div>
+        
+        <h3 style="color: white; font-weight: 600; margin: 2rem 0 1rem 0;">Sozlash tizimi</h3>
+        <div class="content-text">
+          <p>
+            Chang chromatik tarzda sozlanadi - har bir yarim tonga alohida tor to'g'ri keladi. 
+            Bu changga barcha maqom va zamonaviy garmoniyalarni ijro qilish imkonini beradi.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Modes Section -->
+    <section class="content-section" id="modesSection">
+      <h2 class="section-title">
+        <div class="section-icon">🎭</div>
+        Chang rejimlari va uslublari
+      </h2>
+      <div class="content-text">
+        <p>
+          Chang turli musiqa uslublarida ishlatiladi. Klassik o'zbek maqomlaridan 
+          tortib zamonaviy garmoniyalargacha - chang barcha janrlarda o'z o'rnini topadi.
+        </p>
+      </div>
+      
+      <div class="modes-section">
+        <div class="modes-grid">
+          <div class="mode-card" onclick="playMode('classical')">
+            <div class="mode-name">🏛️ Klassik maqom</div>
+            <div class="mode-description">
+              An'anaviy o'zbek maqomlari. Chang maqom orkestrlarda yetakchi rol o'ynaydi 
+              va murakkab melodik liniyalarni ijro qiladi.
+            </div>
+            <div class="mode-scale">Maqom ladlari</div>
+          </div>
+          
+          <div class="mode-card" onclick="playMode('folk')">
+            <div class="mode-name">🌾 Xalq musiqasi</div>
+            <div class="mode-description">
+              Xalq qo'shiqlari va raqslar. Chang xalq ashulalarini boy garmoniya 
+              bilan bezaydi va yangi ranglar beradi.
+            </div>
+            <div class="mode-scale">Xalq ladlari</div>
+          </div>
+          
+          <div class="mode-card" onclick="playMode('contemporary')">
+            <div class="mode-name">🎨 Zamonaviy uslub</div>
+            <div class="mode-description">
+              Hozirgi zamon kompozitsiyalari. Chang zamonaviy garmoniya va 
+              polifoniya texnikalarini mukammal bajara oladi.
+            </div>
+            <div class="mode-scale">Chromatik lad</div>
+          </div>
+          
+          <div class="mode-card" onclick="playMode('chamber')">
+            <div class="mode-name">🎼 Kamera ansambli</div>
+            <div class="mode-description">
+              Kichik ansambllarda chang. Boshqa cholg'ular bilan nozik 
+              uyg'unlik yaratadi va solo partiyalarni ijro qiladi.
+            </div>
+            <div class="mode-scale">Ansamblik tuzilma</div>
+          </div>
+          
+          <div class="mode-card" onclick="playMode('orchestral')">
+            <div class="mode-name">🎺 Orkestr</div>
+            <div class="mode-description">
+              Katta orkestr tarkibida. Chang orkestrdagi boshqa cholg'ularni 
+              to'ldiradi va maxsus effektlar yaratadi.
+            </div>
+            <div class="mode-scale">Orkestr partiyalari</div>
+          </div>
+          
+          <div class="mode-card" onclick="playMode('solo')">
+            <div class="mode-name">⭐ Solo ijro</div>
+            <div class="mode-description">
+              Yakka ijro. Changning barcha imkoniyatlari to'liq namoyon bo'ladi. 
+              Eng murakkab va ta'sirli uslub.
+            </div>
+            <div class="mode-scale">Virtuoz texnika</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- History Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">📜</div>
+        Tarix va madaniy ahamiyati
+      </h2>
+      <div class="content-text">
+        <p>
+          Chang qadimgi Bobil va Misrdan kelib chiqqan va Markaziy Osiyoda o'ziga xos 
+          rivojlanishga erishgan. O'zbek changi boshqa davlatlarning changlaridan farq qiladi 
+          va noyob texnik xususiyatlarga ega.
+        </p>
+        <br>
+        <p>
+          Shayx Komil Yuldashev, Tohir Sodiqov, Munojat Yulchieva kabi buyuk ustalar 
+          chang san'atini yangi cho'qqilarga olib chiqdilar. Hozirgi kunda chang 
+          o'zbek klassik va zamonaviy musiqasining ajralmas qismidir.
+        </p>
+      </div>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Qadimiy chang">
+          <div class="gallery-overlay">
+            <h4>Qadimiy chang namunasi</h4>
+            <p>XVI asr</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chang ustasi">
+          <div class="gallery-overlay">
+            <h4>Chang ijrochisi</h4>
+            <p>Professional ijro</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Zamonaviy chang">
+          <div class="gallery-overlay">
+            <h4>Zamonaviy chang ijrosi</h4>
+            <p>Konsert zali</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Audio Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎵</div>
+        Audio namunalar va ijro ustaligi
+      </h2>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track1')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">Klassik Rost maqomi - Chang solo</div>
+            <div class="track-artist">Shayx Komil Yuldashev</div>
+          </div>
+          <span class="track-duration">9:15</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress1"></div>
+        </div>
+      </div>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track2')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">Yalla - Chang va rubab</div>
+            <div class="track-artist">Tohir Sodiqov ansambli</div>
+          </div>
+          <span class="track-duration">6:30</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress2"></div>
+        </div>
+      </div>
+      
+      <div class="audio-player">
+        <div class="player-controls">
+          <button class="play-btn" onclick="togglePlay(this, 'track3')">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="track-info">
+            <div class="track-title">Zamonaviy chang kompozitsiyasi</div>
+            <div class="track-artist">Yosh virtuozlar</div>
+          </div>
+          <span class="track-duration">7:45</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress3"></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Techniques Section -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎯</div>
+        Ijro texnikasi va o'rganish
+      </h2>
+      <div class="content-text">
+        <p>
+          Chang chalish juda murakkab va ko'p yillik mashqni talab qiladi. 
+          Barmoqlarning mustaqil harakati, koordinatsiya va musiqiy eshitish - 
+          bularning barchasi changchi uchun zarur.
+        </p>
+      </div>
+      
+      <table class="techniques-table">
+        <thead>
+          <tr>
+            <th>Texnika</th>
+            <th>Tavsif</th>
+            <th>Qiyinlik</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Barmoq qo'yish</td>
+            <td>To'g'ri barmoq pozitsiyasi va har bir barmoqning mustaqilligi</td>
+            <td>⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Arpeggio</td>
+            <td>Ketma-ket torlarni yumshoq chalish texnikasi</td>
+            <td>⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Glissando</td>
+            <td>Torlar bo'ylab siljish va ovozni uzluksiz o'zgartirish</td>
+            <td>⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Harmonics</td>
+            <td>Tabiiy va sun'iy garmonikalar yaratish</td>
+            <td>⭐⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Polifoniya</td>
+            <td>Bir vaqtda bir nechta mustaqil ovoz liniyasini ijro qilish</td>
+            <td>⭐⭐⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Virtuoz ijro</td>
+            <td>Eng murakkab texnik va musiqiy qismlarni ijro qilish</td>
+            <td>⭐⭐⭐⭐⭐</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div style="margin-top: 2rem;">
+        <h3 style="color: white; font-weight: 600; margin-bottom: 1rem;">O'rganish bosqichlari:</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+          <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <h4 style="color: white; margin-bottom: 0.5rem;">1-bosqich: Asoslar</h4>
+            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Chang bilan tanishish va to'g'ri o'tirish</p>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <h4 style="color: white; margin-bottom: 0.5rem;">2-bosqich: Barmoq mashqlari</h4>
+            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Har bir barmoqning mustaqilligi</p>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <h4 style="color: white; margin-bottom: 0.5rem;">3-bosqich: Oddiy kuylar</h4>
+            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Oson melodiyalar va akkordlar</p>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <h4 style="color: white; margin-bottom: 0.5rem;">4-bosqich: Klassik repertuar</h4>
+            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Maqom va professional asarlar</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Comments Section -->
+    <section class="content-section comments-section">
+      <h2 class="section-title">
+        <div class="section-icon">💬</div>
+        Izohlar va tajribalar
+      </h2>
+      
+      <div class="comment-form">
+        <h3 style="color: white; margin-bottom: 1rem;">Chang haqida fikringizni bildiring</h3>
+        <form onsubmit="addComment(event)">
+          <div class="form-group">
+            <label class="form-label">Ismingiz</label>
+            <input type="text" class="form-input" required placeholder="Ismingizni kiriting">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tajribangiz yoki fikringiz</label>
+            <textarea class="form-textarea" required placeholder="Chang chalish tajribangiz, klassik musiqa haqida fikringiz yoki bu asbob haqida mulohazalaringizni baham ko'ring..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i>
+            Izoh yuborish
+          </button>
+        </form>
+      </div>
+      
+      <div id="commentsList">
+        <div class="comment-item">
+          <div class="comment-author">🎼 Dilnoza Yuldasheva</div>
+          <div class="comment-text">
+            30 yildan beri chang chalaman. Bu asbob - haqiqiy poezi. 
+            Har bir tor alohida olamdir. Bu sahifadagi texnik ma'lumotlar juda aniq va foydali.
+          </div>
+          <div class="comment-date">2025-07-07</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">🎭 Komil Rasulov</div>
+          <div class="comment-text">
+            Konservatoriyada chang o'rgandim. Eng qiyin, lekin eng chiroyli cholg'u. 
+            Bu sahifadagi audio namunalar juda sifatli va ilhomlantiruvchi.
+          </div>
+          <div class="comment-date">2025-07-06</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">🌟 Nigora Nazarova</div>
+          <div class="comment-text">
+            Qizim chang o'rganmoqchi. Bu sahifadagi o'rganish bosqichlari va 
+            texnikalar jadvali juda yordam berdi. Interaktiv chang ham ajoyib g'oya!
+          </div>
+          <div class="comment-date">2025-07-05</div>
+        </div>
+        
+        <div class="comment-item">
+          <div class="comment-author">🎵 Jahongir Tursunov</div>
+          <div class="comment-text">
+            Orkestrda chang ijrochisi sifatida ishlayman. Bu sahifadagi 
+            musiqa rejimlari va uslublar haqidagi ma'lumotlar juda to'g'ri va batafsil.
+          </div>
+          <div class="comment-date">2025-07-04</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Related Instruments -->
+    <section class="content-section">
+      <h2 class="section-title">
+        <div class="section-icon">🎵</div>
+        O'xshash cholg'ular
+      </h2>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="location.href='rubab.html'">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Rubab">
+          <div class="gallery-overlay">
+            <h4>🎻 Rubab</h4>
+            <p>Sharqning shohi</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="location.href='qonuncha.html'">
+          <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Qonuncha">
+          <div class="gallery-overlay">
+            <h4>🎼 Qonuncha</h4>
+            <p>Kichik chang</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="location.href='santoor.html'">
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Santoor">
+          <div class="gallery-overlay">
+            <h4>🎵 Santoor</h4>
+            <p>Fors changi</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <!-- Favorite Button -->
+  <button class="favorite-btn" onclick="toggleFavorite()" id="favoriteBtn">
+    <i class="far fa-heart"></i>
+  </button>
+  
+  <script>
+    // Create animated particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50; // Chang uchun ko'proq zarracha
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        const size = Math.random() * 4 + 1;
+        const left = Math.random() * 100;
+        const delay = Math.random() * 20;
+        const duration = Math.random() * 15 + 8;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${left}%`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.animationDuration = `${duration}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Create string vibration effect
+    function createStringVibration() {
+      const stringContainer = document.getElementById('stringVibration');
+      const stringCount = 15; // Chang uchun ko'proq chiziq
+      
+      for (let i = 0; i < stringCount; i++) {
+        const string = document.createElement('div');
+        string.className = 'string-line';
+        
+        const left = 5 + (i * 6); // Chang torlarini aks ettirish
+        const delay = i * 0.2;
+        
+        string.style.left = `${left}%`;
+        string.style.animationDelay = `${delay}s`;
+        
+        stringContainer.appendChild(string);
+      }
+    }
+    
+    // Create chang strings
+    function createChangStrings() {
+      const stringsContainer = document.getElementById('changStrings');
+      const stringCount = 36; // Ko'rinishi uchun kamroq
+      
+      for (let i = 0; i < stringCount; i++) {
+        const string = document.createElement('div');
+        string.className = 'chang-string';
+        string.onclick = (e) => playString(i + 1, e);
+        string.dataset.note = getStringNote(i);
+        
+        stringsContainer.appendChild(string);
+      }
+    }
+    
+    // Get note for string index
+    function getStringNote(index) {
+      const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+      const octave = Math.floor(index / 12) + 2;
+      const note = notes[index % 12];
+      return note + octave;
+    }
+    
+    // Audio player functionality
+    let currentPlaying = null;
+    let currentProgress = null;
+    
+    function togglePlay(button, trackId) {
+      const icon = button.querySelector('i');
+      const progressElement = document.getElementById('progress' + trackId.slice(-1));
+      
+      if (currentPlaying && currentPlaying !== button) {
+        const currentIcon = currentPlaying.querySelector('i');
+        currentIcon.className = 'fas fa-play';
+        if (currentProgress) {
+          clearInterval(currentProgress);
+        }
+      }
+      
+      if (icon.classList.contains('fa-play')) {
+        icon.className = 'fas fa-pause';
+        currentPlaying = button;
+        
+        let progress = 0;
+        currentProgress = setInterval(() => {
+          progress += 0.2;
+          progressElement.style.width = progress + '%';
+          
+          if (progress >= 100) {
+            clearInterval(currentProgress);
+            icon.className = 'fas fa-play';
+            progressElement.style.width = '0%';
+            currentPlaying = null;
+          }
+        }, 100);
+        
+      } else {
+        icon.className = 'fas fa-play';
+        clearInterval(currentProgress);
+        progressElement.style.width = '0%';
+        currentPlaying = null;
+      }
+    }
+    
+    // Play chang sound
+    function playChangSound() {
+      const button = event.target;
+      const originalText = button.innerHTML;
+      
+      button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Chang sadosi...';
+      button.disabled = true;
+      
+      const strings = document.querySelectorAll('.string-line');
+      strings.forEach((string, index) => {
+        setTimeout(() => {
+          string.style.animationDuration = '0.3s';
+          string.style.opacity = '1';
+        }, index * 50);
+      });
+      
+      setTimeout(() => {
+        button.innerHTML = originalText;
+        button.disabled = false;
+        
+        strings.forEach(string => {
+          string.style.animationDuration = '2s';
+          string.style.opacity = '';
+        });
+      }, 4000);
+    }
+    
+    // Play string sound
+    function playString(stringNum, event) {
+      if (event) {
+        event.stopPropagation();
+      }
+      
+      const stringElement = event.target;
+      const note = stringElement.dataset.note;
+      
+      stringElement.style.background = 'linear-gradient(to bottom, #34d399, #10b981)';
+      stringElement.style.animation = 'stringPluck 0.4s ease-in-out';
+      
+      setTimeout(() => {
+        stringElement.style.background = '';
+        stringElement.style.animation = '';
+      }, 400);
+      
+      showNotification(`${stringNum}-tor chalingan: ${note} 🎼`, 'info');
+    }
+    
+    <!DOCTYPE html>
 <html lang="uz">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chang - Cholg‘u Tafsiloti</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Chang - O'zbek Cholg'u Laboratoriyasi</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #059669 0%, #10b981 25%, #34d399 50%, #6ee7b7 75%, #a7f3d0 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    /* Animated background particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      animation: float 20s infinite linear;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    /* String vibration animation */
+    .string-vibration {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    
+    .string-line {
+      position: absolute;
+      width: 1px;
+      height: 100vh;
+      background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: stringVibrate 2s infinite ease-in-out;
+    }
+    
+    @keyframes stringVibrate {
+      0%, 100% { transform: translateX(0) scaleY(1); opacity: 0.4; }
+      50% { transform: translateX(3px) scaleY(1.05); opacity: 0.9; }
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    .header {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: white;
+    }
+    
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #059669, #10b981);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+    }
+    
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .btn-dashboard {
+      background: linear-gradient(45deg, #059669, #10b981);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-dashboard:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(25px);
+      border-radius: 30px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shine 4s infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+    
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-text p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .stat-item {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 1rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .stat-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      display: block;
+    }
+    
+    .stat-label {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    
+    .hero-image {
+      position: relative;
+    }
+    
+    .main-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      border: 3px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    .floating-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #059669, #10b981);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 20px;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: harmonyPulse 3s infinite;
+    }
+    
+    @keyframes harmonyPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(5, 150, 105, 0.4); }
+    }
+    
+    /* Action Buttons */
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(45deg, #059669, #10b981);
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Content Sections */
+    .content-section {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(25px);
+      border-radius: 25px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .content-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .section-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #059669, #10b981);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .content-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+    }
+    
+    /* Interactive Chang */
+    .interactive-chang {
+      display: flex;
+      justify-content: center;
+      margin: 3rem 0;
+      position: relative;
+    }
+    
+    .chang-body {
+      position: relative;
+      width: 400px;
+      height: 500px;
+      background: linear-gradient(145deg, rgba(139, 69, 19, 0.8), rgba(160, 82, 45, 0.6));
+      border-radius: 50% 50% 10px 10px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+    
+    .chang-body:hover {
+      transform: scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    }
+    
+    .chang-bridge {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 8px;
+      background: linear-gradient(45deg, #8b4513, #654321);
+      border-radius: 4px;
+      z-index: 10;
+    }
+    
+    .chang-strings {
+      position: absolute;
+      top: 5%;
+      left: 10%;
+      right: 10%;
+      height: 90%;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+    }
+    
+    .chang-string {
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(to bottom, #ffd700, #ffed4e);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: stringIdle 5s infinite ease-in-out;
+      opacity: 0.8;
+    }
+    
+    .chang-string:hover {
+      background: linear-gradient(to bottom, #34d399, #10b981);
+      animation: stringPluck 0.4s ease-in-out;
+      opacity: 1;
+    }
+    
+    @keyframes stringIdle {
+      0%, 100% { transform: scaleX(1); }
+      50% { transform: scaleX(1.5); }
+    }
+    
+    @keyframes stringPluck {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-2px); }
+      75% { transform: translateX(2px); }
+    }
+    
+    .chang-frame {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      height: 60px;
+      background: linear-gradient(145deg, rgba(101, 67, 33, 0.8), rgba(139, 69, 19, 0.6));
+      border-radius: 30px 30px 0 0;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    /* String Configuration */
+    .string-section {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .strings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .string-item {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .string-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.25);
+    }
+    
+    .string-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(45deg, #059669, #10b981);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .string-item:hover::after {
+      transform: scaleX(1);
+    }
+    
+    .string-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    
+    .string-note {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #34d399;
+      margin-bottom: 0.5rem;
+    }
+    
+    .string-description {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    
+    /* Chang Modes */
+    .modes-section {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .modes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .mode-card {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .mode-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.25);
+    }
+    
+    .mode-name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 1rem;
+    }
+    
+    .mode-description {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    
+    .mode-scale {
+      background: rgba(5, 150, 105, 0.2);
+      padding: 0.5rem;
+      border-radius: 8px;
+      font-family: monospace;
+      color: #34d399;
+      font-size: 0.9rem;
+    }
+    
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+      color: white;
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: all 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+    
+    /* Audio Player */
+    .audio-player {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .play-btn {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #059669, #10b981);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .play-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(5, 150, 105, 0.4);
+    }
+    
+    .track-info {
+      flex: 1;
+    }
+    
+    .track-title {
+      font-weight: 600;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    
+    .track-artist {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+    }
+    
+    .track-duration {
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 500;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(45deg, #059669, #10b981);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    /* Techniques Table */
+    .techniques-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    
+    .techniques-table th,
+    .techniques-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .techniques-table th {
+      background: rgba(255, 255, 255, 0.2);
+      font-weight: 600;
+      color: white;
+    }
+    
+    .techniques-table td {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    /* Comments Section */
+    .comments-section {
+      margin-top: 3rem;
+    }
+    
+    .comment-form {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2rem;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      color: white;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: #059669;
+      box-shadow: 0 0 20px rgba(5, 150, 105, 0.3);
+    }
+    
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .comment-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .comment-author {
+      font-weight: 600;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    
+    .comment-text {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+    
+    .comment-date {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+    
+    /* Favorite Button */
+    .favorite-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #ef4444, #dc2626);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+    
+    .favorite-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    .favorite-btn.active {
+      background: linear-gradient(45deg, #059669, #10b981);
+    }
+    
+    /* Notification */
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .notification.show {
+      transform: translateX(0);
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-stats {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .gallery-grid, .strings-grid, .modes-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .chang-body {
+        width: 300px;
+        height: 400px;
+      }
+      
+      .techniques-table {
+        font-size: 0.9rem;
+      }
+      
+      .techniques-table th,
+      .techniques-table td {
+        padding: 0.5rem;
+      }
+    }
+  </style>
 </head>
-<body class="bg-yellow-50 font-sans">
-  <div class="max-w-4xl mx-auto p-6 bg-white mt-10 shadow-lg rounded-lg">
-    <h1 class="text-3xl font-bold text-yellow-900 mb-4">Chang</h1>
-    <img src="img/chang.jpg" alt="Chang" class="w-full h-64 object-cover rounded mb-4">
-    <p class="text-gray-700 mb-2">Bu sahifada Chang cholg‘usining tarixi, tuzilishi, ohangi, va madaniy ahamiyati haqida ma’lumotlar taqdim etiladi.</p>
-    <ul class="list-disc pl-5 text-gray-700 space-y-1">
-      <li>Tarixi va kelib chiqishi</li>
-      <li>Foydalanish hududlari</li>
-      <li>Material va tuzilma</li>
-      <li>Ohang namunasi</li>
-      <li>Yasash jarayoni haqida</li>
-    </ul>
-    <a href="instruments.html" class="inline-block mt-6 text-yellow-700 hover:underline">⬅️ Cholg‘ular sahifasiga qaytish</a>
-  </div>
-</body>
-</html>
+<body>
+  <!-- Animated background particles -->
+  <div class="particles" id="particles"></div>
+  
+  <!-- String vibration animation -->
+  <div class="string-vibration" id="stringVibration"></div>
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">🎻</div>
+          <div class="logo-text">Cholg'u Lab</div>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html" class="nav-link">🏠 Bosh sahifa</a>
+          <a href="instruments.html" class="nav-link">🎵 Cholg'ular</a>
+          <a href="dashboard.html" class="btn-dashboard">📊 Dashboard</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <div class="container">
+    <section class="hero">
+      <div class="hero-
