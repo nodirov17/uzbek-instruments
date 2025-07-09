@@ -752,11 +752,11 @@
       }
     });
     
-    // Navigation function
+    // Navigation function - bu yerda real yo'nalishlar
     function navigateTo(section) {
       const routes = {
         'instruments': 'instruments.html',
-        'favorites': 'favorites.html',
+        'favorites': 'favorites.html', 
         'admin': 'admin.html',
         'profile': 'profile.html',
         'comments': 'comments.html',
@@ -778,8 +778,11 @@
       
       if (routes[section]) {
         window.location.href = routes[section];
+      } else {
+        console.log('Sahifa topilmadi:', section);
       }
       
+      // Click effekti
       if (event && event.currentTarget) {
         event.currentTarget.style.transform = 'scale(0.95)';
         setTimeout(() => {
@@ -788,11 +791,41 @@
       }
     }
     
+    // Dashboard kartalar uchun navigatsiya qo'shish
+    document.addEventListener('DOMContentLoaded', () => {
+      // Kartalar uchun click handler
+      document.querySelectorAll('.dashboard-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const onclick = card.getAttribute('onclick');
+          if (onclick) {
+            // onclick attributidan URL ni olish
+            const match = onclick.match(/location\.href\s*=\s*['"]([^'"]+)['"]/);
+            if (match) {
+              window.location.href = match[1];
+            }
+          }
+        });
+      });
+      
+      // Action tugmalar uchun click handler
+      document.querySelectorAll('.action-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const href = btn.getAttribute('href');
+          if (href && href !== '#') {
+            return; // Normal navigatsiya
+          }
+          e.preventDefault();
+        });
+      });
+    });
+    
     // Add click effects to nav links
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', (e) => {
-        if (link.getAttribute('href') !== '#') {
-          return;
+        // Agar real href bor bo'lsa, normal navigatsiya qilsin
+        const href = link.getAttribute('href');
+        if (href && href !== '#' && href.endsWith('.html')) {
+          return; // Normal navigatsiya
         }
         
         e.preventDefault();
