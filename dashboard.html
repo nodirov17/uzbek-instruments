@@ -537,7 +537,7 @@
       
       <!-- Dashboard Cards -->
       <div class="dashboard-grid">
-        <div class="dashboard-card" onclick="location.href='instruments.html'">
+        <div class="dashboard-card" onclick="window.location.href='instruments.html'">
           <div class="card-icon">
             <i class="fas fa-guitar"></i>
           </div>
@@ -559,7 +559,7 @@
           </div>
         </div>
         
-        <div class="dashboard-card" onclick="location.href='favorites.html'">
+        <div class="dashboard-card" onclick="window.location.href='favorites.html'">
           <div class="card-icon">
             <i class="fas fa-heart"></i>
           </div>
@@ -581,7 +581,7 @@
           </div>
         </div>
         
-        <div class="dashboard-card" onclick="location.href='admin.html'">
+        <div class="dashboard-card" onclick="window.location.href='admin.html'">
           <div class="card-icon">
             <i class="fas fa-cogs"></i>
           </div>
@@ -603,7 +603,7 @@
           </div>
         </div>
         
-        <div class="dashboard-card" onclick="location.href='profile.html'">
+        <div class="dashboard-card" onclick="window.location.href='profile.html'">
           <div class="card-icon">
             <i class="fas fa-chart-line"></i>
           </div>
@@ -625,7 +625,7 @@
           </div>
         </div>
         
-        <div class="dashboard-card" onclick="location.href='comments.html'">
+        <div class="dashboard-card" onclick="window.location.href='comments.html'">
           <div class="card-icon">
             <i class="fas fa-graduation-cap"></i>
           </div>
@@ -647,7 +647,7 @@
           </div>
         </div>
         
-        <div class="dashboard-card" onclick="location.href='register.html'">
+        <div class="dashboard-card" onclick="window.location.href='register.html'">
           <div class="card-icon">
             <i class="fas fa-users"></i>
           </div>
@@ -763,17 +763,7 @@
         'register': 'register.html',
         'login': 'login.html',
         'dashboard': 'dashboard.html',
-        'index': 'index.html',
-        'dombra': 'dombra.html',
-        'rubab': 'rubab.html',
-        'dutar': 'dutar.html',
-        'chang': 'chang.html',
-        'ud': 'ud.html',
-        'nay': 'nay.html',
-        'surnay': 'surnay.html',
-        'karnay': 'karnay.html',
-        'doira': 'doira.html',
-        'nagora': 'nagora.html'
+        'index': 'index.html'
       };
       
       if (routes[section]) {
@@ -781,40 +771,37 @@
       } else {
         console.log('Sahifa topilmadi:', section);
       }
-      
-      // Click effekti
-      if (event && event.currentTarget) {
-        event.currentTarget.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-          event.currentTarget.style.transform = '';
-        }, 150);
-      }
     }
     
-    // Dashboard kartalar uchun navigatsiya qo'shish
+    // Dashboard kartalar va action tugmalar uchun click effektlari
     document.addEventListener('DOMContentLoaded', () => {
-      // Kartalar uchun click handler
+      // Dashboard kartalar uchun click effekti
       document.querySelectorAll('.dashboard-card').forEach(card => {
-        card.addEventListener('click', () => {
-          const onclick = card.getAttribute('onclick');
-          if (onclick) {
-            // onclick attributidan URL ni olish
-            const match = onclick.match(/location\.href\s*=\s*['"]([^'"]+)['"]/);
-            if (match) {
-              window.location.href = match[1];
-            }
-          }
+        card.addEventListener('mousedown', () => {
+          card.style.transform = 'scale(0.98)';
+        });
+        
+        card.addEventListener('mouseup', () => {
+          card.style.transform = '';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
         });
       });
       
-      // Action tugmalar uchun click handler
+      // Action tugmalar uchun click effekti
       document.querySelectorAll('.action-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const href = btn.getAttribute('href');
-          if (href && href !== '#') {
-            return; // Normal navigatsiya
-          }
-          e.preventDefault();
+        btn.addEventListener('mousedown', () => {
+          btn.style.transform = 'scale(0.95)';
+        });
+        
+        btn.addEventListener('mouseup', () => {
+          btn.style.transform = '';
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transform = '';
         });
       });
     });
