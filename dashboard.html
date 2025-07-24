@@ -198,7 +198,7 @@
       border-radius: 20px;
       padding: 2rem;
       border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: all 0.3s ease;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
       overflow: hidden;
       cursor: pointer;
@@ -211,8 +211,8 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: all 0.5s ease;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: all 0.7s ease;
     }
     
     .dashboard-card:hover::before {
@@ -220,9 +220,10 @@
     }
     
     .dashboard-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.2);
     }
     
     .card-icon {
@@ -237,6 +238,12 @@
       color: white;
       margin: 0 auto 1.5rem;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .dashboard-card:hover .card-icon {
+      transform: rotate(15deg) scale(1.1);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
     }
     
     .card-title {
@@ -246,6 +253,12 @@
       margin-bottom: 1rem;
       text-align: center;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .dashboard-card:hover .card-title {
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
     }
     
     .card-description {
@@ -253,6 +266,11 @@
       text-align: center;
       line-height: 1.6;
       font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .dashboard-card:hover .card-description {
+      color: rgba(255, 255, 255, 0.95);
     }
     
     .card-stats {
@@ -272,12 +290,23 @@
       font-weight: 700;
       color: white;
       display: block;
+      transition: all 0.3s ease;
+    }
+    
+    .dashboard-card:hover .stat-number {
+      transform: scale(1.1);
+      color: #feca57;
     }
     
     .stat-label {
       font-size: 0.8rem;
       color: rgba(255, 255, 255, 0.7);
       margin-top: 0.25rem;
+      transition: all 0.3s ease;
+    }
+    
+    .dashboard-card:hover .stat-label {
+      color: rgba(255, 255, 255, 0.9);
     }
     
     /* Quick Actions */
@@ -308,20 +337,43 @@
       color: white;
       text-decoration: none;
       text-align: center;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       font-weight: 500;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .action-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: all 0.6s ease;
+    }
+    
+    .action-btn:hover::after {
+      left: 100%;
     }
     
     .action-btn:hover {
       background: rgba(255, 255, 255, 0.25);
       transform: scale(1.05);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
     
     .action-btn i {
       display: block;
       font-size: 2rem;
       margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .action-btn:hover i {
+      transform: scale(1.2);
+      color: #feca57;
     }
     
     /* Mobile Responsive */
@@ -346,11 +398,29 @@
       
       .header h1 {
         font-size: 2rem;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0.5rem;
+        border-radius: 10px;
+        display: inline-block;
+      }
+      
+      .header p {
+        background: rgba(0, 0, 0, 0.2);
+        padding: 1rem;
+        border-radius: 10px;
       }
       
       .dashboard-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
+      }
+      
+      .card-title {
+        font-size: 1.3rem;
+      }
+      
+      .card-description {
+        font-size: 0.9rem;
       }
     }
     
@@ -368,6 +438,12 @@
       font-size: 1.5rem;
       cursor: pointer;
       backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1);
     }
     
     @media (max-width: 768px) {
@@ -389,10 +465,54 @@
     ::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.3);
       border-radius: 10px;
+      transition: all 0.3s ease;
     }
     
     ::-webkit-scrollbar-thumb:hover {
       background: rgba(255, 255, 255, 0.5);
+    }
+    
+    /* Sound wave animation for music elements */
+    .music-wave {
+      display: inline-block;
+      position: relative;
+      height: 20px;
+      width: 20px;
+      margin-left: 5px;
+    }
+    
+    .music-wave span {
+      position: absolute;
+      bottom: 0;
+      width: 3px;
+      height: 100%;
+      background: white;
+      animation: sound-wave 1.5s infinite ease-in-out;
+    }
+    
+    .music-wave span:nth-child(1) {
+      left: 0;
+      animation-delay: 0.1s;
+    }
+    
+    .music-wave span:nth-child(2) {
+      left: 5px;
+      animation-delay: 0.3s;
+    }
+    
+    .music-wave span:nth-child(3) {
+      left: 10px;
+      animation-delay: 0.6s;
+    }
+    
+    .music-wave span:nth-child(4) {
+      left: 15px;
+      animation-delay: 0.9s;
+    }
+    
+    @keyframes sound-wave {
+      0%, 100% { transform: scaleY(0.1); }
+      50% { transform: scaleY(1); }
     }
   </style>
 </head>
@@ -411,6 +531,12 @@
       <div class="sidebar-header">
         <div class="logo">
           🎵
+          <div class="music-wave">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
         <h2 class="sidebar-title">O'zbek Cholg'u Laboratoriyasi</h2>
       </div>
@@ -467,13 +593,18 @@
     <main class="main-content">
       <!-- Header -->
       <div class="header">
-        <h1>Xush kelibsiz! 🎶</h1>
+        <h1>Xush kelibsiz! <span class="music-wave">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </span></h1>
         <p>O'zbek cholg'u asboblari laboratoriyasining mukammal dashboard tizimiga xush kelibsiz. Bu yerda siz o'zbek milliy musiqa asboblarini o'rganish, sevimlilaringizni saqlash va professional ma'lumotlardan foydalanish imkoniyatiga egasiz.</p>
       </div>
       
       <!-- Dashboard Cards -->
       <div class="dashboard-grid">
-        <div class="dashboard-card" onclick="location.href='instruments.html'">
+        <div class="dashboard-card" onclick="navigateTo('instruments')">
           <div class="card-icon">
             <i class="fas fa-guitar"></i>
           </div>
@@ -495,7 +626,7 @@
           </div>
         </div>
         
-        <div class="dashboard-card" onclick="location.href='favorites.html'">
+        <div class="dashboard-card" onclick="navigateTo('favorites')">
           <div class="card-icon">
             <i class="fas fa-heart"></i>
           </div>
@@ -517,7 +648,7 @@
           </div>
         </div>
         
-        <div class="dashboard-card" onclick="location.href='admin.html'">
+        <div class="dashboard-card" onclick="navigateTo('admin')">
           <div class="card-icon">
             <i class="fas fa-cogs"></i>
           </div>
@@ -539,7 +670,7 @@
           </div>
         </div>
         
-        <div class="dashboard-card" onclick="location.href='profile.html'">
+        <div class="dashboard-card" onclick="navigateTo('profile')">
           <div class="card-icon">
             <i class="fas fa-chart-line"></i>
           </div>
@@ -561,7 +692,7 @@
           </div>
         </div>
         
-        <div class="dashboard-card" onclick="location.href='comments.html'">
+        <div class="dashboard-card" onclick="navigateTo('comments')">
           <div class="card-icon">
             <i class="fas fa-graduation-cap"></i>
           </div>
@@ -583,7 +714,7 @@
           </div>
         </div>
         
-        <div class="dashboard-card" onclick="location.href='register.html'">
+        <div class="dashboard-card" onclick="navigateTo('register')">
           <div class="card-icon">
             <i class="fas fa-users"></i>
           </div>
@@ -610,19 +741,19 @@
       <div class="quick-actions">
         <h2 class="section-title">Tezkor amallar</h2>
         <div class="actions-grid">
-          <a href="instruments.html" class="action-btn">
+          <a href="instruments.html" class="action-btn" onclick="playSound('hover')">
             <i class="fas fa-plus"></i>
             Yangi asbob qo'shish
           </a>
-          <a href="instruments.html" class="action-btn">
+          <a href="instruments.html" class="action-btn" onclick="playSound('hover')">
             <i class="fas fa-search"></i>
             Qidiruv
           </a>
-          <a href="admin.html" class="action-btn">
+          <a href="admin.html" class="action-btn" onclick="playSound('hover')">
             <i class="fas fa-download"></i>
             Eksport
           </a>
-          <a href="profile.html" class="action-btn">
+          <a href="profile.html" class="action-btn" onclick="playSound('hover')">
             <i class="fas fa-bell"></i>
             Bildirishnomalar
           </a>
@@ -630,6 +761,9 @@
       </div>
     </main>
   </div>
+  
+  <audio id="hoverSound" src="https://assets.mixkit.co/sfx/preview/mixkit-positive-interface-beep-221.mp3"></audio>
+  <audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3"></audio>
   
   <script>
     // Create animated particles
@@ -662,6 +796,7 @@
     
     mobileMenuBtn.addEventListener('click', () => {
       sidebar.classList.toggle('open');
+      playSound('click');
     });
     
     // Close sidebar when clicking outside on mobile
@@ -673,8 +808,25 @@
       }
     });
     
+    // Sound effects
+    function playSound(type) {
+      if (type === 'hover') {
+        const sound = document.getElementById('hoverSound');
+        sound.currentTime = 0;
+        sound.volume = 0.3;
+        sound.play();
+      } else if (type === 'click') {
+        const sound = document.getElementById('clickSound');
+        sound.currentTime = 0;
+        sound.volume = 0.5;
+        sound.play();
+      }
+    }
+    
     // Navigation function
     function navigateTo(section) {
+      playSound('click');
+      
       // Define actual file paths based on your file structure
       const routes = {
         'instruments': 'instruments.html',
@@ -721,6 +873,7 @@
         }
         
         e.preventDefault();
+        playSound('click');
         
         // Remove active class from all links
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
@@ -733,11 +886,10 @@
     // Initialize particles
     createParticles();
     
-    // Add hover sound effects (optional)
+    // Add hover sound effects
     document.querySelectorAll('.dashboard-card, .action-btn, .nav-link').forEach(element => {
       element.addEventListener('mouseenter', () => {
-        // Add subtle hover sound if desired
-        // new Audio('hover-sound.mp3').play();
+        playSound('hover');
       });
     });
     
@@ -764,6 +916,11 @@
           card.style.opacity = '1';
           card.style.transform = 'translateY(0)';
         }, index * 100);
+      });
+      
+      // Add music wave animation to all music elements
+      document.querySelectorAll('.music-wave span').forEach((span, i) => {
+        span.style.animationDelay = `${i * 0.1}s`;
       });
     });
   </script>
